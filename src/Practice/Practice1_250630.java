@@ -65,7 +65,7 @@ public class Practice1_250630 {
         String writer = "유재석"; // 문자열 "유재석" 를 저장하고 있는 String타입 'writer' 변수 선언
         String content = "안녕하세요!"; // 문자열 "안녕하세요!"를 저장하고 있는 String타입 'content' 변수 선언
 
-        System.out.printf(" ========== 방문록 =========== \n");
+        System.out.printf("========== 방문록 ===========\n");
         System.out.printf("%-5s \t %-5s \t %-10s \n" , "번호", "작성자", "방문록");
         System.out.printf("%-6d \t %-5s \t %-10s \n", num , writer, content);
         System.out.printf("============================");
