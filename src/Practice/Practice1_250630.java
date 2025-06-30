@@ -38,7 +38,7 @@ public class Practice1_250630 {
 //                요구 조건: 키(height)는 서식 지정자를 이용해 소수점 첫째 자리까지만 표시하세요.
 //        예시: 제 이름은 홍길동, 나이는 25세, 키는 175.5cm 입니다.
 
-        System.out.printf("제 이름은 %s, 나이는 %d세, 키는 %4.1fcm 입니다. \n", name, age2, height);
+        System.out.printf("제 이름은 %s, 나이는 %d세, 키는 %.1fcm 입니다. \n", name, age2, height);
 
 
 //        문제6: 아래와 같이 이스케이프 문자를 이용하여 콘솔에 출력하는 코드를 작성하시오.
@@ -55,9 +55,6 @@ public class Practice1_250630 {
         System.out.println( "||_/=\\\\__|" );
 
 //문제7 : 아래 조건에 3가지의 변수가 주어졌을때. 그림과 같이 printf 이용한 출력 하는 코드를 작성하시오.
-//int num = 1;    // 정수 1 를 저장하고 있는 int 타입 'num' 변수 선언
-//String writer = "유재석"; // 문자열 "유재석" 를 저장하고 있는 String타입 'writer' 변수 선언
-//String content = "안녕하세요!"; // 문자열 "안녕하세요!"를 저장하고 있는 String타입 'content' 변수 선언
 //예시 :
 //========== 방문록 ===========
 //번호    작성자   방문록
@@ -68,10 +65,10 @@ public class Practice1_250630 {
         String writer = "유재석"; // 문자열 "유재석" 를 저장하고 있는 String타입 'writer' 변수 선언
         String content = "안녕하세요!"; // 문자열 "안녕하세요!"를 저장하고 있는 String타입 'content' 변수 선언
 
-        System.out.println(" ========== 방문록 =========== ");
-        System.out.println("     번호    작성자   방문록");
-        System.out.printf("      %d     %s   %s \n", num , writer, content);
-        System.out.println("============================");
+        System.out.printf(" ========== 방문록 =========== \n");
+        System.out.printf("%-5s \t %-5s \t %-10s \n" , "번호", "작성자", "방문록");
+        System.out.printf("%-6d \t %-5s \t %-10s \n", num , writer, content);
+        System.out.printf("============================");
 
     }
 
