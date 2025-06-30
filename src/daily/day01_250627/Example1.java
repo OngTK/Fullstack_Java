@@ -1,7 +1,7 @@
 // 한 줄 주석
 /* 여러줄 주석*/
 
-package day01_250627; // 현 java 파일이 위치한 package명, 패키지 = 폴더
+package daily.day01_250627; // 현 java 파일이 위치한 package명, 패키지 = 폴더
 
 public class Example1 {
     // public : 프로젝트 내 모든 곳에서 호출 가능한 키워드

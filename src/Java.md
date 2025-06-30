@@ -156,7 +156,7 @@ ctrl + shift + F10
 public class Example2 {
     public static void main(String[] args) {
         
-       // 1. boolean : true or false
+       // 1. boolean : true or false, 1바이트
        boolean bool1 = true;
        boolean bool2 = false;
        // boolean boo3 = 3; >> 오류!! 3이라는 리터럴은 boolean에 저장 불가!!
@@ -199,7 +199,7 @@ public class Example2 {
        System.out.println(d1); // 출력하면 17자리까지만 표현
        // ※ 주의!! double 과 Double은 다름!!!!(자세한 것은 나중에!!)
 
-       // 9. float : 소수점 8자리까지 표현 가능한 실수, 리터럴 뒤 F or f를 기재
+       // 9. float : 소수점 8자리까지 표현 가능한 실수, 4 바이트, 리터럴 뒤 F or f를 기재
        // float f1 = 0.12324567898413; > 오류!! 리터럴 뒤에 F or f 기재 필요!!
        float f2 = 0.12324567898413f; // 출력하면 8자리까지만 표현
     }
@@ -228,3 +228,6 @@ public class Example3 {
    }
 }
 ```
+---
+
+# day2_250630

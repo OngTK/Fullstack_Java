@@ -1,4 +1,4 @@
-package day01_250627; // 현재.java 파일이 위치한 폴더명
+package daily.day01_250627; // 현재.java 파일이 위치한 폴더명
 
 public class Example2 { // class stat : 모든 자바코드는 클래스 안에 존재
 
