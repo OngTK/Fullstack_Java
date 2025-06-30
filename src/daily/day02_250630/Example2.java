@@ -20,6 +20,11 @@ public class Example2 {
                 .nextLong() : 입력받은 정수(long)를 반환
                 .nextFloat() : 입력받은 실수(float)를 반환
                 .nextDouble() : 입력받은 실수(double)를 반환
+                .nextBoolean() : 입력받은 true/false를 반환
+
+                * .nextChar()는 없음 ☆★☆★☆★☆★☆★
+                >> char value8 = scan.next().charAt( 0 ) ;
+                >> 입력받은 문자열 중에 첫번째[index 0] 글자를 반환
          */
 
         // [1] Scanner 객체로부터 next 함수 호출
@@ -68,6 +73,13 @@ public class Example2 {
         System.out.println("8. nextDouble() : ");
         double value6 = scan.nextDouble();
         System.out.println("8. nextDouble result : "+ value6);
+
+        // [2.9] .nextBoolean()
+
+        // nextChar는 없음!
+        System.out.println("10. next() : ");
+        char value8 = scan.next().charAt( 0 ) ;
+        // 입력받은 문자열 중에 첫번째[index 0] 글자를 반환
 
     }   //main end
 }   // class end
