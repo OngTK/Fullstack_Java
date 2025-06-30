@@ -3,28 +3,28 @@ package daily.day02_250630;
 public class Example1 {
     public static void main(String[] args) {
 
-        /* [ 변수 타입변환 = casting]
-         *                               ☆★☆★☆★☆★☆★ Java는 다향성을 가짐
-         *                               : 하나의 자료가 여러 개의 타입을 가질 수 있음 ☆★☆★☆★☆★☆★
-         *
-         * 1. 자동 타입변환 (묵시적)
-         *    byte > short / char > int > long > float > double
-         *    (1) 메모리 크기 小 > 大 로 변환
-         *    (2) 데이터 손실이 적다.
-         *
-         * 2. 강제 타입변환 (명시적)
-         *    double > float > long > int > short / char > byte
-         *    (1) 메모리 크기 大 > 小로 변환
-         *    (2) 데이터 손실이 크다.
-         *    (3) (변환할 타입명) 변수명;
-         *
-         * 3. 연산 타입변환
-         *    (1) int 이하의 연산결과는 int
-         *      byte + byte = int
-         *      byte + short = int
-         *      int + int = int
-         *    (2) int 이상에서는 연산 결과 두 개 중 더 큰 항으로 자동 타입변환
-         * */
+        /* [ 변수 타입변환 = casting ]
+                                         ☆★☆★☆★☆★☆★ Java는 다향성을 가짐
+                                         : 하나의 자료가 여러 개의 타입을 가질 수 있음 ☆★☆★☆★☆★☆★
+
+           1. 자동 타입변환 (묵시적)
+              byte > short / char > int > long > float > double
+              (1) 메모리 크기 小 > 大 로 변환
+              (2) 데이터 손실이 적다.
+
+           2. 강제 타입변환 (명시적)
+              double > float > long > int > short / char > byte
+              (1) 메모리 크기 大 > 小로 변환
+              (2) 데이터 손실이 크다.
+              (3) (변환할 타입명) 변수명;
+
+           3. 연산 타입변환
+              (1) int 이하의 연산결과는 int
+                byte + byte = int
+                byte + short = int
+                int + int = int
+              (2) int 이상에서는 연산 결과 두 개 중 더 큰 항으로 자동 타입변환
+         */
 
         //[1] 자동 타입변환
         byte byteValue = 10;
