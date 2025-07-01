@@ -188,7 +188,7 @@ public class Practice_03_250701 {
 //            BMI 지수: 22.34...
 
 //        System.out.print("키(cm): ");
-//        double height13 = scan.nextDouble() / 100;
+//        double height13 = scan.nextDouble() / 100.0;
 //        System.out.print("몸무게(kg): ");
 //        double weight13 = scan.nextDouble();
 //        double BMI = weight13 / (height13 * height13);
@@ -205,7 +205,6 @@ public class Practice_03_250701 {
 //        String id14 = scan.next();
 //        System.out.print("이메일: ");
 //        String email14 = scan.next();
-//
 //        String result14 = (id14.equals("admin")) || (email14.equals("admin@test.com")) ? "관리자" : "일반 사용자" ;
 //        System.out.println("결과: " + result14);
 
