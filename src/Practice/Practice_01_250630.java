@@ -1,6 +1,6 @@
 package Practice;
 
-public class Practice1_250630 {
+public class Practice_01_250630 {
     public static void main(String[] args) {
 //        [실습1] * 제출용
 //        문제 1: 리터럴(Literal)과 기본 출력 함수
