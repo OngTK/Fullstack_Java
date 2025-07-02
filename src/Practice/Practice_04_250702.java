@@ -275,9 +275,9 @@ public class Practice_04_250702 {
 //        System.out.print("연도를 입력하세요: ");
 //        int year = scan.nextInt();
 //        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-//            System.out.println(year + "년은 윤달입니다.");
+//            System.out.println(year + "년은 윤년입니다.");
 //        } else {
-//            System.out.println(year + "년은 윤달이 아닙니다.");
+//            System.out.println(year + "년은 윤년이 아닌 평년입니다.");
 //        }
 
 //[문제 14] Scanner를 이용해 서로 다른 세 개의 정수를 입력받아, 오름차순(작은 수부터 큰 수 순서)으로 정렬하여 출력하는 프로그램을 작성하시오.
