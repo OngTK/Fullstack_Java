@@ -221,32 +221,32 @@ public class Practice_05_250703 {
 //            선택> 4
 //            프로그램을 종료합니다.
 
-//        int balance = 0;
-//        for (; ; ) {
-//            System.out.println("---------------------------------");
-//            System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
-//            System.out.println("---------------------------------");
-//            System.out.print("선택> ");
-//            int a = scan.nextInt();
-//            if (a == 1) {
-//                System.out.print("입금액> ");
-//                int b = scan.nextInt();
-//                balance += b;
-//            } else if (a == 2){
-//                System.out.print("출금액> ");
-//                int b = scan.nextInt();
-//                if( balance < b ) {
-//                    System.out.println("잔고보다 큰 금액은 출금할 수 없습니다.");
-//                    continue;
-//                } else {
-//                    balance -= b;
-//                }
-//            } else if (a == 3) {
-//                System.out.println("잔고> " + balance);
-//            } else if (a == 4){
-//                System.out.println("프로그램을 종료합니다.");
-//                break;
-//            }
-//        }
+        int balance = 0;
+        for (; ; ) {
+            System.out.println("---------------------------------");
+            System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
+            System.out.println("---------------------------------");
+            System.out.print("선택> ");
+            int a = scan.nextInt();
+            if (a == 1) {
+                System.out.print("입금액> ");
+                int b = scan.nextInt();
+                balance += b;
+            } else if (a == 2){
+                System.out.print("출금액> ");
+                int b = scan.nextInt();
+                if( balance < b ) {
+                    System.out.println("잔고보다 큰 금액은 출금할 수 없습니다.");
+                    continue;
+                } else {
+                    balance -= b;
+                }
+            } else if (a == 3) {
+                System.out.println("잔고> " + balance);
+            } else if (a == 4){
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+        }
     }
 }
