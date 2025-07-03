@@ -1,9 +1,8 @@
 package Practice;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class Practice05_250703 {
+public class Practice_05_250703 {
     public static void main(String[] args) {
 //JAVA] 실습5 : 반복문
 //[ 문제 ] 아래 반복문 관련 문제
