@@ -103,7 +103,6 @@ public class BoardService_250707 {
                         System.out.println("작성자 : " + writers[i]);
                         System.out.println("내용 : " + contents[i]);
                         System.out.println("------------------------------------");
-
                     }
                 }
             }
