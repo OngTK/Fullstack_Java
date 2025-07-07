@@ -1,5 +1,7 @@
 package Practice.Practice_07;
 
+import java.util.Scanner;
+
 public class Practice_07_250707 {
     public static void main(String[] args) {
 //[JAVA] 실습7 : 클래스와 객체의멤버변수
@@ -21,8 +23,8 @@ public class Practice_07_250707 {
         book2.author = "남궁성";
         book2.price = 28000;
 
-        System.out.println(book1.title + "\t" + book1.author + "\t" +  book1.price);
-        System.out.println(book2.title + "\t" + book2.author + "\t" +  book2.price);
+        System.out.println(book1.title + "\t" + book1.author + "\t" + book1.price);
+        System.out.println(book2.title + "\t" + book2.author + "\t" + book2.price);
 
 //[문제 2] Pet 클래스를 만드세요. name(문자열), species(문자열, 품종), age(정수) 멤버 변수를 가집니다.
         //1. main 함수에서 Pet 객체 2개를 생성하세요.
@@ -78,7 +80,7 @@ public class Practice_07_250707 {
         pro2.name = "콜라";
         pro2.price = 2000;
 
-        if ( pro1.price > pro2.price){
+        if (pro1.price > pro2.price) {
             System.out.println(pro1.name);
         } else {
             System.out.println(pro2.name);
@@ -94,7 +96,7 @@ public class Practice_07_250707 {
         member.id = "admin";
         member.isLogin = false;
 
-        System.out.println("로그인 전 상태: "+ member.isLogin);
+        System.out.println("로그인 전 상태: " + member.isLogin);
         member.isLogin = true;
         System.out.println("로그인 후 상태: " + member.isLogin);
 
@@ -110,7 +112,7 @@ public class Practice_07_250707 {
         tele.channel = 11;
         tele.volume -= 2;
 
-        System.out.println(tele.channel +" " +tele.volume);
+        System.out.println(tele.channel + " " + tele.volume);
 
 //[문제 8] Player 클래스를 만드세요. name(문자열), power(정수), speed(정수) 멤버 변수를 가집니다.
         //1. main 함수에서 Player 객체 2개를 생성하세요.
@@ -120,11 +122,11 @@ public class Practice_07_250707 {
         Player player1 = new Player();
         player1.name = "손흥민";
         player1.power = 90;
-        player1.speed= 95;
+        player1.speed = 95;
         Player player2 = new Player();
         player2.name = "이강인";
         player2.power = 85;
-        player2.speed= 92;
+        player2.speed = 92;
 
         int sum1 = player1.power + player1.speed;
         int sum2 = player2.power + player2.speed;
@@ -135,18 +137,46 @@ public class Practice_07_250707 {
         }
 
 //[문제 9] MenuItem 클래스를 만드세요. name(문자열), price(정수), isSignature(boolean, 대표메뉴 여부) 멤버 변수를 가집니다.
-        //1. main 함수에서 MenuItem 객체 3개를 생성하고, 첫 번째는 "김치찌개", 8000, true, 두 번째는 "된장찌개", 8000, false, 세 번째는 "계란찜", 3000, false로 저장하세요.
+        //1. main 함수에서 MenuItem 객체 3개를 생성하고, 첫 번째는 "김치찌개", 8000, true,
+        // 두 번째는 "된장찌개", 8000, false, 세 번째는 "계란찜", 3000, false로 저장하세요.
         //2. if문을 사용하여 isSignature가 true인 메뉴 객체를 찾아, "[대표메뉴] [메뉴이름] : [가격]원" 형식으로 출력하세요.
+        MenuItem menu1 = new MenuItem();
+        menu1.name = "김치찌개";
+        menu1.price = 8000;
+        menu1.isSignature = true;
+        MenuItem menu2 = new MenuItem();
+        menu2.name = "된장찌개";
+        menu2.price = 8000;
+        menu2.isSignature = false;
+        MenuItem menu3 = new MenuItem();
+        menu3.name = "계란찜";
+        menu3.price = 3000;
+        menu3.isSignature = false;
 
-
+        if (menu1.isSignature == true) {
+            System.out.printf("[대표메뉴] %s : %d원\n", menu1.name, menu1.price);
+        } else if (menu2.isSignature == true) {
+            System.out.printf("[대표메뉴] %s : %d원\n", menu2.name, menu2.price);
+        } else {
+            System.out.printf("[대표메뉴] %s : %d원\n", menu3.name, menu3.price);
+        }
 
 //[문제 10] UserProfile 클래스를 만드세요. name(문자열), age(정수), mbti(문자열) 멤버 변수를 가집니다.
         //1. main 함수에서 UserProfile 객체를 하나 생성하세요.
         //2. Scanner를 사용하여 사용자로부터 이름, 나이, MBTI를 순서대로 입력받으세요.
         //3. 입력받은 값들을 생성된 객체의 각 멤버 변수에 저장하세요.
         //3. 모든 정보가 저장된 객체의 멤버 변수들을 가져와 "--- 프로필 ---", "이름: [이름]", "나이: [나이]", "MBTI: [MBTI]" 형식으로 출력하세요.
+        UserProfile user = new UserProfile();
+        Scanner scan = new Scanner(System.in);
+        System.out.print("이름 : ");
+        user.name = scan.next();
+        System.out.print("나이 : ");
+        user.age = scan.nextInt();
+        System.out.print("MBTI : ");
+        user.mbti = scan.next();
 
-
+        System.out.println("--- 프로필 ---");
+        System.out.printf("이름: %s, 나이: %d, MBTI: %s",user.name,user.age,user.mbti);
     }
 }
 
