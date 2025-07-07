@@ -1,4 +1,4 @@
-package 종합.과제1;
+package comprehensive.Practice1;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package 종합.예제1;
+package comprehensive.Example1;
 
 import java.util.Scanner;
 
