@@ -96,36 +96,36 @@ public class Practice_06_250707 {
 //        String[] products = {"볼펜", "노트", "지우개"};
 //        int[] stock = {10, 5, 20};
 
-        String[] products = {"볼펜", "노트", "지우개"};
-        int[] stock = {10, 5, 20};
-
-        Scanner scan = new Scanner(System.in);
-        System.out.print("구매 상품명 : ");
-        String productInput = scan.next();
-        System.out.print("수량 : ");
-        int stockInput = scan.nextInt();
-
-        int check = 0;
-
-        for (int i = 0; i < products.length; i++) {
-            String proudct = products[i];
-            if(proudct.equals(productInput)){
-                if(stock[i] < stockInput){
-                    System.out.println("재고가 부족합니다.");
-                    check = 2;
-                    break;
-                } else {
-                    System.out.println("구매완료");
-                    stock[i] -= stockInput;
-                    check = 1;
-                    System.out.println(Arrays.toString(stock) );
-                    break;
-                }
-            }
-        }
-        if(check == 0 ){
-            System.out.println("없는 제품입니다.");
-        }
+//        String[] products = {"볼펜", "노트", "지우개"};
+//        int[] stock = {10, 5, 20};
+//
+//        Scanner scan = new Scanner(System.in);
+//        System.out.print("구매 상품명 : ");
+//        String productInput = scan.next();
+//        System.out.print("수량 : ");
+//        int stockInput = scan.nextInt();
+//
+//        int check = 0;
+//
+//        for (int i = 0; i < products.length; i++) {
+//            String proudct = products[i];
+//            if(proudct.equals(productInput)){
+//                if(stock[i] < stockInput){
+//                    System.out.println("재고가 부족합니다.");
+//                    check = 2;
+//                    break;
+//                } else {
+//                    System.out.println("구매완료");
+//                    stock[i] -= stockInput;
+//                    check = 1;
+//                    System.out.println(Arrays.toString(stock) );
+//                    break;
+//                }
+//            }
+//        }
+//        if(check == 0 ){
+//            System.out.println("없는 제품입니다.");
+//        }
 
 //        [문제 9] 주어진 영화 이름과 평점 배열을 이용하여, 각 영화의 평점을 별(★, ☆)로 시각화하여 출력하는 프로그램을 작성하시오.
 //        요구 조건: 각 영화의 평점(10점 만점)만큼 꽉 찬 별(★)을, 나머지 점수만큼 빈 별(☆)을 출력합니다.
@@ -143,14 +143,16 @@ public class Practice_06_250707 {
 //        int[] movieRatings = {8, 4, 7, 6};
 //
 //        for (int i = 0; i < movieNames.length; i++) {
-//            String movieStar = "";
-//            for (int j = 0; j < movieRatings[i]; j++) {
-//                movieStar += "★";
+//            System.out.print(movieNames[i]);
+//
+//            for (int star = 1; star <= 10; star++) {
+//                if (star <= movieRatings[i]) {
+//                    System.out.print("★");
+//                } else {
+//                    System.out.print("☆");
+//                }
 //            }
-//            for (int j = 0; j < 10 - movieRatings[i]; j++) {
-//                movieStar += "☆";
-//            }
-//            System.out.println(movieNames[i] + movieStar);
+//            System.out.println();
 //        }
 
 //        [문제 10] 차량별 주차 시간 데이터가 주어졌을 때, 아래의 요금 규정에 따라 각 차량이 지불해야 할 최종 주차 요금을 계산하여 출력하시오.
