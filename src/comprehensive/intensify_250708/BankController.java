@@ -1,5 +1,7 @@
 package comprehensive.intensify_250708;
 
+import java.util.Arrays;
+
 public class BankController {
     //멤버변수
     Account[] accountList = new Account[100];
@@ -16,6 +18,8 @@ public class BankController {
             if (accountList[i] == null) {
                 accountList[i] = account;
                 check = true;
+                System.out.println(Arrays.toString(accountList));
+                break;
             }
         }
         return check;
@@ -30,8 +34,10 @@ public class BankController {
             Account account = accountList[i];
             if (account != null) {
                 if (account.accountNo.equals(accountNo) && account.pw == pw) {
-                    account.balance = account.balance + balance;
+                    account.balance += balance;
+                    System.out.println(Arrays.toString(accountList));
                     check = true;
+                    break;
                 } else {
                     check = false;
                 }
@@ -52,8 +58,10 @@ public class BankController {
             if (account != null) {
                 if (account.accountNo.equals(accountNo) && account.pw == pw) {
                     if (account.balance >= withdrawAmount) {
-                        account.balance = account.balance - withdrawAmount;
+                        account.balance -= withdrawAmount;
                         check = 1;
+                        System.out.println(Arrays.toString(accountList));
+                        break;
                     } else {
                         check = 2;
                     }
@@ -74,6 +82,8 @@ public class BankController {
             if (account != null) {
                 if (account.accountNo.equals(accountNo) && account.pw == pw) {
                     balance = account.balance;
+                    System.out.println(Arrays.toString(accountList));
+                    break;
                 } else {
                     balance = -1;
                 }

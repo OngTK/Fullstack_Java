@@ -1,5 +1,6 @@
 package comprehensive.intensify_250708;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BankService {
@@ -8,13 +9,12 @@ public class BankService {
         Scanner scan = new Scanner(System.in);
         BankController ct = new BankController();
 
-        for ( ; ; ) {
+        for (; ; ) {
             System.out.println("============== KB Bank  ==============");
             System.out.println("1.계좌등록 | 2.입금 | 3.출금 | 4.잔고");
             System.out.println("======================================");
             System.out.print("선택 > ");
             int choice = scan.nextInt();
-            ;
 
             if (choice == 1) {                      // 1. 계좌 등록
                 System.out.println("--- 계좌 등록 ---");
@@ -24,7 +24,7 @@ public class BankService {
                 int pw = scan.nextInt();
 
                 boolean result = ct.createAccount(accountNo, pw);
-                if(result){
+                if (result) {
                     System.out.println("[안내] 계좌 등록이 완료되었습니다.");
                 }
 
@@ -53,12 +53,12 @@ public class BankService {
                 System.out.print("출금액 : ");
                 int withdrawAmount = scan.nextInt();
 
-                int result = ct.withdrawal(accountNo,pw,withdrawAmount);
-                if (result == 1){
+                int result = ct.withdrawal(accountNo, pw, withdrawAmount);
+                if (result == 1) {
                     System.out.println("[안내] 출금이 완료되었습니다.");
-                } else if (result == 2){
+                } else if (result == 2) {
                     System.out.println("[경고] 잔액이 부족합니다.");
-                } else if (result == 3){
+                } else if (result == 3) {
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
                 }
 
@@ -75,7 +75,6 @@ public class BankService {
                 } else {
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
                 }
-
             } else {
                 System.out.println("[경고] 올바르지 못한 기능입니다.");
             }
