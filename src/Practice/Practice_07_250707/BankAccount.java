@@ -1,4 +1,4 @@
-package Practice.Practice_07;
+package Practice.Practice_07_250707;
 
 public class BankAccount {
     //accountNumber(문자열), ownerName(문자열), balance(정수, 잔액)

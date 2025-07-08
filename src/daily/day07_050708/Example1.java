@@ -55,5 +55,11 @@ public class Example1 {
         cal1.printSum(3,5); // 3, 5 : 인수값
         // cal1.printSum(3.14 , 4.45); error!! : 매개변수 타입 int!! 이므로 double(실수)는 입력 불가
         cal2.printSum(10,2); // isPowerOn = false 이므로 "전원이 꺼져 있습니다."가 발생
+
+        // [6] 매개변수 O, 반환값 O
+        int result2 = cal1.add(10,3);
+        // add 메소드의 타입이 int 이므로 저장할 변수 또한 int
+
+
     }
 }

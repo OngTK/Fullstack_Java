@@ -42,6 +42,17 @@ public class Calculator {
           return; // void(반환값 X 이므로 생략 가능)
       }
     };
-    /* int x, int y : 메소드 호출 시, 인수값을 저장하기 위한 타입과 매개변수
-    */
+    // int x, int y : 메소드 호출 시, 인수값을 저장하기 위한 타입과 매개변수
+
+    // (4) 매개변수 O, 반환값 O
+    int add(int x, int y) {
+      if(isPowerOn){
+          int result = x + y ;
+          return result;
+      } else{
+          System.out.println("전원이 꺼져 있습니다.");
+          return 0; // 메소드가 int로 정의되었으므로, else의 return 값도 필요
+      }
+    };
+
 }
