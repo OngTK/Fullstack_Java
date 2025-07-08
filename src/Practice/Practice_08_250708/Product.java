@@ -11,11 +11,10 @@ public class Product {
         if (stock >= stockInput){
             stock -= stockInput;
             result = true;
-            return result;
         } else {
             System.out.println("재고 부족");
             result = false;
-            return result;
         }
+        return result;
     };
 }

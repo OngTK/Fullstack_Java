@@ -5,13 +5,13 @@ public class Lamp {
     boolean isOn;
 
     //메소드
-    boolean turnOn (){
+    void turnOn (){
         isOn = true;
-        return isOn;
+        System.out.println(isOn);
     };
-    boolean turnOff(){
+    void turnOff(){
         isOn = false;
-        return isOn;
+        System.out.println(isOn);
     }
 
 }
