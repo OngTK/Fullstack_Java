@@ -70,7 +70,7 @@ public class BoardService4_250708 {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        BoardController bs = new BoardController();                // 입력과 조회는 동일한 Boards 객체에서 이루어져야 하므로 for문 위에 작성
+        BoardController bs = new BoardController();                         // 입력과 조회는 동일한 Boards 객체에서 이루어져야 하므로 for문 위에 작성
 
         for (; ; ) { // infi-roof start
             System.out.println("============= My Community =============");
@@ -85,7 +85,7 @@ public class BoardService4_250708 {
                 System.out.print("작성자 : ");
                 String writer = scan.next();
 
-                boolean result = bs.doPost(content, writer);       //boardController class에 정의한 메소드 호출
+                boolean result = bs.doPost(content, writer);                //boardController class에 정의한 메소드 호출
 
                 if (result) {
                     System.out.println("[안내] 글쓰기 성공");
@@ -94,7 +94,7 @@ public class BoardService4_250708 {
                 }
             } else if (choice == 2) {
                 System.out.println("============= 게시물 목록 =============");
-                Board[] boards = bs.doGet();                       //boardController class에 정의한 메소드 호출
+                Board[] boards = bs.doGet();                                //boardController class에 정의한 메소드 호출
                 for (int i = 0; i < boards.length; i++) {
                     if (boards[i] != null) {
                         System.out.println("작성자 : " + boards[i].writer);
