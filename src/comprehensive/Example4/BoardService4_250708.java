@@ -104,7 +104,5 @@ public class BoardService4_250708 {
                 }
             }// choice 2 end
         }// infi-roof end
-
-
     } //main end
 } // class end
