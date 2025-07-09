@@ -849,4 +849,137 @@ public class Example1 {
 
 ---
 ---
-# JS_08_메소드
+# Java_08_메소드
+**메소드 = 멤버변수**
+## 1. 정의
+----
+하나의 기능을 수행하는 일련의 코드/명령어
+## 2. 선언
+```java
+    반환타입 메소드명 ( 타입 매개변수1, 타입 매개변수2 ){
+        실행코드
+        return 반환값; (반환값이 없으면 생략 가능 = void)
+    };
+```
+## 3. 용어 정리
+---
+- 인수(인자)값  : 메소드 호출 시 메소드에 전달되는 값
+- 매개변수      : 메소드 실행 시, 메소드로 인수값으로부터 들어오는 값
+  * 없을 수도 있음
+  * 반드시! 인수 값의 타입과 매개변수의 타입이 일치해야 함
+- 반환값       : 메소드 실행 후 결과값
+  * 반드시! 반환값의 타입과 반환타입이 일치
+  * 반환값은 1개만 가능
+  * 반환값이 없을 때는 [ void ] 반환타입 키워드 사용
+- 반환타입     : 메소드 실행 후 결과인 반환값의 타입
+- 메소드명     : 임의의 기능명칭 (카멜표기법 권장)
+
+## 4. 호출
+---
+#### (방법 1) 실행 클래스와 메소드의 클래스가 별도로 존재하여, 실행 클래스에서 메소드를 호출할 때
+1) 클래스명 변수명 = new 클래스명();    // 객체 생성
+2) 변수명.메소드명();                  // 객체를 통한 메소드 호출
+3) 타입명 매개변수 = 변수명.메소드명();  // 메소드의 반환값을 매개변수에 저장
+```java
+public class Example1 {
+    public static void main(String[] args) {
+        // [1] 클래스에서 메소드 선언
+        // [2] 다른 클래스에서 매소드 호출
+        //      1) 호출하고자 하는 메소드를 갖는 클래스로 객체 생성
+        Calculator cal1 = new Calculator();
+        //      2) 호출하고자 하는 메소드를 갖는 객체를 이용한 메소드 호출
+        cal1.getPI();   //객체.메소드명
+
+        // [3] 매개변수 X, 반환값 O
+        //      : 반환값이 있으면 주로 변수에 저장
+        double result = cal1.getPI();
+
+        // [4] 매개변수 X, 반환값 X
+        cal1.powerOn();
+        //      주의할 점 : 여러 객체들 간의 멤버변수
+        //                 new 연산자는 항상 새로운 객체를 만듦
+        //                 즉, 객체마다 멤버변수는 다 각자임
+        Calculator cal2 = new Calculator();
+        System.out.println(cal1.isPowerOn); // true
+        System.out.println(cal2.isPowerOn); // false
+
+        // [5] 매개변수 O, 반환값 X
+        cal1.printSum(3,5); // 3, 5 : 인수값
+        // cal1.printSum(3.14 , 4.45); error!! : 매개변수 타입 int!! 이므로 double(실수)는 입력 불가
+        cal2.printSum(10,2); // isPowerOn = false 이므로 "전원이 꺼져 있습니다."가 발생
+
+        // [6] 매개변수 O, 반환값 O
+        int result2 = cal1.add(10,3);
+        // add 메소드의 타입이 int 이므로 저장할 변수 또한 int
+    }
+}
+```
+```java
+public class Calculator {
+    /* 클래스 멤버(객체내 포함)
+            1. 멤버변수 : 객체 마다 할당
+            2. 생성자
+            3. 메소드 : 여러 객체가 공유해서 사용
+    */
+
+    boolean isPowerOn = false; //전원상태
+
+    // [ 메소드 선언 ]
+
+    // (1) 매개변수 X, 반환값 O
+    double getPI(){
+        return 3.14159;
+    };
+    // double : return값 3.14159의 타입이 실수이므로 double
+    // getPI : 메소드 명
+    // ( ) : 매개변수 (여기선 없음) 
+    // return 값 : 메소드를 호출했던 곳으로 반환하는 값
+
+    // (2) 매개변수 X, 반환값 X >> void
+    void powerOn(){
+        System.out.println("계산기 전원을 켭니다.");
+        isPowerOn = true;
+    };
+    // void : return(반환값)이 없다는 키워드
+
+    // (3) 매개변수 O, 반환값 X
+    void printSum(int x, int y){
+        if( isPowerOn ) {
+            int sum = x + y;
+            System.out.println(sum);
+            return; // void(반환값 X 이므로 생략 가능)
+        } else {
+            System.out.println("전원이 꺼져 있습니다.");
+            return; // void(반환값 X 이므로 생략 가능)
+        }
+    };
+    // int x, int y : 메소드 호출 시, 인수값을 저장하기 위한 타입과 매개변수
+
+    // (4) 매개변수 O, 반환값 O
+    int add(int x, int y) {
+        if(isPowerOn){
+            int result = x + y ;
+            return result;
+        } else{
+            System.out.println("전원이 꺼져 있습니다.");
+            return 0; // 메소드가 int로 정의되었으므로, else의 return 값도 필요
+        }
+    };
+
+}
+```
+#### (방법 2) 동일한 클래스에 선언된 메소드를 호출
+1) 메소드명(인수);
+```java
+public class Example {
+    class Student { // Class = 객체 내 필요한 속성과 기능을 정의
+        int studentID;              //'학번' 속성 정의
+        String studentName;         //'이름' 속성 정의
+    } // student class end
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.studentName = "홍길동";
+    }
+}
+```
+
