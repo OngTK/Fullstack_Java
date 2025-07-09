@@ -15,7 +15,7 @@ public class BoardController {
 //              -> 저장 성공 시 true, 실패(공간 없음) 시 false를 반환(return)합니다.
 
     boolean doPost(String content, String writer) {
-        Board board = new Board(content, writer);                  // 데이터를 저장할 객체 생성
+        Board board = new Board(content, writer);   // 데이터를 저장할 객체 생성
 
         for (int i = 0; i < boards.length; i++) {
             if (boards[i] == null) {
@@ -27,7 +27,7 @@ public class BoardController {
     }
 
     // 2. 출력/조회  - 게시물 조회 기능 메소드 doGet()을 정의합니다.
-//              -> 자신이 관리하는 boards 배열 전체를 반환(return)합니다.
+//                  -> 자신이 관리하는 boards 배열 전체를 반환(return)합니다.
     Board[] doGet() {
         return boards;                               // boards의 타입은 Board[]
     }
