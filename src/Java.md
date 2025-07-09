@@ -263,7 +263,12 @@ Java는 다향성을 가짐
  - 메모리 크기 小 > 大 로 변환
 - 데이터 손실이 적다.
 ```java
-
+byte byteValue = 10;
+short shortValue = byteValue;       // byte > short
+int intValue = shortValue;          // short > int
+long longValue = intValue;          // int > long
+float floatValue = longValue;       // long > float
+double doubleValue = floatValue;    // float > double, doubleValue = 10
 ```
 
 #### (2) 강제 타입변환 (명시적)
@@ -272,7 +277,12 @@ Java는 다향성을 가짐
 - 데이터 손실이 크다. (발생할 수 있다.)
 - (변환할 타입명) 변수명;
 ```java
-
+double dvalue = 3.14;
+float fvalue = (float) dvalue;  // double > float 으로 명시적 타입변환
+long lvalue = (long) fvalue;    // float > long `` // 손실발생 : 3.14 > 3
+int ivalue = (int) lvalue;      // long > int   ``
+short svalue = (short) ivalue; // int > short  ``
+byte bvalue = (byte) svalue;    // short > byte ``
 ```
 
 #### (3) 연산 타입변환
@@ -282,36 +292,88 @@ Java는 다향성을 가짐
   int + int = int
 - int 이상에서는 연산 결과 두 개 중 더 큰 항으로 자동 타입변환
 ```java
+byte b1 = 10;
+byte b2 = 20;
+short s1 = 30;
+int i1 = 40;
+long l1 = 50;
+float f1 = 3.14f;
+double d1 = 41.25;
 
+int result = b1 + b2;       // byte + byte = int
+int result2 = b1 + s1;      // byte + short = int
+int result3 = i1 + i1;      // int + int = int
+long result4 = i1 + l1;     // int + long = long
+float result5 = i1 + f1;    // int + float = float
+double result6 = i1 + d1;   // int + double = double
 ```
 
 ## 2. 연산자
 ---
-### 1) 산술 연산자
-\+  - * / %(나머지)
-### 2) 연결 연산자
-"문자열" + 10 = 문자열 10
-피연산자 중에 문자열이 포함되면 산술이 아닌 문자열 연결
-### 3) 비교 연산자
-\>  <  ==  !=
-결과를 boolean 으로 반환
-### 4) 논리 연산자
-&& and, || or, ! not
-### 5) 증감 연상자
-변수 값에 1 증가 or 감소
-++변수명 : 선위 증가
-변수명++ : 후위 증가
---변수명 : 선위 감소
-변수명-- : 후위 감소
-### 6) (복합)대입연산자
-= 오른쪽 값을 왼쪽에 대입
-+=, -=, *=, /=, %= 오른쪽 값을 왼쪽 값에 대해 연산한 후 대입
-### 7) 삼항연산자
-조건 ? 참 : 거짓
-조건1 ? 참1 : 조건2 ? : 참2 : 거짓 vs if문
-### 8) 문자열 비교
-"문자열A".equals("문자열B")
+| 연산자    | 설명                                                                                   |
+|--------|--------------------------------------------------------------------------------------|
+| 산술연산자  | +덧셈 -뺄셈 *곱셈 /나눗셈 %나머지                                                                |
+| 연결 연산자 | "문자열" + 10 = 문자열 10 <br> 피연산자 중에 문자열이 포함되면 산술이 아닌 문자열 연결                             |
+| 비교 연산자       | \< <= > >= == != <br> 결과를 boolean 으로 반환                                              |
+| 논리 연산자       | && and  \|\| or  ! not                                                               |
+|  증감 연상자      | 변수 값에 1 증가 or 감소<br>++변수명 : 선위 증가<br>변수명++ : 후위 증가<br>--변수명 : 선위 감소<br>변수명-- : 후위 감소 |
+| (복합)대입연산자       | = 오른쪽 값을 왼쪽에 대입<br> += -= *= /= %= 오른쪽 값을 왼쪽 값에 대해 연산한 후 대입                          |
+| 삼항연산자       | 조건 ? 참 : 거짓 <br> 조건1 ? 참1 : 조건2 ? : 참2 : 거짓 vs if문                                   |
+| 문자열 비교       |  "문자열A".equals("문자열B")                                                                                    |
 
 ```java
+public class Example {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = -3;
+// [1] 산술 연산자
+        System.out.println(x + y);       // 7
+        System.out.println(x - y);       // 13
+        System.out.println(x * y);       // -30
+        System.out.println(x / y);       // -3 : int/int >> 속성 int 이므로 소수점이 표시되지 않음
+        System.out.println(10.0 / 3.0);  // double/double 이므로 소수점 표시
+        System.out.println(x % y);       // 1
 
+// [2] 연결 연산자
+        System.out.println(x + "개"); // 10개
+
+// [3] 비교 연산자
+        System.out.println(x > y);      // true
+        System.out.println(x < y);      // false
+        System.out.println(x >= y);     // true
+        System.out.println(x <= y);     // false
+        System.out.println(x == y);     // false
+        System.out.println(x != y);     // true
+
+// [4] 논리 연산자(관계 연산자)
+        System.out.println(x > 10 && x < 20); // and, false
+        System.out.println(y == 10 || y == 20); // or, false
+        System.out.println(!(x > 30)); // not(), true
+
+// [5] 증감연산자
+        System.out.println(x++);    // 10 출력 후 1 증가 : 11
+        System.out.println(++x);    // 11에서 1 증가 후 출력
+        System.out.println(x--);    // 12 출력 후 1 감소 : 11
+        System.out.println(--x);    // 11에서 1 감소 후 출력
+
+// [6] 복합 대입 연산자
+        int z = 30;                   // 30이라는 자료를 z에 대입
+        z += 10;                      // 40 // z + 10 후에 다시 z에 대입
+        z++;                          // 41
+
+// [7] 삼항 연산자
+        System.out.println(x >= 60 ? "합격" : "불합격");
+
+// [8] 문자열 비교와 리터럴 비교는 다르다.
+//      System.out.println( "10" == 10 ); // 에러발생!! 숫자 10과 리터럴 10은 서로 다름
+//문자열 비교 : "문자열A".equals("문자열B")
+        System.out.println("10".equals("10"));
+        System.out.println("admin".equals("admin"));
+    }
+}
 ```
+
+---
+---
+
+# Java_03_

@@ -98,8 +98,8 @@ public class Practice_09_250709 {
         Player per1 = new Player("손흥민", 90, 95);
         Player per2 = new Player("이강인", 85, 92);
 
-        System.out.println(per1.name+"\t"+ per1.power +"\t"+per1.speed);
-        System.out.println(per2.name+"\t"+ per2.power +"\t"+per2.speed);
+        System.out.println(per1.name + "\t" + per1.power + "\t" + per1.speed);
+        System.out.println(per2.name + "\t" + per2.power + "\t" + per2.speed);
 
 //[문제 9] MenuItem 클래스를 만드세요. (name, price, isSignature 멤버 변수) *멤버변수의 타입은 적절하게 선택하시오.
 //        1. 세 멤버 변수를 모두 초기화하는 생성자를 만드세요.
@@ -107,8 +107,8 @@ public class Practice_09_250709 {
 //        isSignature가 true인지 확인한 후 "[대표메뉴] 김치찌개 : 8000원" 형식으로 출력하세요.
 
         MenuItem menu = new MenuItem("김치찌개", 8000, true);
-        if(menu.isSignature){
-            System.out.printf("[대표메뉴] %s : %d원 \n",menu.name,menu.price);
+        if (menu.isSignature) {
+            System.out.printf("[대표메뉴] %s : %d원 \n", menu.name, menu.price);
         }
 
 //[문제 10] UserProfile 클래스를 만드세요. (name, age, mbti 멤버 변수) *멤버변수의 타입은 적절하게 선택하시오.
@@ -125,8 +125,8 @@ public class Practice_09_250709 {
         System.out.print("MBTI : ");
         String mbti = scan.next();
 
-        UserProfile user = new UserProfile(name,age,mbti);
-        System.out.println(user.name +"\t"+ user.age +"\t"+ user.mbti);
+        UserProfile user = new UserProfile(name, age, mbti);
+        System.out.println(user.name + "\t" + user.age + "\t" + user.mbti);
 
     }
 }

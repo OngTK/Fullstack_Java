@@ -1,4 +1,4 @@
-package comprehensive.Example4;
+package comprehensive.Example4_250708;
 
 public class BoardController {
     // 멤버변수
