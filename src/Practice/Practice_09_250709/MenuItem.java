@@ -1,4 +1,4 @@
-package Practice.Practice_09_250709.Practice;
+package Practice.Practice_09_250709;
 
 public class MenuItem {
     // 멤버변수
