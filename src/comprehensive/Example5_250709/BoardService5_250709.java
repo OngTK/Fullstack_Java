@@ -11,7 +11,7 @@ public class BoardService5_250709 {
 
         BoardController bs = new BoardController();
 
-        for (; ; ) {// (1) 무한루프 : 프로그램 계속적으로 실행하기 위해서
+        for ( ; ; ) {// (1) 무한루프 : 프로그램 계속적으로 실행하기 위해서
             System.out.println("============= My Community =============");// (2) 출력
             System.out.println("  1.게시물쓰기 | 2.게시물출력");
             System.out.println("========================================");
