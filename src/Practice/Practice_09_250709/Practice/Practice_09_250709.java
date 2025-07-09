@@ -1,5 +1,7 @@
 package Practice.Practice_09_250709.Practice;
 
+import java.util.Scanner;
+
 public class Practice_09_250709 {
     public static void main(String[] args) {
 
@@ -106,7 +108,7 @@ public class Practice_09_250709 {
 
         MenuItem menu = new MenuItem("김치찌개", 8000, true);
         if(menu.isSignature){
-            System.out.printf("[대표메뉴] %s : %d원",menu.name,menu.price);
+            System.out.printf("[대표메뉴] %s : %d원 \n",menu.name,menu.price);
         }
 
 //[문제 10] UserProfile 클래스를 만드세요. (name, age, mbti 멤버 변수) *멤버변수의 타입은 적절하게 선택하시오.
@@ -114,9 +116,17 @@ public class Practice_09_250709 {
 //        2. Scanner를 사용하여 사용자로부터 이름, 나이, MBTI를 입력받으세요.
 //        3. 입력받은 값들을 사용하여 UserProfile 객체를 생성하고, 저장된 모든 정보를 출력하세요.
 
+        Scanner scan = new Scanner(System.in);
+
         System.out.print("이름 : ");
+        String name = scan.next();
         System.out.print("나이 : ");
+        int age = scan.nextInt();
         System.out.print("MBTI : ");
+        String mbti = scan.next();
+
+        UserProfile user = new UserProfile(name,age,mbti);
+        System.out.println(user.name +"\t"+ user.age +"\t"+ user.mbti);
 
     }
 }
