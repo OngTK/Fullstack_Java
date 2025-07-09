@@ -22,7 +22,7 @@ public class BankController {
     }
 
     // 2. 입금
-    // 0(계좌번호, 비밀번호 메소드 실행)
+    // 유효성 검사
     // ture :
     //      해당 계좌번호에 balance에 입금 / return true
     // false : return false
@@ -39,10 +39,11 @@ public class BankController {
         return false;
     }
 
-    // 3. 출금 메소드 실행 >> return boolean
-    // 계좌번호, 비밀번호 유효성 검사
-    // ture :  (잔고 > 출금 )[안내] 출금이 완료되었습니다. / (잔고 < 출금) [경고] 잔액이 부족합니다.
-    // false : [경고] 계좌정보가 일치하지 않습니다.
+    // 3. 출금 메소드 실행 >> return int
+    // 유효성 검사
+    // ture :  ( 잔고 > 출금 )[안내] 출금이 완료되었습니다.  // return 1 : 출금완료
+    //         ( 잔고 < 출금) [경고] 잔액이 부족합니다.      // return 2 : 금액부족 출금실패
+    // false : [경고] 계좌정보가 일치하지 않습니다.          // return 3 : 유효성검사 false
 
     int withdraw(String accountNo, int pw, int money) {
         for (int i = 0; i < accounts.length; i++) {
@@ -63,10 +64,10 @@ public class BankController {
         return 3;
     }
 
-    // 4. 잔고 조회 메소드 실행 >> return balance
-    // 계좌번호, 비밀번호 유효성 검사
-    // ture :  [잔고] 00원
-    // false : [경고] 계좌정보가 일치하지 않습니다.
+    // 4. 잔고 조회 메소드 실행 >> return int
+    // 유효성 검사
+    // ture :  [잔고] 00원                         // return balance (balance >= 0)
+    // false : [경고] 계좌정보가 일치하지 않습니다.    // return -1
 
     int viewBalance(String accountNo, int pw) {
         for (int i = 0; i < accounts.length; i++) {
@@ -80,13 +81,14 @@ public class BankController {
         return -1; // 계좌정보 불일치
     }
 
-    // 계좌이체 fun >> return boolen
-    // 계좌번호, 비밀번호 유효성 검사
-    // true
-    //      받는분 계좌번호에 대한 유효성 검사
-    //          ture : [안내] 이체가 완료되었습니다.
-    //          false : [경고] 받는 분의 계좌번호를 다시 확인해주세요.
-    // false : 계좌정보가 일치하지 않습니다.
+    // 5. 계좌이체
+    // 유효성 검사
+    // ture :  if (이체금액 > 잔액)
+    //        ture : 금액부족                           // return 0
+    //        flase : 잔액이 충분 = if 이체할 계좌 검색
+    //                              ture  이체 성공      // return 1
+    //                              false 이체 실패      // return -2
+    // false - 계좌정보 불일치                             // return -1
 
     int transfer(String accountNo, int pw, String receiveAccountNo, int money) {
         for (int i = 0; i < accounts.length; i++) {
@@ -94,7 +96,7 @@ public class BankController {
                 if (accounts[i].balance < money) {
 //                    System.out.println(Arrays.toString(accounts));
 //                    System.out.println(accounts[i].accountNo + accounts[i].pw );
-                    return -1;// 금액부족
+                    return 0;// 금액부족
                 } else {
                     for (int j = 0; j < accounts.length; j++) {
                         if (accounts[j] != null && accounts[j].accountNo.equals(receiveAccountNo)) {
@@ -110,6 +112,6 @@ public class BankController {
             }
         }
 //        System.out.println(Arrays.toString(accounts));
-        return 0; // 계좌정보 불일치
+        return -1; // 계좌정보 불일치
     }
 }

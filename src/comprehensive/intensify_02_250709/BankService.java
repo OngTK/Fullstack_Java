@@ -110,12 +110,12 @@ public class BankService {
 
                 int result = bc.transfer(accountNo,pw,receiveAccountNo,money);
 
-                if(result == -1) {
+                if(result == 0) {
                     System.out.println("[경고] 잔액이 부족합니다.");
-                } else if (result == 0) {
-                    System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
                 } else if(result == 1) {
                     System.out.println("[안내] 이체가 완료되었습니다.");
+                } else if (result == -1) {
+                    System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
                 } else if (result == -2) {
                     System.out.println("[경고] 받는 분의 계좌번호를 다시 확인해주세요.");
                 }
