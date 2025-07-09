@@ -1,4 +1,4 @@
-package comprehensive.Example3;
+package comprehensive.Example_03_250707;
 
 public class Board {
     String content;  // 내용

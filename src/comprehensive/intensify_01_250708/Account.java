@@ -1,4 +1,4 @@
-package comprehensive.intensify_250708;
+package comprehensive.intensify_01_250708;
 
 public class Account {
     String accountNo;

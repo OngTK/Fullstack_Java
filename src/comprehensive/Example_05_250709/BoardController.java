@@ -1,4 +1,4 @@
-package comprehensive.Example5_250709;
+package comprehensive.Example_05_250709;
 
 // 기능의 제어와 로직
 

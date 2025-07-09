@@ -1,6 +1,5 @@
-package comprehensive.intensify_250708;
+package comprehensive.intensify_01_250708;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BankService {

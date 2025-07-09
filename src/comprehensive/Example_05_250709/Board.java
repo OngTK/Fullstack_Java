@@ -1,4 +1,4 @@
-package comprehensive.Example5_250709;
+package comprehensive.Example_05_250709;
 
 // 게시물 데이터의 모델
 public class Board {

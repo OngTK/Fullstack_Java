@@ -1,4 +1,4 @@
-package comprehensive.Example1;
+package comprehensive.Example_01;
 
 import java.util.Scanner;
 
