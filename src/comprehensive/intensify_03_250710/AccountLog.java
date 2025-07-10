@@ -142,20 +142,7 @@ public class AccountLog {
         this.date = date;
     }
 
-    public static DateTimeFormatter getFormatter() {
-        return formatter;
-    }
 
-    public static void setFormatter(DateTimeFormatter formatter) {
-        AccountLog.formatter = formatter;
-    }
 
-    public static String getNow() {
-        return now;
-    }
-
-    public static void setNow(String now) {
-        AccountLog.now = now;
-    }
 }
 
