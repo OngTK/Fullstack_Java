@@ -9,7 +9,7 @@ public class BankAccount {
     BankAccount(){
     }
 
-    BankAccount(String accountNumber){
+    public BankAccount(String accountNumber){
         this.accountNumber = accountNumber;
     }
 
