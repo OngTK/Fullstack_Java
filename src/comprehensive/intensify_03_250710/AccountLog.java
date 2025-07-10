@@ -70,13 +70,13 @@ public class AccountLog {
                 logNoInput = accountLogs[i].logNo + 1;
             }
         }
-        System.out.println(logNoInput);
+//        System.out.println(logNoInput);
         // accountNo/ sort / money / balance 는 외부에서 들어옴
 
         String nowdate = now;
 
         AccountLog accountLog = new AccountLog(logNoInput, accountNo, sort, money, balance, nowdate);
-        System.out.println(accountLog.toString());
+//        System.out.println(accountLog.toString());
 
         for(int i = 0; i < accountLogs.length; i++){
             if (accountLogs[i] == null){
