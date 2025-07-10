@@ -1,4 +1,4 @@
-package comprehensive.Practice2_250707;
+package comprehensive.Practice_02_250707;
 
 public class Waiting {
     String call;    // 전화번호

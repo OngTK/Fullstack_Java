@@ -1,6 +1,5 @@
-package comprehensive.Practice2_250707;
+package comprehensive.Practice_02_250707;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Practice2 {

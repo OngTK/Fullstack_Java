@@ -1,4 +1,4 @@
-package comprehensive.Practice3_250708;
+package comprehensive.Practice_03_250708;
 
 //        · WaitingController 클래스 (제어/로직 담당)
 //            - 대기 명단 데이터를 직접 관리하고 처리하는 클래스입니다.

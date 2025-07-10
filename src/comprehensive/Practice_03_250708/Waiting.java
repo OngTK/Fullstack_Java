@@ -1,4 +1,4 @@
-package comprehensive.Practice3_250708;
+package comprehensive.Practice_03_250708;
 
 //        · Waiting 클래스 (데이터 모델)
 //            - 각 대기 팀의 데이터를 담는 클래스입니다.

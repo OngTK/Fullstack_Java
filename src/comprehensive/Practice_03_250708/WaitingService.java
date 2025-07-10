@@ -1,4 +1,4 @@
-package comprehensive.Practice3_250708;
+package comprehensive.Practice_03_250708;
 
 //    2. 메인 프로그램 흐름 구현하기 (WaitingService의 main 함수)
 //        · WaitingController 객체를 하나 생성합니다. WaitingController controller = new WaitingController();

@@ -1,4 +1,4 @@
-package comprehensive.Practice3_250708;
+package comprehensive.Practice_03_250708;
 
 public class Practice3_250708 {
 //[JAVA] 종합과제3 : 식당 대기번호 프로그램 (메소드/역할 분리)
