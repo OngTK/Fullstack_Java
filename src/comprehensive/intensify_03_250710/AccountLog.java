@@ -56,8 +56,7 @@ public class AccountLog {
     }
 
     // 메소드 0-2. 거래 내역 저장
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    static String now = formatter.format(LocalDateTime.now());
+
 
     public static void setLog(String accountNo, String sort, int money, int balance) {
         // logNo
@@ -72,6 +71,8 @@ public class AccountLog {
         }
 //        System.out.println(logNoInput);
         // accountNo/ sort / money / balance 는 외부에서 들어옴
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String now = formatter.format(LocalDateTime.now());
 
         String nowdate = now;
 
