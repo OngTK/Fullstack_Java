@@ -7,7 +7,7 @@ import comprehensive.intensify_04_250711.view.AccountView;
 public class AppStart {
     public static void main(String[] args) {
 
-        AccountView.getInstance();
+        AccountView.getInstance().index();
 
     } // main end
 } //class end
