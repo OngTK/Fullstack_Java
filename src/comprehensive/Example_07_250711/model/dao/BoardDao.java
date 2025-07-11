@@ -7,6 +7,13 @@ public class BoardDao {
 
     // 추후 데이터 베이스로 변경 예정.... 오늘은 배열로 진행
 
+    // 싱글톤
+    private BoardDao(){}
+    private static final BoardDao dao = new BoardDao();
+    public static BoardDao getInstance(){
+        return dao;
+    }
+
     // 멤버변수 private
     private BoardDto[] boardDb = new BoardDto[100];
 

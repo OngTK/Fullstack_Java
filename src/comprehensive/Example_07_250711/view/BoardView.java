@@ -1,6 +1,9 @@
 package comprehensive.Example_07_250711.view;
 
+
 // BoardView 역할 : 게시물 관련 입출력
+
+import comprehensive.Example_07_250711.controller.BoardController;
 
 import java.util.Scanner;
 
@@ -18,9 +21,11 @@ public class BoardView {
     public static BoardView getInstance() {
         return view;
     }
+    // 싱글톤 end ========================================
 
-    // 0. 여러 메소드에서 사용할 입력 객체를 입력변수로 선언 =================================
+    // 0. 여러 메소드에서 사용할 입력 객체를 입력(멤버)변수로 선언 =================================
     private Scanner scan = new Scanner(System.in);  //멤버변수이므로 private
+    private BoardController boardController = BoardController.getInstance();
 
 
     // 1. main view : 최초로 보이는 화면 구성 =================================
@@ -44,8 +49,18 @@ public class BoardView {
     // 2. 등록 view func
     public void boardWrite() {
         System.out.print("내용 : ");
+        String content = scan.next();
         System.out.print("작성자 : ");
-        System.out.println("[안내] 글쓰기 성공");
+        String writer = scan.next();
+
+        // controller 등록 func에 전달
+        boolean result = boardController.boardWrite(content, writer);
+
+        if (result) {
+            System.out.println("[안내] 글쓰기 성공");
+        } else {
+            System.out.println("[안내] 글쓰기 실패");
+        }
     } // func end
 
     // 3. 조회 view func
