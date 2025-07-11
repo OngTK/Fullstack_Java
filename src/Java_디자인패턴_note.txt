@@ -33,6 +33,7 @@
     4. 호출 (다른 클래스에서)
         클래스명.getInstance();
 
+
 [ MVC 패턴 ]
     1. 정의
         주로 web/app 소프트웨어 개발 시 사용되는 디자인 패턴으로, 세가지 주요 역할을 분리하여 모듈화하는 방법
@@ -87,3 +88,97 @@
                 - DTO 폴더                    MemberDto         BoardDto
             - View 폴더                       MemberView        BoardView  **추후에는 HTML로 변경
             - AppStart 폴더
+
+
+[일반적은 MVC 업무 순서]
+1. 패키지 생성                       // 폴더 만들기
+```
+- 프로젝트 폴더
+    - Controller 폴더
+    - Model 폴더
+        - DAO 폴더
+        - DTO 폴더
+    - View 폴더
+    - AppStart 폴더
+```
+2. 기능파트별 MVC 클래스 생성         // class 만들기
+```
+- 프로젝트 폴더
+    - Controller 폴더
+        ▶ Controller.java
+    - Model 폴더
+        - DAO 폴더
+            ▶ Dao.java
+        - DTO 폴더
+            ▶ Dto.java
+    - View 폴더
+        ▶ View.java
+    ▶ appStart.java
+```
+
+3. 기본 MVC class 파일 세팅
+
+    3.1. 싱글톤 선언
+        MVC 패턴에서 싱글톤이 필요한 class : view, controller, dao
+    ```
+    private class명(){}
+    private static final class명 변수명 = new class명();
+    public static class명 getInstance(){
+        return 변수명
+    }
+    ```
+
+    3.2. 싱글톤 호출
+        싱글톤 호출이 필요한 class :
+        view : controller 호출
+        controller : dao 호출
+
+    ```
+    private 호출Class명 변수명 = 호출Class명.getInstance();
+    ```
+
+    3.3. view 에서 기본 화면단 메소드(index) 생성
+
+    ```
+    public void index(){
+        for(;;){
+            System.out.println("기본 텍스트")
+            System.out.print("선택 > ")
+            int choice = scan.nextInt();
+
+            if(choice == 1 ) {}
+            else if(choice == 2 ) {}
+        }
+    }
+    ```
+
+    3.4. appStart에서 기본 화면단 메소드(index) 실행
+            appStart : view 호출
+    ```
+    view클래스명.getInstance().index(); //함수실행
+    ```
+
+4. 메모리 설계
+    4.1. 엑셀 메모리 테이블 설계
+        엑셀을 통해서 멤버변수 명칭/타입/한글명 및 예시 데이터를 정리
+
+    4.2. 엑셀 메모리 테이블 >> dto 멤버변수 구성하기
+
+    4.3. dto에 하기 목록을 생성 (Alt + insert)
+        기본생성자 / 전체 매개변수 생성자 / getter / setter / toString
+
+    4.4. dao에 여러 dto를 저장하는 배열을 선언
+```
+(in class Dao)
+    private 클래스Dto[] 클래스DB = new 클래스Dto[100]
+```
+
+5. API 명세서(기능 설명서) 작성
+
+| no | 기능명(영문) | 기능명(한글) | 매개변수 명 | 매개변수 값 예시 | 반환타입 | 반환값 예시 | 담당자 |
+|---|---|---|---|---|---|---|---|
+
+6. API 명세서 기반 기능 구현
+ex)
+등록 : Dao > controller > view 순으로 진행
+(경우에 따라 view > Dao > controller)
