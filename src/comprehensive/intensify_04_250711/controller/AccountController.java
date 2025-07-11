@@ -189,7 +189,7 @@ public class AccountController {
             for(int i = 0 ; i < accountLogDB.length ; i++){
                 if(accountLogDB[i] != null && accountLogDB[i].getAccountNo().equals(accountNo)){
                     String plus = "";
-                    if(accountLogDB[i].getSort() == "입금" ||accountLogDB[i].getSort() == "이체_입금" ){
+                    if(accountLogDB[i].getSort().equals("입금")  || accountLogDB[i].getSort().equals("이체_입금") ){
                         plus = "+";
                     } else {
                         plus = "-";
