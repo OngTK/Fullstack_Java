@@ -69,7 +69,7 @@
             (1) 주로 web/app 에서는 Java/Python/Node.js 등 back-end
             (2) 데이터베이스와 상호작용
             (3) 주요 키워드
-                - DAO (data access object) : 데이터 접근 객체
+                - DAO (data access object) : 데이터 접근 객체      >> DB와 연결
                 - DTO (data transfer object) : 데이터 이동 객체
             (4) 일반적으로 DTO는 데이터 모델이므로 **싱글톤**을 사용하지 않는다.
 
@@ -84,6 +84,6 @@
             - Controller 폴더                 MemberController, BorderController
             - Model 폴더
                 - DAO 폴더                    MemberDao         BoardDao
-                - DTO 폴더                    MemberDTO         BoardDto
+                - DTO 폴더                    MemberDto         BoardDto
             - View 폴더                       MemberView        BoardView  **추후에는 HTML로 변경
             - AppStart 폴더

@@ -1,0 +1,14 @@
+1. 폴더구성
+
+- 프로젝트 폴더
+    - Controller 폴더
+        controller
+    - Model 폴더
+        - DAO 폴더
+            dao
+        - DTO 폴더
+            dto
+    - View 폴더
+        view
+    - AppStart.js
+
