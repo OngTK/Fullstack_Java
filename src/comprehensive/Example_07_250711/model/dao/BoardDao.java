@@ -33,9 +33,10 @@ public class BoardDao {
     }
 
     // 2. 조회 처리 메소드
-    // controller에 모든 배열을 반환
+    // DB/배열에 있는 데이터를 controller한태 모두 반환
     // 매개변수 : X
     // return BoardDto
-
-
+    public BoardDto[] boardPrint(){
+        return boardDb;
+    }
 }

@@ -1,9 +1,9 @@
 package comprehensive.Example_07_250711.view;
 
-
 // BoardView 역할 : 게시물 관련 입출력
 
 import comprehensive.Example_07_250711.controller.BoardController;
+import comprehensive.Example_07_250711.model.dto.BoardDto;
 
 import java.util.Scanner;
 
@@ -66,9 +66,16 @@ public class BoardView {
     // 3. 조회 view func
     public void boardPrint() {
         System.out.println("============= 게시물 목록 =============");
-        System.out.println("작성자 : ");
-        System.out.println("내용 : ");
-        System.out.println("------------------------------------");
+
+        // controller에 조회 func을 요청
+        BoardDto[] result = boardController.boardPrint();
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] != null) {
+                System.out.println("작성자 : " + result[i].getWriter());
+                System.out.println("내용 : " + result[i].getContent());
+                System.out.println("------------------------------------");
+            }
+        }
     } // func end
 
 } //class end

@@ -32,5 +32,10 @@ public class BoardController {
 
 
     // 2. 조회 처리 메소드
-    // BoardDao.boardWrite() > controller > BoardView.boardWrite()
+    // BoardDao.boardPrint() > controller > BoardView.boardPrint()
+    public BoardDto[] boardPrint(){
+        BoardDto[] result = boardDao.boardPrint();
+        return result;
+    }
+
 }
