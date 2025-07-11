@@ -34,8 +34,6 @@ public class Phone {
         this.model = model;
         this.color = color;
         this.price = price;
-
-
     }
     // 3. 메소드
 }
