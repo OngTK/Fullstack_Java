@@ -70,8 +70,12 @@
             (1) 주로 web/app 에서는 Java/Python/Node.js 등 back-end
             (2) 데이터베이스와 상호작용
             (3) 주요 키워드
-                - DAO (data access object) : 데이터 접근 객체      >> DB와 연결
+                - DAO (data access object) : 데이터 접근 객체
+                >> DB와 연결, DB가 없을 경우 dto[] 배열을 만듦
+                >> controller 단에서 만든 dto 객체를 dto[]/DB에 set or get
+
                 - DTO (data transfer object) : 데이터 이동 객체
+                >> date 멤버변수 정의 / 생성자 / getter setter / toSting 정의
             (4) 일반적으로 DTO는 데이터 모델이므로 **싱글톤**을 사용하지 않는다.
 
     5. 레이어·계층 간의 흐름도

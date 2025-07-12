@@ -1,8 +1,5 @@
 package comprehensive.intensify_04_250711.controller;
 
-import comprehensive.intensify_03_250710.Account;
-import comprehensive.intensify_03_250710.AccountLog;
-import comprehensive.intensify_03_250710.BankController;
 import comprehensive.intensify_04_250711.model.dao.AccountDao;
 import comprehensive.intensify_04_250711.model.dao.AccountLogDao;
 import comprehensive.intensify_04_250711.model.dto.AccountDto;
