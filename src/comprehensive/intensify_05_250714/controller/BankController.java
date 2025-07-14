@@ -179,7 +179,7 @@ public class BankController {
             for (int i = 0; i < accountLogDB.size(); i++) {
                 if (accountLogDB.get(i) != null && accountLogDB.get(i).getAccountNo().equals(accountNo)) {
                     String plus = "";
-                    if (accountLogDB.get(i).getSort() == 1 || accountLogDB.get(i).getSort() == 4) {
+                    if (accountLogDB.get(i).getSort() == 1 || accountLogDB.get(i).getSort() == 3) {
                         plus = "+";
                     } else {
                         plus = "-";
