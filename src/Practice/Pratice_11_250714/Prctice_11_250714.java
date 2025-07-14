@@ -41,14 +41,14 @@ public class Prctice_11_250714 {
 //        1. .remove() 메소드를 사용하여 2번 인덱스의 요소("C")를 삭제하세요.
 //        2. 삭제 후의 리스트 전체를 출력하여 결과가 올바른지 확인하세요.
 
-        ArrayList<String> alpa = new ArrayList<>();
-        alpa.add("A");
-        alpa.add("B");
-        alpa.add("C");
-        alpa.add("D");
-        alpa.add("E");
-        alpa.remove(2);
-        System.out.println(alpa);
+        ArrayList<String> alpha = new ArrayList<>();
+        alpha.add("A");
+        alpha.add("B");
+        alpha.add("C");
+        alpha.add("D");
+        alpha.add("E");
+        alpha.remove(2);
+        System.out.println(alpha);
 
 //[문제 5] "자바", "파이썬", "C++"를 요소로 가지는 ArrayList를 생성하세요.
 //        1. .add(인덱스, 요소) 메소드를 사용하여 1번 인덱스에 "자바스크립트"를 삽입하세요.

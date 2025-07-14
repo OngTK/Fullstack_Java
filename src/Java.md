@@ -1287,3 +1287,5 @@ public class WaitingDto {
 }// class end
 
 ```
+
+# Java_10_디자인 패턴(싱글톤, MVC)
