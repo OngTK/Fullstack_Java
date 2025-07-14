@@ -25,12 +25,12 @@ public class BankController {
     }
 
     // 싱글톤 호출
-    private AccountDao accountDao = AccountDao.getInstance();
+    private static AccountDao accountDao = AccountDao.getInstance();
     private static AccountLogDao accountLogDao = AccountLogDao.getInstance();
 
     // 멤버변수로 사용할 dao객체가 저장된 dto배열을 Dto에서 호출
-    private static ArrayList<AccountDto> accountDB = AccountDao.getInstance().getAccountDB();
-    private static ArrayList<AccountLogDto> accountLogDB = AccountLogDao.getInstance().getAccountLogDB();
+    private static ArrayList<AccountDto> accountDB = accountDao.getAccountDB();
+    private static ArrayList<AccountLogDto> accountLogDB = accountLogDao.getAccountLogDB();
 
 
     // 메소드 생성
