@@ -1,0 +1,71 @@
+[ 데이터 베이스 ]
+1) 정의
+    자료들의 집합
+2) 종류
+    (1) 관계형 데이터베이스
+        : table 형식               : oracle 등
+    (2) NOSQL 데이터베이스
+        : 객체 형식                 : mongoDB 등
+3) 목적
+    - 데이터를 체계적으로 관리하기 위하여
+    - 데이터 중복을 최소화하고 일관성을 유지하기 위하여
+    - 동시 접근 및 공유를 편리하게 하기 위해
+    - 보안
+
+[ 관계형 데이터베이스 ]
+1) 정의
+    - 행(가로)와 열(세로)로 이루어진 데이터의 집합
+    - 테이블(표)의 교유/식별(PK) 값을 참조하여 다른 테이블 간의 종속 관계를 표현
+2) 소프트웨어 종류(DBMS)
+    Oracle, MySQL, MariaDB etc
+3) 용어
+    (1) Database, DB
+        자료들의 집합
+    (2) Database Administrator, DBA
+        데이터베이스 관리자
+    (3) Database Management System, DBMS
+        데이터베이스 관리 시스템
+        DBA는 DBMS를 이용하여 특정한 PC의 DB를 조작한다.
+    (4) DB Server
+        데이터베이스가 설치된 PC
+        - Server : 제공자·자료를 제공하는 자
+        - Client : 고객·자료를 제공받는 자
+    (5) SQL
+        데이터베이스를 조작하기 위한 언어
+
+[ SQL ]
+1) 정의
+    - Structured Query Language
+    - 데이터베이스에서 데이터를 추출·조작하는데 사용되는 프로그램 언어
+2) 주요 SQL
+    (1) DDL
+        Data Definition Language : 정의 언어
+    (2) DML
+        Data Manipulation Language : 조작 언어
+    (3) DCL
+        Data Control Language : 제어 언어
+    (4) TCL
+        Transaction Control Language : 트랜젝션 제어 언어
+
+[ MySQL 설치 ]
+1. MySQL > Download
+2. `MySQL Installer for Windows` 설치
+3. custom > next
+4. Select Product
+    [서버] MySQL server 8.xx + [DB서버관리] workbench 8.xx
+5. Type and Networking
+    port 3306 / x protocol pork 33060
+6. Account and roles
+    비밀번호 지정 필요 (학원PC는 1234 통일)
+
+[ 정상 실행 여부 확인 ]
+1. MySQL Workbench 8.0 CE.exe 실행
+2. Local instance MySQL 80 클릭
+3. 비밀번호 입력
+4. 실행
+
+[ MySQL ]
+1) 주석
+# 한 줄 주석
+-- 한 줄 주석
+/* 여러 줄 주석 */

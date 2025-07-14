@@ -1,4 +1,4 @@
-package atHome.Practice_bankAccount01;
+package review.Practice_bankAccount01;
 
 
 import Practice_bankAccount01.view.BankView;

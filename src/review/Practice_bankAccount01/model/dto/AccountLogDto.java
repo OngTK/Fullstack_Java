@@ -1,4 +1,4 @@
-package atHome.Practice_bankAccount01.model.dto;
+package review.Practice_bankAccount01.model.dto;
 
 // Dto 역할 : 데이터 모델·이동 객체
 public class AccountLogDto {

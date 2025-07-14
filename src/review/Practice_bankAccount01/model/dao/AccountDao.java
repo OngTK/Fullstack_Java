@@ -1,4 +1,4 @@
-package atHome.Practice_bankAccount01.model.dao;
+package review.Practice_bankAccount01.model.dao;
 
 
 import Practice_bankAccount01.model.dto.AccountDto;

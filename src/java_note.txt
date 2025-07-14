@@ -463,3 +463,8 @@
         Car : class
         new Car() 의 결과물 : instance
         ```
+[ 디자인 패턴 ]
+>> 디자인 패턴 txt 파일 참고
+
+[ 데이터 베이스 ]
+>> database txt 참고
