@@ -1,7 +1,7 @@
 package review.Practice_bankAccount01.view;
 
 
-import Practice_bankAccount01.controller.BankController;
+import review.Practice_bankAccount01.controller.BankController;
 
 import java.util.Scanner;
 

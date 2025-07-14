@@ -1,7 +1,7 @@
 package review.Practice_bankAccount01.model.dao;
 
 
-import Practice_bankAccount01.model.dto.AccountDto;
+import review.Practice_bankAccount01.model.dto.AccountDto;
 
 // Dao 역할 : 실존 데이터에 접근하는 기능 (CRUD)
 public class AccountDao {

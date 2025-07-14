@@ -1,7 +1,6 @@
 package review.Practice_bankAccount01;
 
-
-import Practice_bankAccount01.view.BankView;
+import review.Practice_bankAccount01.view.BankView;
 
 // AppStart 역할 : 프로그램 시작 클래스
 public class AppStart {

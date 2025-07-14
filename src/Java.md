@@ -1110,7 +1110,33 @@ public class Phone {
 ```
 # Java_09_접근제한자 관련 키워드
 
+## 0. 요약
+
+---
+
+### [ 주요 키워드 ]
+#### 1) 접근 제한자 
+다른 클래스가 특정한 클래스에 접근할 때, 접근권한을 제한하는 키워드
+(1) public : 모든 클래스에서 접근 가능
+(2) private : 현재 클래스에서만 접근 가능
+(3) default : 같은 패키지에서만 접근 가능, 키워드 생략 가능
+(4) protected : 같은 패키지에서만 접근 가능, 단, 상속관계 예외
+#### 2. 클래스 불러오기
+(1) import : 현재 클래스에서 다른 패키지의 클래스를 불러올 때 사용, (라이브러리 사용시 흔히 import를 볼 수 있음)
+#### 3. 상수
+(1) final : 초기화 선언 이후에는 수정이 블가
+(2) static : 프로그램 실행시 메모리가 우선 할당되고 프로그램 종료 시 삭제, 객체 없이 이용 가능
+
+### [ 관례적 용어 ]
+#### 1. getter · setter
+멤버변수가 private로 선언되었을 경우,
+다른 클래스에서 해당 private 멤버변수를 읽고 쓸데 사용되는 간접접근 메소드
+#### 2. public static final (상수)
+프로그램 내 유일한 존재일 경우 선언
+---
+
 ## 1. 접근제한자
+---
 ### 1) 정의
 서로 다른 클래스에 존재하는 클래스, 멤버변수, 생성자, 메소드 등에 접근하는 것을 제한하기 위한 키워드
 
@@ -1120,7 +1146,7 @@ public class Phone {
 #### (2) private (비공개)
 현재 class 내에서만 접근 가능
 일반적으로 Class를 private 처리할 수 없음,
-일반적으로 멤버변수는 private 처리
+일반적으로 모든 멤버변수는 private 처리
 #### (3) default (기본)
 접근 제한자를 선언하지 않으면 기본으로 defualt 제한자로 인식
 같은·하위 패키지에서만 접근 가능
@@ -1139,4 +1165,125 @@ public class Phone {
 #### (4) 메소드명 반환타입 앞에 기재
    `접근제한자 반환타입 메소드명( ){ }`
 
+## 2. 상수
+---
+### 1) 상수란?
+변하지 않는 변수
+### 2) 사용법
+static final 타입 상수명;
+### 3) 주의
+- 수정 불가
+- 프로그램 내에서 단 1개, 유일한 존재일 경우에만 선언
+- (일반적으로) 상수명을 전체 대문자로 명명
 
+## 3. final
+---
+### 1) final 이란?
+수정 불가능한 상태 = 고정 상태 정의하는 키워드
+### 2) 사용법
+final 타입 멤버변수명 = 초기값;
+### 3) 주의
+초기값 필수
+```java
+static final int 상수 = 10;
+```
+
+
+## 4. static
+---
+
+### 1) static 이란?
+실행 중에 변화가 없는 상태를 정의하는 키워드
+= 프로젝트 컴파일 시 메모리에 할당되고, 종료 시 메모리가 삭제되는 키워드
+**메모리 우선 할당**
+static 변수 = 정적변수 = 공유변수 = 전역변수
+### 2) 사용법
+static 타입 멤버변수
+### 3) 주의
+멤버변수 = 객체 내 변수 VS static = 객체 외 변수(우선 할당)
+메모리 할당 시점 : new 선언 VS static 자체
+
+### 4) 호출
+클래스명.정적변수명;
+
+### 5) static 유무가 중요한 이유☆★☆★
+static으로 선언된 메소드는 동일한 클래스 내 다른 메소드를 호출할 수 없음.
+
+enable ex)
+```java
+class Text{
+    void main2(){}
+    static main3(){}
+    static void main(){
+        main2(); // 불가능 : main-메모리가 할당되어 있음 / main2-메모리가 할당되어 있지 않음! >> 따라서 main2 메소드를 실행할 수 없음
+        main3(); // 가능 : main, main3 모두 메모리가 할당되어 있으므로, main3 메소드 실행 가능
+
+        new Text().main2()
+            // 가능 : 클래스 전체에 대한 할당/객체 생성 후 main 2 메소드를 선언함
+                      >> main, main2에 모두 메모리가 할당되어 있으므로, main2 메소드 실행 가능
+    }
+}
+```
+
+## 5. getter and setter
+---
+
+### 1) 정의
+private 멤버변수를 다른 클래스에서 사용할 수 있도록 정의하는 메소드
+### 2) 명명
+#### 2) 저장/대입
+public void set멤버변수명( 타입 매개변수 ){
+this.멤버변수명 = 매개변수;
+};
+#### 3) 호출/반환
+public 반환타입 get멤버변수명( ){
+return 멤버변수명;
+}
+
+```java
+public class WaitingDto {
+
+    // 멤버변수 : all private ===================================
+    private String phone;       //전화번호
+    private int count;          // 인원수
+
+    // 생성자 : 기본생성자와 풀생성자는 기본! 추가는 자유 ===================================
+    // 기본 생성자
+
+    public WaitingDto() {
+    }
+    // 풀생성자
+    public WaitingDto(String phone, int count) {
+        this.phone = phone;
+        this.count = count;
+    }
+    
+    // 메소드 ======================================================================
+    // getter·setter
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    // toString
+    public String toString() {
+        return "WaitingDto{" +
+                "phone='" + phone + '\'' +
+                ", count=" + count +
+                '}';
+    }
+}// class end
+
+```
