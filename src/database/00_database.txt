@@ -106,3 +106,26 @@
 5) 논리
     bool          : 1byte               true/false
 
+[ 제약 조건 ]
+테이블 내 속성에 대한 제약 조건
+목적 : 테이블 데이터에 대한 문제·결함의 원인이되는 입력을 방지하기 위하여
+1) not null
+    해당 속성에 null 값을 저장하지 않음
+2) unique
+    해당 속성에 중복값을 허용하지 않음
+3) default 기본값
+    값 생략시 기본값을 초기화
+4) auto_increment
+    (MySQL) 해당 속성에 자동으로 번호 부여하며 초기화
+    PK로 선언해야지만 사용 가능
+5) primary key (PK)
+    기본키, 식별키, 식별 가능한·중복이 없는 고유 값
+    not null, unique를 포함함
+    선언 `constraint primary key( PK필드명 );`
+6) foreign key (FK)
+    참조키, 외래키
+    다른 테이블의 PK를 참조하는 키
+    null·중복 가능
+    선언 `contraing foreign key( FK필드명 ) references 참조table명 ( 참조PK명 );`
+
+    ※ PK필드의 속성과 FK필드의 속성은 일치해야 함☆★☆★☆★☆★☆★☆★☆★
