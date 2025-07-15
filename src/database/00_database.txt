@@ -1,3 +1,22 @@
+[ MySQL 설치 ]
+    1. MySQL > Download
+    2. `MySQL Installer for Windows` 설치
+    3. custom > next
+    4. Select Product
+        [서버] MySQL server 8.xx + [DB서버관리] workbench 8.xx
+    5. Type and Networking
+        port 3306 / x protocol pork 33060
+    6. Account and roles
+        비밀번호 지정 필요 (학원PC는 1234 통일)
+
+[ 정상 실행 여부 확인 ]
+    1. MySQL Workbench 8.0 CE.exe 실행
+    2. Local instance MySQL 80 클릭
+    3. 비밀번호 입력
+    4. 실행
+
+==============================================================================
+
 [ 데이터 베이스 ]
 1) 정의
     자료들의 집합
@@ -38,34 +57,52 @@
     - Structured Query Language
     - 데이터베이스에서 데이터를 추출·조작하는데 사용되는 프로그램 언어
 2) 주요 SQL
-    (1) DDL
-        Data Definition Language : 정의 언어
-    (2) DML
-        Data Manipulation Language : 조작 언어
-    (3) DCL
-        Data Control Language : 제어 언어
-    (4) TCL
-        Transaction Control Language : 트랜젝션 제어 언어
+    (0) 메타데이터 관리어
+       ① show
+           - show database;                : DB 서버 내 전체 데이터베이스 목록 조회
+           - show variable like 'datadir'  : DB 서버 내 local path 조회
+       ② use
+           - use db명;                      : DB서버 내 지정한 데이터베이스 활성화
+    (1) DDL(Data Definition Language) : 정의 언어
+        ① create
+            - create database db명;          : DB 생성
+        ② drop
+            - drop database db명;            : DB 삭제
+            - drop database if exists db명   : DB가 존재할 경우 삭제
+    (2) DML (Data Manipulation Language) : 조작 언어
+    (3) DCL (Data Control Language) : 제어 언어
+    (4) TCL (Transaction Control Language) : 트랜젝션 제어 언어
+3) 특징
+    - SQL은 대소문자를 구분하지 않음.
+    - SQL 명령어는 세미클론(;) 단위로 실행됨. 따라서 문장 끝에는 반드시 세미클론(;)이 필요
 
-[ MySQL 설치 ]
-1. MySQL > Download
-2. `MySQL Installer for Windows` 설치
-3. custom > next
-4. Select Product
-    [서버] MySQL server 8.xx + [DB서버관리] workbench 8.xx
-5. Type and Networking
-    port 3306 / x protocol pork 33060
-6. Account and roles
-    비밀번호 지정 필요 (학원PC는 1234 통일)
+4) MySQL 주석
+        # 한 줄 주석
+        -- 한 줄 주석
+        /* 여러 줄 주석 */
 
-[ 정상 실행 여부 확인 ]
-1. MySQL Workbench 8.0 CE.exe 실행
-2. Local instance MySQL 80 클릭
-3. 비밀번호 입력
-4. 실행
+[ 데이터 타입 ]
+1) 정수
+    tinyint       : 1 byte    -128 ~ +127
+    smallint      : 2 byte    ± 3만
+    mediumint     : 3 byte    ± 800만
+    int           : 4 byte    ± 21억           ☆★☆★☆★
+    bigint        : 8 byte    ± 21억 이상
+        * 타입 unsigned : 부호가 없는 >> 음수 범위는 삭제되고 양수 범위가 2배로 증가됨
+          ex. int unsigned = + 42억
+2) 실수
+    float         : 4 byte    소수점
+    double        : 8 byte    소수점
+    decimal       : 문자 타입  소수점을 문자로 처리하는 타입 → 오차가 없음   ☆★☆★☆★
+3) 날짜/시간
+    date          : 날짜 표현           2025-07-15
+    time          : 시간 표현           10:02:30
+    datetime      : 날짜·시간 표현       2025-07-15 10:02:30
+4) 문자
+    char(길이)     : 문자열 표현         고정 길이,  최대 255 글자
+    varchar(길이)  : 문자열 표현         가변 길이,  최대 255 글자                 ☆★☆★☆★
+    text          : 문자열 표현          최대 6만 자
+    longtext      : 문자열 표현          최대 42억 자, 4GB 정도의 대용량 문자열
+5) 논리
+    bool          : 1byte               true/false
 
-[ MySQL ]
-1) 주석
-# 한 줄 주석
--- 한 줄 주석
-/* 여러 줄 주석 */

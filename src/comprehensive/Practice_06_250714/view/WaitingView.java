@@ -16,14 +16,12 @@ public class WaitingView {
     // 0.3. `public static` getInstance 메소드
     private WaitingView() {
     }
-
     ;
     private static final WaitingView waitingView = new WaitingView();
 
     public static WaitingView getInstance() {
         return waitingView;
     }
-
     // controller 싱글톤 호출
     private WaitingController controller = WaitingController.getInstance();
 

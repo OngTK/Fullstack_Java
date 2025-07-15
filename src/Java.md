@@ -1108,7 +1108,7 @@ public class Phone {
     // [3] 메소드                       // 1
 }
 ```
-# Java_09_접근제한자 관련 키워드
+# Java_10_접근제한자 관련 키워드
 
 ## 0. 요약
 
@@ -1288,4 +1288,137 @@ public class WaitingDto {
 
 ```
 
-# Java_10_디자인 패턴(싱글톤, MVC)
+# Java_11_디자인 패턴(싱글톤, MVC)
+## 1. 디자인 패턴
+---
+### 1) 정의
+소프트웨어 설계과정에서 자주 발생하는 문제에 대한 설계 유형
+
+### 2) 목적
+반복되는 문제를 감소시켜 여러 개발자·협업 간에 관례적인 규칙을 정하고, 이를 통해 효율성을 높임
+
+### 3) 종류
+(1) 싱글톤 패턴
+(2) MVC 패턴
+... 그 외에도 다양
+
+## 2. 싱글톤 패턴
+---
+### 1) 정의
+프로그램 내 단 1개·유일한 존재 객체(인스턴스)에 대한 선언
+
+### 2) 목적
+유일한 객체(인스턴스)를 만들고 이를 공유
+
+여러 개의 객체가 존재하면 서로 다른 메모리를 사용하므로 협업·공유 시 제약이 발생
+협업 간에서는 여러 개의 객체가 필요 없는, 유일한 객체인 경우 싱글톤을 사용
+
+### 3) 사용
+1) 지정한 클래스의 default 생성자를 private로 함
+    private 생성자명( ){ }
+2) 지정한 클래스에 `private static final`으로 객체 선언
+    private static final 클래스명 변수명 = new 생성자명();
+3) 지정한 클래스에 `public static`으로 getInstance 메소드를 선언
+    public static 클래스명 getInstance(){
+        return 변수명;
+    }
+```java
+public class WaitingView {
+    // 0. 싱글톤 선언 =================================
+    // 0.1. 기본 생성자를 private화
+    private WaitingView() {
+    }
+
+    // 0.2. `private static final` instance 선언
+    private static final WaitingView waitingView = new WaitingView();
+
+    // 0.3. `public static` getInstance 메소드
+    public static WaitingView getInstance() {
+        return waitingView;
+    }
+}
+```
+
+### 4) 호출 (
+다른 클래스에서 선언된 싱글톤 호출
+- 다른 클래스에 싱글톤이 정상적으로 선언되어있다면, `getInstance()` 함수가 존재함
+- 따라서 해당 클래스의 `getInstance()`함수를 실행
+        `클래스명.getInstance();`
+```java
+public class WaitingView {
+    // controller 싱글톤 호출
+    private WaitingController controller = WaitingController.getInstance();
+}
+```
+
+
+## 3. MVC 패턴
+---
+### 1) 정의
+주로 web/app 소프트웨어 개발 시 사용되는 디자인 패턴으로, 
+**세가지 주요 역할을 분리하여 모듈화**하는 방법
+
+### 2) 목적
+협업 간의 코드와 파일들을 MVC 패턴의 따라 구성하여 효율성 및 유지보수 편의성을 높임
+#### (1) 장점
+유지보수, 모듈화, 단일기능 책임 등
+#### (2) 단점
+분리에 따른 복잡도 증가
+
+### 3) 사용처
+다양한 실무 프레임 워크에서 권장하는 패턴
+ex) Spring etc.
+
+### 4) 레이어·계층
+#### (1) M : model
+데이터 관리 담당
+
+① 주로 web/app 에서는 Java/Python/Node.js 등 back-end
+② 데이터베이스와 상호작용
+③ 주요 키워드
+- **DAO (data access object)** : 데이터 접근 객체
+    - DB와 연결 
+    - DB가 없을 경우, dao에서 정의한 객체 정의에 따른 `dto[] (배열)` 또는 `ArrayList<> (리스트 객체)`을 만듦
+- **DTO (data transfer object)** : 데이터 이동 객체
+    - data 멤버변수 정의 / 생성자 / getter setter / toSting 정의
+  ④ 일반적으로 DTO는 데이터 모델이므로 **싱글톤**을 사용하지 않는다.
+
+#### (2) V : view
+입출력 담당
+
+① 주로 web/app 에서는 HTML/CSS/JS/JPS 등 front-end
+② 사용자로부터 입력·출력이 실행
+③ 일반적으로 console 기준으로 view 클래스에서만 `print`와 `scan` 함수를 사용
+
+#### (3) C : controller
+model과 view 사이의 제어/전달/유효성 검사 등을 담당
+① 주로 web/app 에서는 Java/Python/Node.js 등 back-end
+② view로부터 요청을 받아 model에게 전달하고, 처리 결과를 view에게 전달
+③ 키워드
+    - MVC1 패턴 : controller + view (ex. JSP, 머스테치, 타임리프 etc)
+    - MVC2 패턴 : controller · view 분리
+    - MVC2 패턴 3 Tier : controller · service · view · model 분리 (ex. Spring)
+
+### 5) 레이어·계층 간의 흐름도
+#### (1) 요청
+> view ---(DTO)---> controller ---(DTO)---> model(DAO)
+#### (2) 응답
+> view <---(DTO)--- controller <---(DTO)--- model(DAO)
+
+**※ view가 dao와 직접 통신하지 않도록 주의!!!**
+
+### 6) 파일/폴더 MVC 기준 구분
+- 프로젝트 폴더                        
+    - Controller 폴더                 
+      - **Controller.java**
+    - Model 폴더
+        - DAO 폴더 
+          - **Dao.java**
+        - DTO 폴더  
+          - **Dto.java**
+    - View 폴더
+      - **View.java**
+    - AppStart 폴더
+      - **AppStart.java **
+
+☆★☆★☆★디자인 패턴 내용은 다음에도 이어짐....☆★☆★☆★

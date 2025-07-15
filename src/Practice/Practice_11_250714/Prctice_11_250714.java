@@ -1,4 +1,4 @@
-package Practice.Pratice_11_250714;
+package Practice.Practice_11_250714;
 
 import java.util.ArrayList;
 import java.util.Scanner;
