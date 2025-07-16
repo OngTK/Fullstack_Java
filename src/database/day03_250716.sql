@@ -42,10 +42,33 @@ insert into test values (5,"하하",80);
 insert into test values (6, "노홍철", 15) , (7, "정형돈", 30);
 
 -- [2] select : 조회
-
+-- select *(전체속성) from(~로 부터) tb명; : 전체 조회
 select * from test;
 
--- [3] update : 수정
+-- select 속성1, 속성2 from tb명 : 해당 속성만 조회
+select mname from test;
+select mname, mcount, mno from test;
 
+-- select 속성명 grom tb명 where 조건절;
+select * from test where mname="유재석";
+select * from test where mno = 3;
+
+-- [3] update : 수정
+-- MySQL에서 수정·삭제에 대하여 safe mode가 적용되어 있음.
+-- safe mode on/off : set SQL_SAFE_UPDATES = 0 (off) / 1 (on)
+set SQL_SAFE_UPDATES = 0;
+-- update tb명 set 속성 = new값; :  전체 레코드의 속성값 수정
+update test set mcount =0;
+
+-- update tb명 set 속성 = new값 where 조건 : 조건에 해당하는 레코드의 속성값만 수정
+update test set mcount =10 where mname = "유재석";
+
+-- update tb명 set 속성1 = 값1 , 속성2 = 값2 : 복수 속성 수정
+update test set mcount =20, mname="강호동2" where mno = 2;
 
 -- [4] delete : 삭제
+-- delete from tb명 : 전체 레코드 삭제
+delete from test;
+
+-- delete from tb명 where 조건 : 조건에 해당하는 레코드 삭제
+delete from test where mno=2;
