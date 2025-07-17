@@ -2,6 +2,8 @@ package Practice.Practice_12_250717;
 
 // [문제 1] ==================================================
 
+import java.util.ArrayList;
+
 class Person {
     String name;
 }
