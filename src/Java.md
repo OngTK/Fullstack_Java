@@ -1422,3 +1422,269 @@ model과 view 사이의 제어/전달/유효성 검사 등을 담당
       - **AppStart.java **
 
 ☆★☆★☆★디자인 패턴 내용은 다음에도 이어짐....☆★☆★☆★
+
+# Java_12_싱글톤, MVC 패턴 실습(console 게시판)
+```
+[요약]
+    Q. 문제 파악
+    1. 메모리 설계 (생략)
+    2. API 명세서 작성 (생략)
+    3. PJ·controller·modle·view 패키지 생성
+    4. 기능별 class 생성
+    5. class 파일 기본 셋팅
+        5.1. Dto 멤버변수·생성자·getter·setter·toString 선언
+        5.2. 싱글톤 선언
+        5.3. 싱글톤 호출
+    6. API 명세서 기반 기능 구현    
+```
+
+
+## Q. console을 이용하여 간단한 게시판을 만드세요.
+//example_07_250711
+```
+        ============= My Community =============
+        1.게시물쓰기 | 2.게시물출력
+        ========================================
+        선택 > 1
+        내용 : 안녕하세요
+        작성자 : 유재석
+        [안내] 글쓰기 성공
+
+        ============= My Community =============
+        1.게시물쓰기 | 2.게시물출력
+        ========================================
+        선택 > 1
+        내용 : 반갑습니다
+        작성자 : 강호동
+        [안내] 글쓰기 성공
+
+        ============= My Community =============
+        1.게시물쓰기 | 2.게시물출력
+        ========================================
+        선택 > 2
+        ============= 게시물 목록 =============
+        작성자 : 유재석
+        내용 : 안녕하세요
+        ------------------------------------
+        작성자 : 강호동
+        내용 : 반갑습니다
+        ------------------------------------
+
+        ============= My Community =============
+        1.게시물쓰기 | 2.게시물출력
+        ========================================
+        선택 > 1
+        내용 : 테스트
+        작성자 : 이수근
+        [경고] 게시물을 등록할 공간이 부족합니다.
+```
+
+## 3. PJ·controller·modle·view 패키지 생성
+---
+```
+- 프로젝트 폴더
+    - Controller 폴더
+    - Model 폴더
+        - DAO 폴더
+        - DTO 폴더
+    - View 폴더
+    - AppStart 폴더
+```
+## 4. 기능별 class 생성
+---
+```
+- 프로젝트 폴더
+    - Controller 폴더
+        ▶ Controller.java
+    - Model 폴더
+        - DAO 폴더
+            ▶ Dao.java
+        - DTO 폴더
+            ▶ Dto.java
+    - View 폴더
+        ▶ View.java
+    ▶ appStart.java
+```
+
+## 5. class 파일 기본 셋팅
+---
+
+### 5.1. Dto 멤버변수·생성자·getter·setter·toString 선언
+```java
+public class BoardDto {
+
+    // 멤버변수 : all private ===================================
+    private String content;
+    private String writer;
+
+    // 생성자 : 기본생성자와 풀생성자는 기본! 추가는 자유 ===================================
+    // 생성자 단축키 : alt + insert > constructor
+    // 기본 생성자
+    public BoardDto() {}
+
+    // 풀생성자
+    public BoardDto(String content, String writer) {
+        this.content = content;
+        this.writer = writer;
+    }
+
+    // 메소드 ======================================================================
+    // getter·setter 단축키 : alt + insert > getter·setter 
+   
+    // getter·setter
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
+
+    // toString 단축키 : alt + insert > toString
+    public String toString() {
+        return "BoardDto{" +
+                "content='" + content + '\'' +
+                ", writer='" + writer + '\'' +
+                '}';
+    }
+}// class end
+```
+### 5.2. 싱글톤 선언
+MVC 패턴에서 싱글톤이 필요한 class : view, controller, dao
+```
+싱글톤 템플릿
+    private class명(){}
+    private static final class명 변수명 = new class명();
+    public static class명 getInstance(){
+        return 변수명;
+    }
+```
+#### Dao
+```java
+public class BoardDao {
+    // 추후 DB로 변경 예정
+
+    // 싱글톤
+    private BoardDao(){}
+    private static final BoardDao dao = new BoardDao();
+    public static BoardDao getInstance(){
+        return dao;
+    }
+}
+```
+
+#### controller
+```java
+public class BoardController {
+    // 싱글톤
+    private BoardController(){}
+    private static final BoardController control = new BoardController();
+    public static BoardController getInstance(){
+        return control;
+    }
+}
+```
+#### view
+```java
+public class BoardView {
+    // 싱글톤
+    private BoardView(){}
+    private static final BoardView view = new BoardView();
+    public static BoardView getInstance() {
+        return view;
+    }
+}
+```
+
+### 5.3. 싱글톤 호출
+※ 싱글톤 호출이 필요한 class
+- controller : dao 호출
+- view : controller 호출
+#### controller
+```java
+public class BoardController {
+    // 싱글톤
+    private BoardController(){}
+    private static final BoardController control = new BoardController();
+    public static BoardController getInstance(){
+        return control;
+    }
+
+    // dao의 싱글톤 객체 호출
+    private BoardDao boardDao = BoardDao.getInstance();
+}
+```
+
+#### view
+```java
+public class BoardView {
+    // 싱글톤
+    private BoardView(){}
+    private static final BoardView view = new BoardView();
+    public static BoardView getInstance() {
+        return view;
+    }
+    
+    // controller의 싱글톤 객체 호출
+    private BoardController boardController = BoardController.getInstance();
+}
+```
+## 6. API 명세서 기반 기능 구현    
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

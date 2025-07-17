@@ -1,4 +1,4 @@
-drop database if exists exampe02;
+drop database if exists example02;
 create database example02;
 use example02;
 
@@ -17,7 +17,7 @@ use example02;
 
 drop table if exists members;
 create table members(
-member_id varchar(20) not null,
+member_id varchar(20) not null,   	-- PK는 not null이 기본값이므로 생략해도 가능, 다만 착오가 없도록 명시해주는 것을 추천
 member_name varchar(50) not null,
 email varchar(100) unique not null,
 join_date datetime default now(),
