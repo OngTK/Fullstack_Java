@@ -1,11 +1,11 @@
-package comprehensive.Library.view;
+package comprehensive.Library_250715.view;
 
-import comprehensive.Library.controller.BookController;
-import comprehensive.Library.controller.LogController;
-import comprehensive.Library.controller.MemberController;
-import comprehensive.Library.model.dto.BookDto;
-import comprehensive.Library.model.dto.LogDto;
-import comprehensive.Library.model.dto.MemberDto;
+import comprehensive.Library_250715.controller.BookController;
+import comprehensive.Library_250715.controller.LogController;
+import comprehensive.Library_250715.controller.MemberController;
+import comprehensive.Library_250715.model.dto.BookDto;
+import comprehensive.Library_250715.model.dto.LogDto;
+import comprehensive.Library_250715.model.dto.MemberDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;

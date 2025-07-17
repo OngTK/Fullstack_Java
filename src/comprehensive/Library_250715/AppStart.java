@@ -1,7 +1,7 @@
-package comprehensive.Library;
+package comprehensive.Library_250715;
 
 
-import comprehensive.Library.view.LibraryView;
+import comprehensive.Library_250715.view.LibraryView;
 
 public class AppStart {
     public static void main(String[] args) {

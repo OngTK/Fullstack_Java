@@ -1,6 +1,6 @@
-package comprehensive.Library.model.dao;
+package comprehensive.Library_250715.model.dao;
 
-import comprehensive.Library.model.dto.MemberDto;
+import comprehensive.Library_250715.model.dto.MemberDto;
 
 import java.util.ArrayList;
 

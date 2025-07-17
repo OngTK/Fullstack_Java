@@ -1,7 +1,7 @@
-package comprehensive.Library.model.dao;
+package comprehensive.Library_250715.model.dao;
 
-import comprehensive.Library.controller.LogController;
-import comprehensive.Library.model.dto.LogDto;
+import comprehensive.Library_250715.controller.LogController;
+import comprehensive.Library_250715.model.dto.LogDto;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package comprehensive.Library.model.dto;
+package comprehensive.Library_250715.model.dto;
 
 public class LogDto {
     private int cno, mno, bno;

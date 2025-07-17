@@ -1,7 +1,7 @@
-package comprehensive.Library.controller;
+package comprehensive.Library_250715.controller;
 
-import comprehensive.Library.model.dao.LogDao;
-import comprehensive.Library.model.dto.LogDto;
+import comprehensive.Library_250715.model.dao.LogDao;
+import comprehensive.Library_250715.model.dto.LogDto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

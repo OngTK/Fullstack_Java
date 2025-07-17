@@ -1,7 +1,7 @@
-package comprehensive.Library.controller; // 패키지명
+package comprehensive.Library_250715.controller; // 패키지명
 
-import comprehensive.Library.model.dao.BookDao;
-import comprehensive.Library.model.dto.BookDto;
+import comprehensive.Library_250715.model.dao.BookDao;
+import comprehensive.Library_250715.model.dto.BookDto;
 
 import java.util.ArrayList;
 

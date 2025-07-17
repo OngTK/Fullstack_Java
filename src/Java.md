@@ -1435,12 +1435,11 @@ model과 view 사이의 제어/전달/유효성 검사 등을 담당
         5.1. Dto 멤버변수·생성자·getter·setter·toString 선언
         5.2. 싱글톤 선언
         5.3. 싱글톤 호출
-    6. API 명세서 기반 기능 구현    
+    6. API 명세서 기반 기능 구현 (생략)
 ```
 
 
 ## Q. console을 이용하여 간단한 게시판을 만드세요.
-//example_07_250711
 ```
         ============= My Community =============
         1.게시물쓰기 | 2.게시물출력
@@ -1610,6 +1609,8 @@ public class BoardView {
 - view : controller 호출
 #### controller
 ```java
+import boardProject.model.dao.BoardDao;
+
 public class BoardController {
     // 싱글톤
     private BoardController(){}
@@ -1623,8 +1624,15 @@ public class BoardController {
 }
 ```
 
+※ Dao의 싱글톤 객체를 호출하면,
+controller class 위로 `import`와 함께 Dao class의 경로가 함께 선언됨!!
+따라서 다른 class의 객체를 호출할 때는 **import의 생성 여부**와
+**올바른 경로 연결**을 반드시 확인해야함!!
+
 #### view
 ```java
+import boardProject.controller.BoardController;
+
 public class BoardView {
     // 싱글톤
     private BoardView(){}
@@ -1637,12 +1645,44 @@ public class BoardView {
     private BoardController boardController = BoardController.getInstance();
 }
 ```
-## 6. API 명세서 기반 기능 구현    
----
+※ controller 싱글톤 객체를 호출하면,
+view class 위로 `import`와 함께 controller class의 경로가 함께 선언됨!!
+따라서 다른 class의 객체를 호출할 때는 **import의 생성 여부**와
+**올바른 경로 연결**을 반드시 확인해야함!!
 
+# Java_13_ArrayList
 
-
-
+1. 정의
+    컬렉션 프레임워크 중 리스트 자료형 클래스
+2. 목적
+    가변 길이의 배열을 지원
+3. 사용법
+    1) 선언
+        ArrayList< 항목타입 > 변수명 = new ArrayList<>();
+        * <제너릭타입> : 리스트에 저장할 항목/요소의 타입
+    2) 추가·삽입
+        (1) 변수명.add( 요소값 );
+            : 마지막 인덱스 뒤로 요소 추가
+        (2) 변수명.add( index, 요소값 );
+            : 지정한 index에 요소를 삽입하고, 기존 요소들은 한 index 씩 뒤로 밀림
+    3) 수정
+            변수명.set( index, 요소값 );
+            : 지정한 index를 새로운 요소값으로 수정
+    4) 리스트 크기
+            변수명.size( );
+    5) 특정 요소 반환
+            변수명.get( index );
+    6) 삭제
+            변수명.remove( index );
+4. 리스트와 반복문
+    1) 일반 반복문
+        for (int i = 0 ; i < 변수명.size() ; i++) {
+        변수명.get(i);
+        }
+    2) 향상된 for
+        for ( 타입명 변수명 : 리스트변수명 ){
+        변수명;
+        }
 
 
 
