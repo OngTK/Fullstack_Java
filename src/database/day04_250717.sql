@@ -114,6 +114,6 @@ select * from member order by maddr desc, mdebut asc;
 
 -- [6] limit : 조회결과 레코드 수를 제한						-- pagenation에 주로 이용
 select * from member limit 2;							-- 상위 2개만 제한해서 조회
-select * from member limit 0,2;							-- limit A, B : A~B를 출력, 주의!! record는 0부터 시작 (like index)
+select * from member limit 0,2;							-- limit A, B : A부터 B개를 출력, 주의!! record는 0부터 시작 (like index)
 select * from member limit 1,5;				
 select * from member order by mheight desc limit 3;
