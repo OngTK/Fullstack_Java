@@ -1,8 +1,7 @@
 package Practice.Practice_12_250717;
 
-import java.util.ArrayList;
-
 // [문제 1] ==================================================
+
 class Person {
     String name;
 }
@@ -206,7 +205,7 @@ public class Practice_12_250717 {
 //        4. 만약 Bus 타입이 맞다면, Bus 타입으로 강제 변환한 뒤 checkFare() 메소드를 호출하세요.
 
         Vehicle vehicle = new Bus();
-        if (vehicle instanceof Bus) {
+        if(vehicle instanceof Bus){
             System.out.println(true);
         }
 
