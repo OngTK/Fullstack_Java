@@ -87,7 +87,24 @@ select count(*) from buy;
 
 -- ex5. 회원아이디 별 구매 횟수
 select mid, count(*) from buy group by mid;
--- [3]
+
+-- [3] having VS where
+-- where : grouping, 집계 이전에 적용되는 조건, 별칭 불가
+-- having : grouping, 집계 이후에 적용되는 조건, 별칭 가능
+
+-- ex1. 구매수량이 3을 초과하는 회원아이디 별 레코드 조회
+select mid from buy where bamount > 3;
+
+-- ex2. 회원아이디 별 총 구매금액이 1000을 초과하는 레코드 조회
+select mid, sum(bamount *bprice) from buy group by mid having sum(bamount *bprice)>=1000;
+select mid, sum(bamount *bprice) as 총구매금액 from buy group by mid having 총구매금액>=1000;
+select mid, sum(bamount *bprice) as 총구매금액 from buy where 총구매금액 >=1000 group by mid; -- 오류 발생!!
+
+-- ※ 키워드 간 작성 규칙
+-- select 속성명 from tb명 where 일반조건 group by 그룹속성 having 그룹조건  order by 정렬속성 asc/desc limit 갯수;
+-- 처리순서 : from → where → select → group → having → order → limit
+-- 일반조건절 where에서는 select에서 선언한 별칭(as)·조회를 인식하지 못함
+
 
 -- [4]
 
