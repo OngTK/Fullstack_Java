@@ -91,13 +91,13 @@ select customer, sum(order_qty) from orders where customer in ("김민준","이�
 select avg(price) from books where stock<5;
 
 -- [문제 8] orders 테이블에서 3번 이상 주문된 도서의 book_id와 주문 횟수를 조회하세요.
-select book_id, count(order_id) as 주문횟수 from orders group by book_id having 주문횟수>=3;
+select book_id, count(*) as 주문횟수 from orders group by book_id having 주문횟수>=3;
 
 -- [문제 9] orders 테이블에서 총 주문 수량이 5권을 초과하는 고객의 customer와 총 주문 수량을 조회하세요.
 select customer, sum(order_qty) as 총주문수량 from orders group by customer having 총주문수량>5;
 
 -- [문제 10] books 테이블에서 각 저자(author)별로 출판한 도서가 2권 이상인 저자의 이름과 출판 도서 수를 조회하세요.
-select author, count(book_id) from books group by author having count(book_id)>=2;
+select author, count(*) from books group by author having count(book_id)>=2;
 
 -- [문제 11] books 테이블의 '컴퓨터' 장르 도서 중 가장 비싼 도서의 가격을 조회하세요.
 select max(price) from books where genre="컴퓨터";

@@ -207,28 +207,22 @@ Database > reverse enginner
 [ 키워드 작성 순서 ]
     select 속성명 from tb명 where 조건 order by 속성 asc/desc limit 개수;
 
+[ 그룹 · 통계 ]
+1) group by
+    - 검색 결과에서 중복 값을 그룹화
+    - 하나의 속성에 대해서만 그룹화 가능 (다수 속성 불가)
+2) 집계·통계 함수
+    sum( 속성명 )
+    avg( 속성명 )
+    min( 속성명 )
+    max( 속성명 )
+    count( 속성명 ) : 속성명에 해당하는 record 수, null 제외
+    count( * )     : record 수, null 포함
+3) having
+    - grouping·집계 이후에 적용되는 조건, 별칭 가능
+    - vs where : grouping·집계 이전에 적용되는 조건, 별칭 불가
 
-    --------------
-
-    -- 1. 도서 테이블
-    CREATE TABLE books (
-        book_id      INT NOT NULL,                   -- 도서번호
-        title        VARCHAR(50) NOT NULL,           -- 제목
-        author       VARCHAR(20) NOT NULL,           -- 저자
-        genre        VARCHAR(10) NOT NULL,           -- 장르
-        price        INT NOT NULL,                   -- 가격
-        stock        INT,                            -- 재고
-        pub_date     DATE,                           -- 출판일
-        CONSTRAINT PRIMARY KEY (book_id)           -- 기본키 제약조건
-    );
-
-    -- 2. 주문 테이블
-    CREATE TABLE orders (
-        order_id     INT AUTO_INCREMENT,             -- 주문번호
-        book_id      INT NOT NULL,                   -- 도서번호 (FK)
-        customer     VARCHAR(20) NOT NULL,           -- 고객명
-        order_qty    INT NOT NULL,                   -- 주문수량
-        order_date   DATE,                           -- 주문일
-        CONSTRAINT PRIMARY KEY (order_id),         -- 기본키 제약조건
-        CONSTRAINT FOREIGN KEY (book_id) REFERENCES books(book_id) -- 외래키 제약조건
-    );
+※ 키워드 간 작성 규칙
+select 속성명 from tb명 where 일반조건 group by 그룹속성 having 그룹조건  order by 정렬속성 asc/desc limit 갯수;
+처리순서 : from → where → select → group → having → order → limit
+일반조건절 where에서는 select에서 선언한 별칭(as)·조회를 인식하지 못함
