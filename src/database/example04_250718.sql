@@ -79,7 +79,7 @@ select avg(price) as 평균단가 from books;
 select sum(order_qty) from orders where customer='김민준';
 
 -- [문제 4] books 테이블에서 각 장르(genre)별로 도서가 총 몇 권씩 있는지 조회하세요.
-select genre, sum(stock) from books group by genre;
+select genre, count(book_id) from books group by genre;
 
 -- [문제 5] orders 테이블에서 각 도서번호(book_id)별로 총 몇 권이 주문되었는지 조회하세요.
 select book_id, sum(order_qty) from orders group by book_id;
