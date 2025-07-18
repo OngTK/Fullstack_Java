@@ -106,7 +106,7 @@ select max(price) from books where genre="컴퓨터";
 select sum(stock) from books where genre = "소설";
 
 -- [문제 13] orders 테이블에서 주문을 한 고객이 총 몇 명인지 조회하세요. (DISTINCT 사용)
-select distinct customer from orders;
+select count( distinct customer) from orders;
 
 -- [문제 14] orders 테이블에서 고객별로 첫 주문일과 마지막 주문일을 조회하세요.
 select customer, min(order_date), max(order_date) from orders group by customer;
