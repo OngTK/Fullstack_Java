@@ -9,12 +9,23 @@ public class Example3 {
 
     /*
     [ 파일 입·출력 클래스 ]
-        1) 쓰기/출력/내보내기(Java > web)
-            FileOutputStream
+    ※ 예외처리 주의
+        1) FileOutputStream
+            쓰기/출력/내보내기(Java > web)
+            (1) .write( 바이트배열 )
+                바이트 배열을 지정된 파일에 작성하는 함수
+        2) FileInputStream
+            읽기/입력/가져오기(web > Java)
+            (2) .read( 바이트배열 )
+                바이트 배열에서 읽어온 파일들을 저장하는 함수
+            
+    [ 문자열 관련 메소드 ]
+        1) 문자열.getBytes() 
+            문자열을 Byte 배열로 반환하는 함수
+        2) new String( 바이트배열 )
+            바이트 배열을 문자열로 반환하는 함수
 
-        2) 읽기/입력/가져오기(web > Java)
-            FileInputStream
-
+    
     */
     public static void main(String[] args) {
 
