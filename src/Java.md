@@ -1809,9 +1809,121 @@ public class Practice {
 
 ## 2. 예시
 ---
-```java
+#### [문제 1] 기본 인터페이스와 구현
+1) "소리를 냅니다."라는 추상 메소드 makeSound()를 가진 Soundable 인터페이스를 정의하세요.
+2) Soundable 인터페이스를 구현(implements)하는 Cat 클래스와 Dog 클래스를 만드세요.
+3) 각 클래스에서 makeSound() 메소드를 오버라이딩하여, 각각 "야옹", "멍멍"을 출력하도록 구현하세요.
+4) main 함수에서 Cat 객체와 Dog 객체를 생성하고, 각 객체의 makeSound() 메소드를 호출하여 결과를 확인하세요.
 
+
+```java
+interface Soundable {
+    void makeSound();
+}
+
+class Cat implements Soundable {
+    public void makeSound() {
+        System.out.println("야옹");
+    }
+}
+
+class Dog implements Soundable {
+    public void makeSound() {
+        System.out.println("멍멍");
+    }
+}
+
+public class Practice {
+    public static void main(String[] args) {
+
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+        cat.makeSound();
+        dog.makeSound();
+
+    }
+}
 ```
+
+#### [문제 2] 인터페이스 상수
+1) RemoteControl 인터페이스를 만드세요.
+2) 이 인터페이스 안에, public static final로 최대 볼륨 MAX_VOLUME = 10과 최소 볼륨 MIN_VOLUME = 0 상수를 정의하세요.
+3) main 함수에서 객체를 생성하지 않고, RemoteControl.MAX_VOLUME과 같이 인터페이스 이름으로 직접 접근하여 두 상수를 출력하세요.
+
+
+
+```java
+interface RemoteControl {
+    // 멤버변수
+    // interface의 멤버변수는 `public static final`이 자동이므로 생략 가능
+    int MAX_VOLUME = 10;
+    int MIN_VOLUME = 0;
+}
+
+public class Practice {
+    public static void main(String[] args) {
+        System.out.println(RemoteControl.MAX_VOLUME);
+        System.out.println(RemoteControl.MIN_VOLUME);
+    }
+}
+```
+
+#### [문제 3] 다중 인터페이스 구현
+1) "하늘을 납니다."를 출력하는 fly() 추상 메소드를 가진 Flyable 인터페이스를 만드세요.
+2) "물에서 헤엄칩니다."를 출력하는 swimmable() 추상 메소드를 가진 Swimmable 인터페이스를 만드세요.
+3) Duck 클래스가 Flyable과 Swimmable 두 인터페이스를 모두 구현하도록 작성하세요.
+4) main 함수에서 Duck 객체를 생성하고, fly()와 swimmable() 메소드를 모두 호출하여 결과를 확인하세요.
+
+```java
+interface Flyable {
+    void fly();
+}
+
+interface Swimmalbe {
+    void swimmable();
+}
+
+class Duck implements Flyable, Swimmalbe {
+    public void fly() {
+        System.out.println("하늘을 납니다.");
+    }
+
+    public void swimmable() {
+        System.out.println("물에서 헤엄칩니다.");
+    }
+}
+
+
+public class Practice {
+    public static void main(String[] args) {
+        Duck duck = new Duck();
+        duck.fly();
+        duck.swimmable();
+    }
+}
+```
+#### [문제 4] 익명 구현 객체
+1) "환영합니다."를 출력하는 welcome() 추상 메소드를 가진 Greeting 인터페이스를 만드세요.
+2) main 함수에서, 별도의 클래스 파일을 만들지 않고, Greeting 인터페이스 타입의 변수를 선언하면서 익명 구현 객체를 생성하여 welcome() 메소드를 즉석에서 구현하고 호출하세요.
+예] Greeting g = new Greeting() { ... };
+
+```java
+interface Greeting{
+    void welcome();
+}
+public class Practice {
+    public static void main(String[] args) {
+
+        Greeting greeting = new Greeting() {
+            public void welcome() {
+                System.out.println("환영합니다.");
+            }
+        };
+        greeting.welcome();
+    }
+}
+```
+
 
 ## 3. 상속 vs 구현
 ----
@@ -1851,7 +1963,15 @@ double > float > long > int > short > byte
 하위 obj3 = (하위)obj2;     // 최초 타입과 일치한다면, 상위>>하위로 강제 타입 변환
 ```
 
+## 2. 예제
 
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+    }
+}
+```
 
 
 
