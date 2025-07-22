@@ -1,4 +1,4 @@
-package MVC_folderFormat.model.dao;
+package daily.day17_250722;
 
 //Data Access Object : 데이터 접근 객체
 
@@ -11,8 +11,10 @@ public class Dao {
     private Dao() {
         connectDB(); //Dao 객체 생성과 동시에 DB 연동 시작
     }
+
     ;
     private static final Dao instance = new Dao();
+
     public static Dao getInstance() {
         return instance;
     }
@@ -35,6 +37,5 @@ public class Dao {
             System.out.println("[경고] DB 연동 실패 " + e);
         }
     }
-
 
 } // class end

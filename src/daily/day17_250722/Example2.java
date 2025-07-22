@@ -68,6 +68,5 @@ public class Example2 {
             System.out.println("DB 연동 실패");
         }
 
-
     } // main end
 } // class end

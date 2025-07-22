@@ -5,6 +5,8 @@ package comprehensive.Practice_07_250722.controller;
 import comprehensive.Practice_07_250722.model.dao.WaitingDao;
 import comprehensive.Practice_07_250722.model.dto.WaitingDto;
 
+import java.util.ArrayList;
+
 public class WaitingController {
     // 싱글톤 =======================================
     private WaitingController(){};
@@ -25,6 +27,10 @@ public class WaitingController {
     }
 
     // 2. 조회
+    public ArrayList<WaitingDto> getWaitingDB(){
+        ArrayList<WaitingDto> waitingDB = waitingDao.getWaitingDB();
+        return waitingDB;
+    }
 
 
 } // class end

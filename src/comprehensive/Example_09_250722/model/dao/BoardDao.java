@@ -113,7 +113,7 @@ public class BoardDao {
                 outData.add(row);
             }
 
-            // [3.7] 최정적으로 outData를 csv로 내보냄
+            // [3.7] 최종적으로 outData를 csv로 내보냄
             csvWriter.writeAll(outData);
             csvWriter.close(); // 안전하게 종료
             
