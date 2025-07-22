@@ -1,4 +1,4 @@
-package MVC_folderFormat.model.dao;
+package comprehensive.Example_09_250722.model.dao;
 
 // Dao 역할 : 실존 데이터에 접근하는 기능 (CRUD)
 public class Dao {

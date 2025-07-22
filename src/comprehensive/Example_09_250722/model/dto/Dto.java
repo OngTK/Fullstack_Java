@@ -1,4 +1,4 @@
-package MVC_folderFormat.model.dto;
+package comprehensive.Example_09_250722.model.dto;
 
 // Dto 역할 : 데이터 모델·이동 객체
 public class Dto {

@@ -1,4 +1,4 @@
-package MVC_folderFormat.controller;
+package comprehensive.Example_09_250722.controller;
 
 // Controller 역할 : 통신
 

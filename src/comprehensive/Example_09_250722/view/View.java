@@ -1,4 +1,4 @@
-package MVC_folderFormat.view;
+package comprehensive.Example_09_250722.view;
 
 import java.util.Scanner;
 

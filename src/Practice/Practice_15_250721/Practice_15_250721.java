@@ -30,7 +30,7 @@ public class Practice_15_250721 {
 
         try {
             FileInputStream fin = new FileInputStream(path1);
-            byte[] bytes2 = new byte[(int)path1.length()];
+            byte[] bytes2 = new byte[(int) path1.length()];
             fin.read(bytes2);
             System.out.println(new String(bytes2));
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class Practice_15_250721 {
 //    3. 프로그램을 여러 번 실행하여 방문 기록이 계속 누적되는지 확인하세요.
 
         Scanner scan = new Scanner(System.in);
-        System.out.print( "방문자 : ");
+        System.out.print("방문자 : ");
         String name4 = scan.next();
         String visit = name4 + "님이 방문했습니다. \n";
 
@@ -64,14 +64,36 @@ public class Practice_15_250721 {
 
         try {
             FileOutputStream fout4 = new FileOutputStream(path4, true);
-                    // new FileOutputStream( 경로 , true ) >> 누적해서 글 쓰기
+            // new FileOutputStream( 경로 , true ) >> 누적해서 글 쓰기
             byte[] outByte = visit.getBytes();
-            fout4.write( outByte );
+            fout4.write(outByte);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("예외발생 : " + e);
         }
+//----------
 
+        try {
+            String inStr4 = "";
+            File file4 = new File(path4);
+            if (file4.exists()) { //파일이 존재하면
+                // 기존 파일의 문자 가져오기
+                FileInputStream fin4 = new FileInputStream(path4);
+                byte[] bytes = new byte[(int) file4.length()];
+                fin4.read(bytes);
+                inStr4 = new String(bytes);
+            }
+            // 문자열 연결·누적
+            String outStr4 = inStr4 + visit;
+
+            // 출력 객체 생성
+            FileOutputStream fout41 = new FileOutputStream(path4);
+            byte[] outByte = outStr4.getBytes();
+            fout41.write(outByte);
+
+        } catch (Exception e) {
+            System.out.println("예외발생 " + e);
+        }
         System.out.println("============================================");
 //    [문제 5] 연락처를 CSV 형식으로 파일에 저장하기
 //    1. Scanner를 사용하여 사용자로부터 이름, 전화번호, 사는 도시를 순서대로 입력받으세요.
@@ -88,12 +110,12 @@ public class Practice_15_250721 {
         String userInfo = name5 + "," + phone + "," + city + "\n";
         String path5 = "src/Practice/Practice_15_250721/contacts.csv";
 
-        try{
+        try {
             FileOutputStream fout5 = new FileOutputStream(path5, true);
             byte[] outByte = userInfo.getBytes();
-            fout5.write( outByte );
+            fout5.write(outByte);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("예외발생 : " + e);
         }
 
@@ -108,11 +130,11 @@ public class Practice_15_250721 {
         String row = movie + memo;
 
         String path6 = "src/Practice/Practice_15_250721/movie_review.txt";
-        try{
+        try {
             FileOutputStream fout6 = new FileOutputStream(path6);
             byte[] outByte = row.getBytes();
             fout6.write(outByte);
-        } catch (Exception e ){
+        } catch (Exception e) {
             System.out.println("예외 발생 " + e);
         }
 
@@ -125,7 +147,7 @@ public class Practice_15_250721 {
 
         try {
             FileInputStream fin = new FileInputStream(path6);
-            byte[] bytes7 = new byte[(int)path6.length()];
+            byte[] bytes7 = new byte[(int) path6.length()];
             fin.read(bytes7);
             System.out.println(new String(bytes7));
         } catch (Exception e) {
@@ -144,32 +166,31 @@ public class Practice_15_250721 {
 //    4. for문을 사용하여 배열의 각 줄(각 동의 인구 정보)을 순회하며,
 //      '행정기관'과 '총인구수'만 추출하여 "동별: [ 동별 ], 총 인구: [ 인구수(계)   ]명" 형식으로 출력하세요.
 
-        try{
+        try {
             String path8 = "src/Practice/Practice_15_250721/bupyeong_population.csv";
             File file8 = new File(path8);
-            if(file8.exists()){
+            if (file8.exists()) {
                 FileInputStream fin = new FileInputStream(path8);
-                byte[] bytes = new byte[(int)file8.length()];
+                byte[] bytes = new byte[(int) file8.length()];
                 fin.read(bytes);
 
-                String str = new String(bytes,"EUC-KR");
+                String str = new String(bytes, "EUC-KR");
                 System.out.println(str);
 
                 String[] rowData = str.split("\n"); // 행단위로 나누어 배열로 저장
-                for( int i = 0 ; i < rowData.length ; i++ ){
+                for (int i = 0; i < rowData.length; i++) {
                     String row8 = rowData[i];
 //                    System.out.println( row );
 
                     String[] col8 = row8.split(","); // 행을 열 단위로 쪼개서 배열에 저장
 
-                    System.out.printf(" 동별 : %s 총 인구수 : %s \n" , col8[0], col8[1]);
+                    System.out.printf(" 동별 : %s 총 인구수 : %s \n", col8[0], col8[1]);
                 }
 
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("예외 발생 : " + e);
         }
-
 
 
         System.out.println("============================================");
