@@ -1,4 +1,4 @@
-package MVC_folderFormat;
+package comprehensive.Practice_07_250722;
 
 // AppStart 역할 : 프로그램 시작 클래스
 

@@ -44,9 +44,10 @@ public class BoardView {
     // [2] 등록
     public void boardWrite(){
         System.out.print("내용 : ");
-        String content = scan.next();
+        scan.nextLine();
+        String content = scan.nextLine();
         System.out.print("작성자 : ");
-        String writer = scan.next();
+        String writer = scan.nextLine();
 
         boolean result = controller.boardWrite(content,writer);
 
