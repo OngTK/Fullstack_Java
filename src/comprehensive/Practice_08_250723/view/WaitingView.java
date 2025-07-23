@@ -4,7 +4,6 @@ import comprehensive.Practice_08_250723.controller.WaitingController;
 import comprehensive.Practice_08_250723.model.dto.WaitingDto;
 
 import java.util.ArrayList;
-import java.util.DoubleSummaryStatistics;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
