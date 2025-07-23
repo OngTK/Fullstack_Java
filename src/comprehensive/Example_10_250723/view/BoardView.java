@@ -125,7 +125,7 @@ public class BoardView {
             System.out.print("▶ 수정할 게시물 : ");
             int bno = scan.nextInt();
             scan.nextLine();
-            System.out.print("▶ 수정 내용 :");
+            System.out.print("▶ 수정 내용 : ");
             String bcontent = scan.nextLine();
             //[5.2] controller 의 boardUpdate 메소드 실행
             boolean result = controller.boardUpdate(bno, bcontent);
@@ -141,8 +141,5 @@ public class BoardView {
             System.out.println("[예외발생] " + e);
         }
     }
-    //[5.1]
-    //[5.2]
-    //[5.3]
 
 } //class end
