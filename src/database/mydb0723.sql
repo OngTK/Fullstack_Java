@@ -9,3 +9,6 @@ uage int default 10 ,
 constraint primary key(uno) );
 
 select * from user;
+
+-- JDBC 매개변수 활용을 위
+-- insert into user( uname, uage ) values( ? , ? );

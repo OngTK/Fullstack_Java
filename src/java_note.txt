@@ -659,6 +659,7 @@ new CSVWriter( new FileWriter( 경로 ) ) : CSV 출력하는 클래스
             [1] Connection conn = DriverManager.getConnection(db_url, db_user,db_pw)
             [2] PreparedStatement ps = conn.prepareStatement(sql);
                 - 기재된 상태의 인터페이스 변수명 = DB연동.기재함수(SQL문법);
+                - String sql = "insert into tb명( 속성1, 속성2 ) values( ? , ? )";
 
         (2) PreparedStatement, SQL 조작
             [1] ps.execute();
@@ -666,10 +667,13 @@ new CSVWriter( new FileWriter( 경로 ) ) : CSV 출력하는 클래스
             [2] ps.executeQuery();
                 - Select 문법 실행 결과를 ResultSet 타입으로 반환
             [3] ps.executeUpdate();
-                - insert, update, delete 문법 실행 결과를 int 타입으로 변환
+                - insert, update, delete 문법 실행 결과, sql 성공 레코드 수를 int 타입으로 변환
+            [4] ps.set타입(?번째, 변수);
+                - ?번째에 변수 값을 대입하는 함수
+                - executeUpdate 이전에 실행하여 sql 문을 작성하는 역할
 
         (3) ResultSet, SQL 실행 조작
             [1] rs.next();
-                    - 조회된 레코드 중에서 다음 레코드 이동 함수
-            [2] rs.get타입(속성명);
-                    - 현재 레코드에서 지정한 속성명의 값 반환 함수
+                - 조회된 레코드 중에서 다음 레코드 이동 함수
+            [2] rs.get타입("속성명" or colNo);
+                - 현재 레코드에서 지정한 속성명의 값 반환 함수
