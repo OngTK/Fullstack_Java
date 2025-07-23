@@ -630,3 +630,46 @@
         읽기/입력/가져오기(web > Java)
         (2) .read( 바이트배열 )
             바이트 배열에서 읽어온 파일들을 저장하는 함수
+
+
+[ OpenCSV ]
+자바에서 CSV 파일 읽기, 쓰기를 편하게 해주는 API들을 제공하는 라이브러리
+https://mvnrepository.com/ : java 관련 라이브러리를 제공하는 web site
+
+라이브러리 등록 방법
+jar 파일을 원하는 package로 이동 > 우클릭 > add as library
+
+new CSVReader( new FileReader( 경로 ) ) : CSV를 입력하는 클래스
+     .readAll() : List<String[]> 타입으로 반환하는 함수
+
+new CSVWriter( new FileWriter( 경로 ) ) : CSV 출력하는 클래스
+     .writeAll( List객체 ) : List 객체를 CSV로 내보내는 함수
+
+[ JDBC ]
+    Java DataBase Connect
+
+    1) 라이브러리 준비
+        : JDBC MySQL
+        https://dev.mysql.com/downloads/connector/j/
+        Platform Independent (Architecture Independent), ZIP Archive >> mysql-connector-j-9.3.0.jar
+    2) 연동코드
+
+    3) 핵심 인터페이스
+        (1) Connection, DB 연동
+            [1] Connection conn = DriverManager.getConnection(db_url, db_user,db_pw)
+            [2] PreparedStatement ps = conn.prepareStatement(sql);
+                - 기재된 상태의 인터페이스 변수명 = DB연동.기재함수(SQL문법);
+
+        (2) PreparedStatement, SQL 조작
+            [1] ps.execute();
+                - 실행 함수
+            [2] ps.executeQuery();
+                - Select 문법 실행 결과를 ResultSet 타입으로 반환
+            [3] ps.executeUpdate();
+                - insert, update, delete 문법 실행 결과를 int 타입으로 변환
+
+        (3) ResultSet, SQL 실행 조작
+            [1] rs.next();
+                    - 조회된 레코드 중에서 다음 레코드 이동 함수
+            [2] rs.get타입(속성명);
+                    - 현재 레코드에서 지정한 속성명의 값 반환 함수

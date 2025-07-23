@@ -22,7 +22,7 @@ public class Dao {
     private String db_user = "root";
     private String db_pw = "1234";
 
-    Connection conn;    // DB연동 결과를 저장하기 위한 인터페이스
+    private Connection conn;    // DB연동 결과를 저장하기 위한 인터페이스
 
     // DB 연동 함수 ================================================
     public void connectDB() {
