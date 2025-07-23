@@ -1,6 +1,6 @@
 package MVC_folderFormat.model.dto;
 
-// Dto 역할 : 데이터 모델·이동 객체
+// Dto : 데이터 모델·이동 객체
 public class Dto {
 
     // 멤버변수 ===================================

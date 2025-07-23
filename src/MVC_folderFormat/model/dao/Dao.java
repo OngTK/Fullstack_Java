@@ -8,8 +8,7 @@ import java.sql.SQLException;
 
 public class Dao {
     // 싱글톤 =====================================================
-    private Dao() {
-        connectDB(); //Dao 객체 생성과 동시에 DB 연동 시작
+    private Dao() {connectDB(); //Dao 객체 생성과 동시에 DB 연동 시작
     }
     ;
     private static final Dao instance = new Dao();
@@ -36,5 +35,30 @@ public class Dao {
         }
     }
 
+    //[1]
+    //[1.1]
+    //[1.2]
+    //[1.3]
+    //[1.4]
+    //[2]
+    //[2.1]
+    //[2.2]
+    //[2.3]
+    //[2.4]
+    //[3]
+    //[3.1]
+    //[3.2]
+    //[3.3]
+    //[3.4]
+    //[4]
+    //[4.1]
+    //[4.2]
+    //[4.3]
+    //[4.4]
+    //[5]
+    //[5.1]
+    //[5.2]
+    //[5.3]
+    //[5.4]
 
 } // class end
