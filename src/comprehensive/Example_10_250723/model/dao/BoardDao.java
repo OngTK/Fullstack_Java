@@ -99,9 +99,9 @@ public class BoardDao {
             //[3.3] SQL 매개변수 대입
             ps.setInt(1, bno);
             //[3.4] SQL 실행
-            int result = ps.executeUpdate();
+            int count = ps.executeUpdate();
             //[3.5] SQL 실행 결과 확인
-            if (result >= 1) {
+            if (count == 1) {
                 return true;
             }
             return false;
@@ -112,24 +112,24 @@ public class BoardDao {
     } //func end
 
     //[4] 수정 기능 구현
-    public boolean boardUpdate(int bno, String bcontent) {
+    public boolean boardUpdate(BoardDto boardDto) {
         try {
             //[4.1] SQL 작성
             String sql = "update board set bcontent=? where bno=? ";
             //[4.2] SQL 기재
             PreparedStatement ps = conn.prepareStatement(sql);
             //[4.3] SQL 매개변수 대입
-            ps.setString(1,bcontent);
-            ps.setInt(2,bno);
+            ps.setString(1,boardDto.getBcontent());
+            ps.setInt(2,boardDto.getBno());
             //[4.4] SQL 실행
-            int result = ps.executeUpdate();
+            int count = ps.executeUpdate();
             //[4.5] SQL 실행 결과 확인
-            if( result >= 1 ){
+            if( count == 1 ){
                 return true;
             }
             return false;
         }catch (SQLException e){
-            System.out.println("[예외발생] Dao"+e);
+            System.out.println("[예외발생] "+e);
         }
         return false;
     } //func end

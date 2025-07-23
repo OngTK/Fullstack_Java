@@ -59,9 +59,11 @@ public class BoardController {
 
     //[5] 수정 기능 구현
     public boolean boardUpdate(int bno, String bcontent) {
-        //[5.1] dao에 boardUpdate 메소드 실행
-        boolean result = boardDao.boardUpdate(bno, bcontent);
-        //[5.2] view에 결과 반환
+        //[5.1]  객체화
+        BoardDto boardDto = new BoardDto(bno, bcontent, null);
+        //[5.2] dao에 boardUpdate 메소드 실행
+        boolean result = boardDao.boardUpdate(boardDto);
+        //[5.3] view에 결과 반환
         return result;
     }
 
