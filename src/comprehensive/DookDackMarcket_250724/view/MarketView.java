@@ -1,5 +1,9 @@
 package comprehensive.DookDackMarcket_250724.view;
 
+
+import comprehensive.DookDackMarcket_250724.controller.ProductController;
+import comprehensive.DookDackMarcket_250724.controller.QnaController;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,6 +21,8 @@ public class MarketView {
         return instance;
     }
     // Controller 싱글톤 호출  =======================================
+    private ProductController pController = ProductController.getInstance();
+    private QnaController qController = QnaController.getInstance();
 
     // 0. 여러 메소드에서 사용할 입력 객체를 입력변수로 선언 =================================
     private Scanner scan = new Scanner(System.in);
@@ -55,6 +61,7 @@ public class MarketView {
 
                 } else if (choice == 8) {
                     // TODO 8. 검색
+
                 } else {
                     System.out.println("[경고] 올바르지 못한 기능입니다.");
                 }
