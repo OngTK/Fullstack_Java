@@ -1,9 +1,9 @@
-package comprehensive.Example_10_250723.controller;
+package comprehensive.Example.Example_10_250723.controller;
 
 // Controller : 통신
 
-import comprehensive.Example_10_250723.model.dao.BoardDao;
-import comprehensive.Example_10_250723.model.dto.BoardDto;
+import comprehensive.Example.Example_10_250723.model.dao.BoardDao;
+import comprehensive.Example.Example_10_250723.model.dto.BoardDto;
 
 import java.util.ArrayList;
 

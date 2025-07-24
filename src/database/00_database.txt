@@ -297,30 +297,3 @@ select tb2.* from tb1 right join tb2 on tb1.pk = tb2.fk where tb1.pk is null;
                                                          | tb1 null >> 교집합이 아닌 부분에 대한 조건|
 | tb2의 모든 속성을 조회 |
 ```
-
-------------------------
-
--- 1. 카테고리 테이블
-CREATE TABLE pcategory(
-    카테고리번호_pk INT UNSIGNED AUTO_INCREMENT,
-    카테고리명 VARCHAR(10) NOT NULL,
-    PRIMARY KEY(카테고리번호_pk)
-);
--- 2. 제품 테이블
-CREATE TABLE product(
-    제품번호_pk INT UNSIGNED AUTO_INCREMENT,
-    제품명 VARCHAR(100) NOT NULL,
-    제품가격 INT UNSIGNED NOT NULL,
-    카테고리번호_fk INT UNSIGNED,
-    PRIMARY KEY(제품번호_pk),
-    FOREIGN KEY(카테고리번호_fk) REFERENCES pcategory(카테고리번호_pk)
-);
--- 3. 재고 테이블
-CREATE TABLE stock(
-    재고번호_pk INT UNSIGNED AUTO_INCREMENT,
-    재고수량 INT,
-    재고등록날짜 DATETIME DEFAULT NOW(),
-    제품번호_fk INT UNSIGNED,
-    PRIMARY KEY(재고번호_pk),
-    FOREIGN KEY(제품번호_fk) REFERENCES product(제품번호_pk)
-);

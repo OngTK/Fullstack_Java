@@ -1,8 +1,8 @@
-package comprehensive.Example_10_250723.model.dao;
+package comprehensive.Example.Example_10_250723.model.dao;
 
 // Data Access Object : 데이터 접근 객체
 
-import comprehensive.Example_10_250723.model.dto.BoardDto;
+import comprehensive.Example.Example_10_250723.model.dto.BoardDto;
 
 import java.sql.*;
 import java.util.ArrayList;

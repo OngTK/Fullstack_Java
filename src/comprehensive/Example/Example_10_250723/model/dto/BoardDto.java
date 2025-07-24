@@ -1,4 +1,4 @@
-package comprehensive.Example_10_250723.model.dto;
+package comprehensive.Example.Example_10_250723.model.dto;
 
 // Dto 역할 : 데이터 모델·이동 객체
 public class BoardDto {

@@ -1,8 +1,8 @@
-package comprehensive.Example_10_250723.view;
+package comprehensive.Example.Example_10_250723.view;
 // View : 게시물 관련 입출력
 
-import comprehensive.Example_10_250723.controller.BoardController;
-import comprehensive.Example_10_250723.model.dto.BoardDto;
+import comprehensive.Example.Example_10_250723.controller.BoardController;
+import comprehensive.Example.Example_10_250723.model.dto.BoardDto;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
