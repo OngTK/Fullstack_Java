@@ -151,14 +151,21 @@
 5) primary key (PK)
     기본키, 식별키, 식별 가능한·중복이 없는 고유 값
     not null, unique를 포함함
-    선언 `constraint primary key( PK필드명 );
+    선언 : `constraint primary key( PK필드명 );
 6) foreign key (FK)
     참조키, 외래키
     다른 테이블의 PK를 참조하는 키
     null·중복 가능
-    선언 `contraing foreign key( FK필드명 ) references 참조table명 ( 참조PK명 );`
-
+    선언 : `contraing foreign key( FK필드명 ) references 참조table명 ( 참조PK명 );`
     ※ PK필드의 속성과 FK필드의 속성은 일치해야 함☆★☆★☆★☆★☆★☆★☆★
+    ※ 참조 옵션
+        선언 + `on [update/delete] [cascade / set null / (restrict)] `
+        (1) on delete cascade : 참조중인 pk 레코드가 삭제될 경우, fk 레코드도 삭제
+        (2) on update cascade : 참조중인 pk 레코드가 변경될 경우, fk 레코드도 변경
+        (3) on delete set null : 참조중인 pk 레코드가 삭제될 경우, fk 레코드를 null로 변경
+        (4) on update set null : 참조중인 pk 레코드가 변경될 경우, fk 레코드를 null로 변경
+        (5) on delete restrict : (default) 참조중인 pk 레코드 삭제 불가
+        (6) on update restrict : (default) 참조중인 pk 레코드 수정 불가, 단, pk가 참조되지 않은 상태라면 수정 가능
 
 [ 다이어 그램 ]
 여러 테이블 간의 관계를 나타내는 그림
@@ -226,3 +233,67 @@ Database > reverse enginner
 select 속성명 from tb명 where 일반조건 group by 그룹속성 having 그룹조건  order by 정렬속성 asc/desc limit 갯수;
 처리순서 : from → where → select → group → having → order → limit
 일반조건절 where에서는 select에서 선언한 별칭(as)·조회를 인식하지 못함
+
+[ Join · 집합 ]
+    참조 관계인 table 사이에서만 가능!
+
+1) 2개 이상의 table 조회
+    `select * from tb1, tb2;`
+   ※ 주의 : 두 테이블 간의 곱 - 데카르트 곱 (cross join) >> 거의 안씀
+
+2) 교집합
+    (1) where
+        `select * from tb1, tb2 where ( tb1.PK필드 = tb2.FK필드 );`
+        - 일반적으로 join과 조건절 국분이 어려우므로 사용하지 않음
+
+    (2) inner join on ☆★☆★☆★☆★☆★
+        `select * from tb1 inner join tb2 on tb1.PK필드 = tb2.FK필드;`
+        - inner 생략 가능
+        - tb명 + as 로 별칭 가능
+        - select (조건) 에 `tb1.필드` 형태로 원하는 필드만 조회 가능
+
+    (3) natural join
+        `select * from tb1 natural join tb2;`
+        - PK필드명과 FK필드명이 같을 때만, 사용 가능
+        - join 의도와 상관없이 동일한 필드명이 존재할 수 있으므로, 사용을 권장하지는 않음
+
+    (4) join using
+        `select * from tb1 join tb2 using(pk필드명);`
+        - PK필드명과 FK필드명이 같을 때만, 사용 가능
+        - join 의도와 상관없이 동일한 필드명이 존재할 수 있으므로, 사용을 권장하지는 않음
+
+    (5) outter join
+        [1] left outer join
+            `select * from tb1 left outer join tb on tb1.pk = tb2.fk;`
+            - 좌측 tb1(기준) 모든 레코드와 우측 tb2와 교집합되는 레코드 조회
+            - null 레코드가 존재할 수 있음
+        [2] right outer join
+            `select * from tb1 right outer join tb on tb1.pk = tb2.fk;`
+            - 우측 tb2(기준) 모든 레코드와 좌측 tb1와 교집합되는 레코드 조회
+        [3] outer 생략 가능
+            `select * from tb1 left join tb on tb1.pk = tb2.fk;`
+            `select * from tb1 right join tb on tb1.pk = tb2.fk;`
+
+3) 합집합
+    MySQL : union  / Oracle : full outer join
+
+    (1) union
+       - 두 개 이상의 select를 하나로 합치기
+       - left outer + UNION + right outer
+
+4) 차집합
+    - 합집합 - 교집합 = 차집합
+    - tb1 - (t1, t2 교집합) = 차집합
+
+    (1)	outer join where 교집합
+```sql
+select tb1.* from tb1 left join tb2 on tb1.pk = tb2.fk where tb2.fk is null;
+                | tb1 PK(좌)에 대해서 tb2 FK(우) 교집합 조회|
+                                                         | tb2 null >> 교집합이 아닌 부분에 대한 조건|
+| tb1의 모든 속성을 조회 |
+
+select tb2.* from tb1 right join tb2 on tb1.pk = tb2.fk where tb1.pk is null;
+                | tb2 FK(우)에 대해서 tb2 PK(좌) 교집합 조회|
+                                                         | tb1 null >> 교집합이 아닌 부분에 대한 조건|
+| tb2의 모든 속성을 조회 |
+```
