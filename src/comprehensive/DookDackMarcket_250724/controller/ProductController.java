@@ -114,13 +114,15 @@ public class ProductController {
         ArrayList<RankingDto> rankList = rankingDao.rankingPrint();
         //[7.2] view에 반환
         return  rankList;
-    }
+    } // func end
+
     //[8] 검색조회 ========================
-    //[8.1]
-    //[8.2]
-    //[8.3]
-    //[8.4]
-    //[8.5]
+    public ArrayList<ProductDto> keywordSearch(String keyword) {
+        //[8.1] keyword를 dao에 전달하면서 메소드 실행
+        ArrayList<ProductDto> searchList = productDao.keywordSearch(keyword);
+        //[8.2] view에 반환
+        return searchList;
+    } // func end
 
     //[10] 물품번호, 비밀번호 유효성 검사 ========================
     public boolean productCheck(int pNo, String pPw) {

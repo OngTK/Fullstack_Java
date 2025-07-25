@@ -61,7 +61,7 @@ public class RankingDao {
                         rs.getInt("count(pName)"));
 //                System.out.println(rankingDto.toString());
                 //[2.5.3] rankingDto 객체를 ArrayList에 삽입
-                rankList.add((rankingDto));
+                rankList.add(rankingDto);
             }
         } catch (Exception e) {
             System.out.println("[예외발생] rankDao 7" +e);

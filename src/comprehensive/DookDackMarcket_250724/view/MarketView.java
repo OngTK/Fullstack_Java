@@ -58,7 +58,7 @@ public class MarketView {
                 } else if (choice == 7) {
                     rankingPrint();     // 7. 등록 랭킹 조회
                 } else if (choice == 8) {
-                    // TODO 8. 검색
+                    keywordSearch();    // 8. 검색
                 } else {
                     System.out.println("[경고] 올바르지 못한 기능입니다.");
                 }
@@ -254,16 +254,36 @@ public class MarketView {
         System.out.println("-------------- 등록 랭킹 조회 --------------");
         System.out.println("랭킹 \t 닉네임 \t 등록수");
         System.out.println("------------------------------------------------");
-        for(int i = 0 ; i < rankList.size() ; i++){
-            System.out.printf("%d \t %s \t %d \n",i+1,rankList.get(i).getpSeller(),rankList.get(i).getCount());
+        for (int i = 0; i < rankList.size(); i++) {
+            System.out.printf("%d \t %s \t %d \n", i + 1, rankList.get(i).getpSeller(), rankList.get(i).getCount());
         }
-    } //func end
+    } // func end
 
     //[8] 검색조회
-    //[8.1]
-    //[8.2]
-    //[8.3]
-    //[8.4]
-    //[8.5]
+    public void keywordSearch() {
+        //[8.1] console에서 키워드 받기
+        System.out.print("키워드 : ");
+        String keyword = scan.next();
 
+        //[8.2] keyword를 pCon에 전달 + 메소드 실행
+        ArrayList<ProductDto> searchList = pController.keywordSearch(keyword);
+
+        //[8.3] list를 for 문으로 출력
+        System.out.println("------------------- 검색 결과 -------------------");
+            for (ProductDto productDto : searchList) {
+                String status = "";
+                if (productDto.getsStatus() == true) {
+                    status = "판매완료";
+                } else {
+                    status = "판매중";
+                }
+                System.out.println("물품번호 : " + productDto.getpNo());
+                System.out.println("물품명 : " + productDto.getpName());
+                System.out.println("가격 : " + productDto.getpPrice());
+                System.out.println("닉네임 : " + productDto.getpSeller());
+                System.out.println("등록일 : " + productDto.getpDate());
+                System.out.println("판매여부 : " + status);
+                System.out.println("--------------------------------------");
+            }
+    }// func end
 } //class end

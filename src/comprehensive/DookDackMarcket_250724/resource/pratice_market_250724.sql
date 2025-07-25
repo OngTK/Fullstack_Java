@@ -135,4 +135,6 @@ update product  set pMemo = "test 수정" , pPrice = 150000 where pNo = 51;
 
 select pSeller, count(pName) from product group by pSeller order by count(pName) desc limit 10;
 
-select * from product where ()
+select * from product;
+
+select * from product where pName like '%유리%' or pMemo like '%유리%' order by pdate desc;

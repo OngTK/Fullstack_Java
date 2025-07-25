@@ -185,20 +185,41 @@ public class ProductDao {
         }
 //        System.out.println("pdo func 6 " + productDto.toString());
         return productDto;
-
     } // func end
 
     //[8] 키워드 검색 조회 =======================
     public ArrayList<ProductDto> keywordSearch(String keyword) {
+        ArrayList<ProductDto> searchList = new ArrayList<>();
         try {
             //[8.1] SQL 작성
+            String sql = "SELECT * FROM product WHERE pName LIKE ? OR pMemo LIKE ? ORDER BY pdate DESC";
             //[8.2] SQL 기재
+            PreparedStatement ps = conn.prepareStatement(sql);
             //[8.3] SQL 매개변수 대입
+            ps.setString(1,"%" + keyword+ "%") ;
+            ps.setString(2,"%" + keyword+ "%");
+            // TODO question
+//            System.out.println(ps.toString());
             //[8.4] SQL 실행
+            ResultSet rs = ps.executeQuery();
             //[8.5] SQL 실행 결과로 dto 객채 생성
+            while(rs.next()){
+                ProductDto productDto = new ProductDto(rs.getInt("pNo"),
+                        rs.getString("pName"),
+                        rs.getString("pSeller"),
+                        rs.getString("pMemo"),
+                        rs.getInt("pPrice"),
+                        rs.getString("pPw"),
+                        rs.getString("pDate"),
+                        rs.getBoolean("pStatus")
+                );
+//                System.out.println(productDto.toString());
+                searchList.add(productDto);
+            }
         } catch (Exception e) {
             System.out.println("[예외발생] pDao 8 " + e);
         }
+        return searchList;
+    } //func end
 
-    }
 } // class end
