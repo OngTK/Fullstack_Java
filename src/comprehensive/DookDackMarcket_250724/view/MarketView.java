@@ -4,6 +4,8 @@ package comprehensive.DookDackMarcket_250724.view;
 import comprehensive.DookDackMarcket_250724.controller.ProductController;
 import comprehensive.DookDackMarcket_250724.controller.QnaController;
 import comprehensive.DookDackMarcket_250724.model.dto.ProductDto;
+import comprehensive.DookDackMarcket_250724.model.dto.QnaDto;
+import comprehensive.DookDackMarcket_250724.model.dto.RankingDto;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -48,20 +50,15 @@ public class MarketView {
                 } else if (choice == 3) {
                     productUpdate();    // 3. 물품 정보 수정
                 } else if (choice == 4) {
-                    productDelete();    //  4. 물품 삭제
-
+                    productDelete();    // 4. 물품 삭제
                 } else if (choice == 5) {
-                    // TODO 5. 문의 남기기
-
+                    qnaRegi();          // 5. 문의 남기기
                 } else if (choice == 6) {
-                    // TODO 6. 물품 상세 조회
-
+                    productSearch();    // 6. 물품 상세 조회
                 } else if (choice == 7) {
-                    // TODO 7. 등록 랭킹 조회
-
+                    rankingPrint();     // 7. 등록 랭킹 조회
                 } else if (choice == 8) {
                     // TODO 8. 검색
-
                 } else {
                     System.out.println("[경고] 올바르지 못한 기능입니다.");
                 }
@@ -189,15 +186,79 @@ public class MarketView {
             System.out.println("[경고] 물품 삭제를 실패하였습니다.");
         }
     }//func end
-//[5]
-//[5.1]
-//[5.2]
-//[5.3]
-//[5.4]
-    //[6]
-//[6.1]
-//[6.2]
-//[6.3]
-//[5.4]
+
+    //[5] 문의 등록
+    public void qnaRegi() {
+        //[5.1] user에게 정보 받기
+        System.out.print("물품번호 : ");
+        int pNo = scan.nextInt();
+        scan.nextLine();
+        System.out.print("문의자 닉네임 : ");
+        String qQuestioner = scan.nextLine();
+        System.out.print("문의내용 : ");
+        String qContent = scan.nextLine();
+        System.out.print("비밀번호 : ");
+        String qPw = scan.next();
+
+        //[5.2] qController에 qnaRegi() 실행
+        boolean result = qController.qnaRegi(pNo, qQuestioner, qContent, qPw);
+        //[5.3] 결과 출력
+        if (result) {
+            System.out.println("[안내] 문의글을 정상적으로 등록하였습니다.");
+        } else {
+            System.out.println("[경고] 문의글 등록을 실패하였습니다.");
+        }
+    } //func end
+
+    //[6] 물품 상세 조회
+    public void productSearch() {
+        //[6.1] user에게 물품 번호 받기
+        System.out.print("물품번호 : ");
+        int pNo = scan.nextInt();
+
+        //[6.2] pcon 에서 물품정보 조회
+        ProductDto productDto = pController.productSearch(pNo);
+
+        String status = "";
+        if (productDto.getsStatus() == true) {
+            status = "판매완료";
+        } else {
+            status = "판매중";
+        }
+
+        //[6.3] pno 물품 정보 출력
+        System.out.println(" --------------------- 물품 상세 조회 ---------------------");
+        System.out.println("물품명 : " + productDto.getpName());
+        System.out.println("설명 : " + productDto.getpMemo());
+        System.out.println("가격 : " + productDto.getpPrice());
+        System.out.println("판매여부 : " + status);
+
+        //[6.4] pNo를 qcon에 보내서 qnaSearch 실행
+        ArrayList<QnaDto> qnaList = qController.qnaSearch(pNo);
+
+        //[6.5] 반복문을 돌면서 qna 출력
+        System.out.println(" --------------------- 물품 문의글 ---------------------");
+        for (QnaDto qnaDto : qnaList) {
+            System.out.println("문의번호 : " + qnaDto.getqNO());
+            System.out.println("문의자 닉네임 : " + qnaDto.getqQuestioner());
+            System.out.println("문의 내용 : " + qnaDto.getqContent());
+            System.out.println("------------------------------------------");
+        }
+    } // func end
+
+    // [7] 랭킹조회
+    public void rankingPrint() {
+        // [7.1] pcon에서 rankingPrint 실행
+        ArrayList<RankingDto> rankList = pController.rankingPrint();
+        // [7.2] 반복문을 돌면서 출력
+        System.out.println("-------------- 등록 랭킹 조회 --------------");
+        System.out.println("랭킹 \t 닉네임 \t 등록수");
+        System.out.println("------------------------------------------------");
+        for(int i = 0 ; i < rankList.size() ; i++){
+            System.out.printf("%d \t %s \t %d \n",i+1,rankList.get(i).getpSeller(),rankList.get(i).getCount());
+        }
+        // [7.3]
+        // [7.4]
+    }
 
 } //class end

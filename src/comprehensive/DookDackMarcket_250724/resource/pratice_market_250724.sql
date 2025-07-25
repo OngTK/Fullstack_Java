@@ -17,7 +17,7 @@ constraint primary key(pNo)			-- PK 선언
 create table qna(
 qNo int not null auto_increment,	-- 문의번호(PK)
 pNo int not null,					-- 물품번호(FK)
-qQustioner varchar(30) not null,	-- 문의자
+qQuestioner varchar(30) not null,	-- 문의자
 qContent longtext not null,			-- 문의내용	
 qPw varchar(30) not null,			-- 문의 비밀번호
 qDate datetime default now(),	-- 문의일시	
@@ -78,56 +78,59 @@ INSERT INTO product (pNo, pName, pSeller, pMemo, pPrice, pPW, pDate, pStatus) VA
 INSERT INTO product (pNo, pName, pSeller, pMemo, pPrice, pPW, pDate, pStatus) VALUES (50, '가면라이더책', '가면라이더', '가면라이더책에 대한 설명입니다.', 68700, '7475', '2025-04-24 20:00:00', true);
 
 -- qna 샘플
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (1, '홍길동', '교환 가능한가요?', '4677', '2025-07-25 16:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (1, '슈퍼맨', 'AS는 가능한가요?', '9202', '2025-07-26 11:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (1, '장발장', '가격을 조금 깎아주실 수 있나요?', '2552', '2025-07-27 03:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (1, '해리포터', '추가 사진 있을까요?', '2179', '2025-07-27 01:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (1, '백설공주', '이 제품은 새 상품인가요?', '9022', '2025-07-26 22:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (7, '해리포터', 'AS는 가능한가요?', '6493', '2025-07-25 05:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (16, '신데렐라', '사용감은 어느 정도인가요?', '8002', '2025-07-25 13:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (42, '도라에몽', '제품 크기가 어떻게 되나요?', '2728', '2025-07-26 17:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (50, '홍길동', '가격을 조금 깎아주실 수 있나요?', '1574', '2025-07-25 16:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (23, '슈퍼맨', '가격을 조금 깎아주실 수 있나요?', '7281', '2025-07-25 11:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (50, '장발장', '배송은 얼마나 걸리나요?', '6960', '2025-07-25 23:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (4, '팥쥐', '배송은 얼마나 걸리나요?', '9427', '2025-07-26 20:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (42, '해리포터', '제품 크기가 어떻게 되나요?', '9536', '2025-07-24 10:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (45, '슈퍼맨', '사용감은 어느 정도인가요?', '8109', '2025-07-27 05:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (28, '해리포터', '가격을 조금 깎아주실 수 있나요?', '5181', '2025-07-27 07:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (12, '백설공주', '직거래 가능한가요?', '8782', '2025-07-26 07:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (31, '도라에몽', '직거래 가능한가요?', '7320', '2025-07-26 16:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (43, '백설공주', '사용감은 어느 정도인가요?', '2354', '2025-07-25 03:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (30, '팥쥐', '정말로 유리인가요?', '8847', '2025-07-26 09:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (2, '해리포터', 'AS는 가능한가요?', '3503', '2025-07-26 01:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (15, '신데렐라', '정말로 유리인가요?', '2338', '2025-07-27 00:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (24, '슈퍼맨', '교환 가능한가요?', '9249', '2025-07-25 18:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (26, '팥쥐', '정말로 유리인가요?', '4400', '2025-07-26 10:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (49, '홍길동', '사용감은 어느 정도인가요?', '9317', '2025-07-25 07:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (21, '홍길동', '이 제품은 새 상품인가요?', '1517', '2025-07-26 11:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (27, '해리포터', '가격을 조금 깎아주실 수 있나요?', '7301', '2025-07-25 08:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (20, '도라에몽', '정말로 유리인가요?', '3662', '2025-07-27 02:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (13, '도라에몽', '추가 사진 있을까요?', '1653', '2025-07-25 05:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (10, '슈퍼맨', '이 제품은 새 상품인가요?', '8611', '2025-07-24 15:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (7, '팥쥐', '이 제품은 새 상품인가요?', '7735', '2025-07-26 00:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (18, '신데렐라', '사용감은 어느 정도인가요?', '8143', '2025-07-26 10:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (13, '슈퍼맨', '사용감은 어느 정도인가요?', '3763', '2025-07-25 09:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (13, '해리포터', '교환 가능한가요?', '3136', '2025-07-26 19:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (45, '장발장', '사용감은 어느 정도인가요?', '6053', '2025-07-26 13:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (48, '팥쥐', '배송은 얼마나 걸리나요?', '6337', '2025-07-25 06:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (3, '백설공주', '배송은 얼마나 걸리나요?', '6992', '2025-07-26 02:30:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (13, '신데렐라', '교환 가능한가요?', '8101', '2025-07-27 07:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (10, '장발장', '가격을 조금 깎아주실 수 있나요?', '6752', '2025-07-25 10:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (12, '신데렐라', 'AS는 가능한가요?', '8257', '2025-07-24 11:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (8, '신데렐라', '이 제품은 새 상품인가요?', '7623', '2025-07-27 04:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (8, '해리포터', '배송은 얼마나 걸리나요?', '4918', '2025-07-24 08:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (35, '팥쥐', 'AS는 가능한가요?', '2276', '2025-07-24 16:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (43, '도라에몽', '이 제품은 새 상품인가요?', '2373', '2025-07-25 00:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (38, '팥쥐', '제품 크기가 어떻게 되나요?', '5852', '2025-07-26 17:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (18, '홍길동', 'AS는 가능한가요?', '6231', '2025-07-26 17:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (23, '신데렐라', '가격을 조금 깎아주실 수 있나요?', '8816', '2025-07-27 07:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (23, '신데렐라', 'AS는 가능한가요?', '8040', '2025-07-26 15:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (22, '슈퍼맨', '이 제품은 새 상품인가요?', '8999', '2025-07-26 12:46:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (4, '팥쥐', '교환 가능한가요?', '9147', '2025-07-26 17:00:00');
-INSERT INTO qna (pNo, qQustioner, qContent, qPw, qDate) VALUES (31, '신데렐라', 'AS는 가능한가요?', '5546', '2025-07-25 08:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (1, '홍길동', '교환 가능한가요?', '4677', '2025-07-25 16:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (1, '슈퍼맨', 'AS는 가능한가요?', '9202', '2025-07-26 11:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (1, '장발장', '가격을 조금 깎아주실 수 있나요?', '2552', '2025-07-27 03:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (1, '해리포터', '추가 사진 있을까요?', '2179', '2025-07-27 01:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (1, '백설공주', '이 제품은 새 상품인가요?', '9022', '2025-07-26 22:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (7, '해리포터', 'AS는 가능한가요?', '6493', '2025-07-25 05:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (16, '신데렐라', '사용감은 어느 정도인가요?', '8002', '2025-07-25 13:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (42, '도라에몽', '제품 크기가 어떻게 되나요?', '2728', '2025-07-26 17:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (50, '홍길동', '가격을 조금 깎아주실 수 있나요?', '1574', '2025-07-25 16:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (23, '슈퍼맨', '가격을 조금 깎아주실 수 있나요?', '7281', '2025-07-25 11:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (50, '장발장', '배송은 얼마나 걸리나요?', '6960', '2025-07-25 23:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (4, '팥쥐', '배송은 얼마나 걸리나요?', '9427', '2025-07-26 20:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (42, '해리포터', '제품 크기가 어떻게 되나요?', '9536', '2025-07-24 10:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (45, '슈퍼맨', '사용감은 어느 정도인가요?', '8109', '2025-07-27 05:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (28, '해리포터', '가격을 조금 깎아주실 수 있나요?', '5181', '2025-07-27 07:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (12, '백설공주', '직거래 가능한가요?', '8782', '2025-07-26 07:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (31, '도라에몽', '직거래 가능한가요?', '7320', '2025-07-26 16:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (43, '백설공주', '사용감은 어느 정도인가요?', '2354', '2025-07-25 03:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (30, '팥쥐', '정말로 유리인가요?', '8847', '2025-07-26 09:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (2, '해리포터', 'AS는 가능한가요?', '3503', '2025-07-26 01:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (15, '신데렐라', '정말로 유리인가요?', '2338', '2025-07-27 00:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (24, '슈퍼맨', '교환 가능한가요?', '9249', '2025-07-25 18:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (26, '팥쥐', '정말로 유리인가요?', '4400', '2025-07-26 10:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (49, '홍길동', '사용감은 어느 정도인가요?', '9317', '2025-07-25 07:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (21, '홍길동', '이 제품은 새 상품인가요?', '1517', '2025-07-26 11:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (27, '해리포터', '가격을 조금 깎아주실 수 있나요?', '7301', '2025-07-25 08:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (20, '도라에몽', '정말로 유리인가요?', '3662', '2025-07-27 02:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (13, '도라에몽', '추가 사진 있을까요?', '1653', '2025-07-25 05:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (10, '슈퍼맨', '이 제품은 새 상품인가요?', '8611', '2025-07-24 15:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (7, '팥쥐', '이 제품은 새 상품인가요?', '7735', '2025-07-26 00:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (18, '신데렐라', '사용감은 어느 정도인가요?', '8143', '2025-07-26 10:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (13, '슈퍼맨', '사용감은 어느 정도인가요?', '3763', '2025-07-25 09:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (13, '해리포터', '교환 가능한가요?', '3136', '2025-07-26 19:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (45, '장발장', '사용감은 어느 정도인가요?', '6053', '2025-07-26 13:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (48, '팥쥐', '배송은 얼마나 걸리나요?', '6337', '2025-07-25 06:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (3, '백설공주', '배송은 얼마나 걸리나요?', '6992', '2025-07-26 02:30:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (13, '신데렐라', '교환 가능한가요?', '8101', '2025-07-27 07:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (10, '장발장', '가격을 조금 깎아주실 수 있나요?', '6752', '2025-07-25 10:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (12, '신데렐라', 'AS는 가능한가요?', '8257', '2025-07-24 11:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (8, '신데렐라', '이 제품은 새 상품인가요?', '7623', '2025-07-27 04:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (8, '해리포터', '배송은 얼마나 걸리나요?', '4918', '2025-07-24 08:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (35, '팥쥐', 'AS는 가능한가요?', '2276', '2025-07-24 16:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (43, '도라에몽', '이 제품은 새 상품인가요?', '2373', '2025-07-25 00:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (38, '팥쥐', '제품 크기가 어떻게 되나요?', '5852', '2025-07-26 17:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (18, '홍길동', 'AS는 가능한가요?', '6231', '2025-07-26 17:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (23, '신데렐라', '가격을 조금 깎아주실 수 있나요?', '8816', '2025-07-27 07:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (23, '신데렐라', 'AS는 가능한가요?', '8040', '2025-07-26 15:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (22, '슈퍼맨', '이 제품은 새 상품인가요?', '8999', '2025-07-26 12:46:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (4, '팥쥐', '교환 가능한가요?', '9147', '2025-07-26 17:00:00');
+INSERT INTO qna (pNo, qQuestioner, qContent, qPw, qDate) VALUES (31, '신데렐라', 'AS는 가능한가요?', '5546', '2025-07-25 08:46:00');
 
+select * from qna where pno = 1 order by qdate desc;
 
-select*from qna;
+update product  set pMemo = "test 수정" , pPrice = 150000 where pNo = 51;
+
+select pSeller, count(pName) from product;

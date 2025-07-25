@@ -3,7 +3,9 @@ package comprehensive.DookDackMarcket_250724.controller;
 // Controller : 통신
 
 import comprehensive.DookDackMarcket_250724.model.dao.ProductDao;
+import comprehensive.DookDackMarcket_250724.model.dao.RankingDao;
 import comprehensive.DookDackMarcket_250724.model.dto.ProductDto;
+import comprehensive.DookDackMarcket_250724.model.dto.RankingDto;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,7 @@ public class ProductController {
 
     // Dao 싱글톤 호출  =======================================
     private ProductDao productDao = ProductDao.getInstance();
+    private RankingDao rankingDao = RankingDao.getInstance();
 
     // 메소드 =======================================
 
@@ -87,7 +90,7 @@ public class ProductController {
     public boolean productDelete(int pNo, String pPw) {
         //[4.1] pno, ppw 유효성 검사
         boolean result = productCheck(pNo, pPw);
-        if(result == false){
+        if (result == false) {
             return false;
         }
         //[4.2] pNo를 매개변수로 dao에 productDelete 실행
@@ -106,10 +109,12 @@ public class ProductController {
     } // func end
 
     //[7] 랭킹조회 ========================
-    //[7.1]
-    //[7.2]
-    //[7.3]
-    //[7.4]
+    public ArrayList<RankingDto> rankingPrint() {
+        //[7.1] rankDao에 함수 실행
+        ArrayList<RankingDto> rankList = rankingDao.rankingPrint();
+        //[7.2] view에 반환
+        return  rankList;
+    }
     //[8] 키워드 검색 조회 ========================
     //[8.1]
     //[8.2]
