@@ -88,7 +88,7 @@ public class ProductDto {
         this.pDate = pDate;
     }
 
-    public boolean ispStatus() {
+    public boolean getsStatus() {
         return pStatus;
     }
 
