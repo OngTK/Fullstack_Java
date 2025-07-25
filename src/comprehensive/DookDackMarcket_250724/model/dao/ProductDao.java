@@ -145,7 +145,7 @@ public class ProductDao {
             //[4.4] SQL 실행
             int count = ps.executeUpdate();
             //[4.5] SQL 실행 결과
-            if(count == 1){
+            if (count == 1) {
                 return true;
             }
             return false;
@@ -188,14 +188,17 @@ public class ProductDao {
 
     } // func end
 
-    //[7] 랭킹조회 =======================
-    //[7.1]
-    //[7.2]
-    //[7.3]
-    //[7.4]
     //[8] 키워드 검색 조회 =======================
-    //[8.1]
-    //[8.2]
-    //[8.3]
-    //[8.4]
+    public ArrayList<ProductDto> keywordSearch(String keyword) {
+        try {
+            //[8.1] SQL 작성
+            //[8.2] SQL 기재
+            //[8.3] SQL 매개변수 대입
+            //[8.4] SQL 실행
+            //[8.5] SQL 실행 결과로 dto 객채 생성
+        } catch (Exception e) {
+            System.out.println("[예외발생] pDao 8 " + e);
+        }
+
+    }
 } // class end

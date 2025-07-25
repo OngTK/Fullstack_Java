@@ -115,11 +115,12 @@ public class ProductController {
         //[7.2] view에 반환
         return  rankList;
     }
-    //[8] 키워드 검색 조회 ========================
+    //[8] 검색조회 ========================
     //[8.1]
     //[8.2]
     //[8.3]
     //[8.4]
+    //[8.5]
 
     //[10] 물품번호, 비밀번호 유효성 검사 ========================
     public boolean productCheck(int pNo, String pPw) {

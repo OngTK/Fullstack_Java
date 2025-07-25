@@ -257,8 +257,13 @@ public class MarketView {
         for(int i = 0 ; i < rankList.size() ; i++){
             System.out.printf("%d \t %s \t %d \n",i+1,rankList.get(i).getpSeller(),rankList.get(i).getCount());
         }
-        // [7.3]
-        // [7.4]
-    }
+    } //func end
+
+    //[8] 검색조회
+    //[8.1]
+    //[8.2]
+    //[8.3]
+    //[8.4]
+    //[8.5]
 
 } //class end

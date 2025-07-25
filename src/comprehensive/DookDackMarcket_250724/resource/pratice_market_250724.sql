@@ -133,4 +133,6 @@ select * from qna where pno = 1 order by qdate desc;
 
 update product  set pMemo = "test 수정" , pPrice = 150000 where pNo = 51;
 
-select pSeller, count(pName) from product;
+select pSeller, count(pName) from product group by pSeller order by count(pName) desc limit 10;
+
+select * from product where ()
