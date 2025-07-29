@@ -20,6 +20,16 @@ package daily.day22_250729;
         2) String.format("형식문자", 문자열)                  : 지정한 형식으로 문자열을 반환하는 메소드
         3) StringBuilder builder = new StringBuilder();     : 문자열을 연결해주는 클래스
             builder.append(문자열A);
+        4) 문자열.charAt( index );                 : 지정한 index의 문자 1개를 반환
+        5) 문자열.length();                        : 문자열의 길이(글자 수) 반환
+        6) 문자열.replace( Asis, Tobe)             : 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 1개         
+           문자열.replaceAll( Asis, Tobe)          : 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 모든           
+        7) 문자열.subString( StartIndex, EndIndex) : 문자열 내의 StartIndex부터 EndIndex 전까지 문자열을 반환
+        8) 문자열.split( 구분문자 )                 : 문자열을 구분문자로 나눈 후, String[] 타입으로 반환
+        9) 문자열.indexOf("찾을문자열")             : 문자열 내 "찾을 문자열"이 존재하면 index 번호 / 없으면 -1을 반환
+        10) 문자열.contains("찾을문자열")           : 문자열 내 "찾을 문자열"이 존재하면 ture / 없으면 false을 반환
+        11) 문자열.getBytes()                      : 문자열을 byte[] 타입으로 반환    
+            new String( byte[] )                  : byte[] 타입을 String 타입으로 반환
 
 */
 
