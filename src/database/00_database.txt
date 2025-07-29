@@ -297,3 +297,46 @@ select tb2.* from tb1 right join tb2 on tb1.pk = tb2.fk where tb1.pk is null;
                                                          | tb1 null >> 교집합이 아닌 부분에 대한 조건|
 | tb2의 모든 속성을 조회 |
 ```
+
+
+[ 무료 데이터베이스 ]============================
+https://freedb.tech/
+
+get Start
+> 회원가입 > 로그인
+
+dashboard의 host/port/dashboard name 확인
+
+워크벤치 가운데 + 클릭
+Connection name : 자유롭게
+
+hostname:
+port
+user name
+password : sotre in vault 클릭 freedb의 password 에서 확인 후 입력
+
+>> Dao의 DB주소를 local에서 free db로 수정
+
+[ jar 생성 및 exe 파일로 변경 ]============================
+1. file > project structure (ctrl alt shift s) > artifacts > + > jar > from module with dependencies... >
+
+2. main class > jar로 변경할 클래스(appstart) 선택 > ok > apply
+
+3. build > build artifacts > out 폴더 > artifacts 폴더 > jar 파일 생성 확인
+
+4. https://sourceforge.net/projects/launch4j/files/launch4j-3/3.50/
+
+5. [launch4j] 최신버전 exe 파일 다운 및 설치
+
+6. Java 설치
+    https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+    Java SE Development Kit 17.0.12
+    Windows x64 Installer 설치
+
+7. 확인
+    cmd > java -version             >version의 17 확인
+
+8. [launch4j] 실행
+
+9. basic tab > jar : 위 3의 jar파일 선택 > out put : 출력 위치
+    > setting 버튼 클릭 : 설정 파일 저장 : 아무대나

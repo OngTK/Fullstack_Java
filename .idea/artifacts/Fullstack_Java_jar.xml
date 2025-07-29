@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fullstack_Java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fullstack_Java_jar</output-path>
+    <root id="archive" name="Fullstack_Java.jar">
+      <element id="module-output" name="Fullstack_Java" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/daily/day17_250722/mysql-connector-j-9.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/comprehensive/DookDackMarcket_250724/resource/mysql-connector-j-9.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/daily/day17_250722/opencsv-2.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
