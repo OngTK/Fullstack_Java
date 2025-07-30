@@ -65,7 +65,7 @@ public class Example2 {
         set1.forEach( (str) -> System.out.println(str));
         
         // [4] 구현체
-        // Set 인터페이스 : 순서·index 없고, element를 중복 저장하는 집합체
+        // Set 인터페이스 : 순서·index 없고, element를 중복 저장할 수 없는 집합체
 
         // [4.1] HashSet : 일반적으로 가장 많이 사용
         HashSet<Integer> hashSet = new HashSet<>();

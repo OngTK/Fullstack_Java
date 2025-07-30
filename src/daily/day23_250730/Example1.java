@@ -5,7 +5,10 @@ package daily.day23_250730;
     : 자료 수집·구조화 방법
     - 종류 : List · Set · Map 인터페이스
     - 구현체와 주요 메소드
-        1) List     : ArrayList, LinkedList, Vector etc
+        1) List
+            : ArrayList, LinkedList, Vector etc
+            : index·순서를 가지는 배열 구조
+
             (1) .add( element )         : element를 리스트 가장 뒤에 추가
                 .add( index, element )  : 지정 index에 element를 삽입
             (2) .set( index, element )  : 지정 index에 element를 수정
@@ -19,9 +22,17 @@ package daily.day23_250730;
             (10) .forEach( ( 반복변수 ) -> { 실행문 } );
                 -> : 화살표 연산자
                 list의 첫번째 요소부터 마지막 요소까지 순서대로 반복변수에 대입하여 실행
-        2) Set      : HashSet, TreeSet etc
+        2) Set
+            : HashSet, TreeSet etc
+            : index·순서를 가지지 않는 집합 구조
              @@ Example2 확인
-        3) Map      : HashMap, TableMap etc
+
+
+        3) Map
+            : HashMap, TableMap etc
+            : Key·Value를 한 쌍·entry로 하는 여러 쌍의 데이터를 저장하는 구조
+
+
 
 */
 
