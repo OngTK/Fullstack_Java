@@ -1946,17 +1946,21 @@ public class Practice {
 
 
 ### 2) 자동(묵시적) 타입변환
-(1) 기본타입
+#### (1) 기본타입
 byte > short > int > long > float > double
-(2) 참조타입
+
+#### (2) 참조타입
 하위클래스 타입 > 상위클래스 타입
 `class 하위 extents 상위` 상속 관계일 때 만, 가능
+
 ### 3) 강제(명시적) 타입변환
-(1) 기본타입
+#### (1) 기본타입
 double > float > long > int > short > byte
-(2) 참조타입
+
+#### (2) 참조타입
 상위클래스 타입 > 하위클래스 타입
 단, 이전에 **하위>상위 변환**이 있었던 객체에 한해서만 가능
+
 ```
 하위 obj1 = new 하위();     // 최초 타입 : 하위
 상위 obj2 = obj1;           // 상속에 따라 하위 >> 상위
@@ -1967,12 +1971,91 @@ double > float > long > int > short > byte
 
 ```java
 
+// [1] 동물 class 생성
+class 동물{
+    // 멤버변수
+    String name;
+
+    // 메소드
+    void show(){
+        System.out.println("내 이름은 " + name);
+    }
+}
+// [2] 조류 class 생성 - 동물 class 상속
+class 조류 extends 동물{
+
+}
+
+// [3] 참새 class 생성 - 조류 class 상속
+class 참새 extends 조류{
+
+}
+
+// [4] 닭 class 생성 - 조류 class 상속
+class 닭 extends 조류{
+
+}
+
 public class Practice {
     public static void main(String[] args) {
+    // (1) 참새(객체)의 형식/타입/클래스 >> 조류로 변경
+        조류 bird2 = sparrow; // 객체가 바뀌는 것이 아니라!! 타입만 바뀌는 것!!
+
+        // (2) 참새 >> 동물
+        동물 amimal2 = sparrow;
+
+        // (3) 동물 >> 참새 : 불가능
+        // 참새 sparrow2 = animal; Error 발생!
+        // 조류 bird3 = animal;    Error 발생!
+
+        // ※ 상위 타입에서 하위타입 변경 가능 조건!!
+        // 객체의 최초 타입이 하위이면서, 상위 타입을 거치고 돌아올 경우만 가능
+
+        닭 obj1 = new 닭();     // 최초 타입 : 닭
+        동물 obj2 = obj1;       // 상속에 따라 동물 타입 가능
+        닭 obj3 = (닭)obj2;     // 최초 타입과 일치한다면 강제 타입 변환
+
+        // ※ 형제 관계에서는 타입변환 불가
     }
 }
 ```
 
+---
+
+# Java_17_
+
+
+---
+
+# Java_18_
+
+
+---
+
+# Java_19_
+
+---
+
+# Java_20_
+
+
+---
+
+# Java_21_
+
+
+---
+
+# Java_22_
+
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+
+    }
+}
+```
 
 
 
