@@ -645,7 +645,7 @@ new CSVReader( new FileReader( 경로 ) ) : CSV를 입력하는 클래스
 new CSVWriter( new FileWriter( 경로 ) ) : CSV 출력하는 클래스
      .writeAll( List객체 ) : List 객체를 CSV로 내보내는 함수
 
-[ JDBC ]
+[ JDBC ] - day 17
     Java DataBase Connect
 
     1) 라이브러리 준비
@@ -677,3 +677,182 @@ new CSVWriter( new FileWriter( 경로 ) ) : CSV 출력하는 클래스
                 - 조회된 레코드 중에서 다음 레코드 이동 함수
             [2] rs.get타입("속성명" or colNo);
                 - 현재 레코드에서 지정한 속성명의 값 반환 함수
+
+```Java
+DB연결 방법에 대한 예시☆★☆★☆★☆★☆★☆★☆★☆★☆★
+```
+
+[ 자바의 기본 클래스 ] day 20
+    1. Object 클래스
+        - 모든 클래스의 최상위 클래스 (모든 클래스와 상속)
+        - 다형성에 따라, 모든 자료를 Object 타입으로 분류 가능
+
+        1) 주요 메소드
+        - .toString()
+            : 객체의 주소를 반환
+            : 주로 class에서 override 하여 값이 문자열로 출력하도록 함
+        - .equals()
+            : 두 객체 내의 값을 비교하여 그 결과를 반환하는 함수
+        - .hashCode()
+            : 객체를 정수로 반환
+
+    2. Class 클래스
+        - 클래스의 정보를 담는 Class
+        - 리플렉션 : 실행 중 객체할당(동적할당), 멤버 분석 시
+
+        1) 주요 메소드
+            - class.forname("Class경로")
+                * 지정한 경로에서 클래스를 로드하는 함수
+                * 주로 외부 라이브러리 사용 시 이용
+                * 예외처리 필수 : 클래스 로딩 성공 / 실패(예외 발생)
+            - .getField()
+                * 클래스의 모든 멤버변수명을 배열로 반환
+            - .getConstructors()
+                * 클래스의 모든 생성자를 배열로 반환
+            - .getMethods()
+                * 클래스의 모든 메소드를 배열로 반환
+
+    3. Wrapper 클래스
+        - 기본타입 8개를 참조 타입으로 사용하기 위해 이용
+            * 기본타입은 메소드(기능)이 없으므로 Wrapper를 통해 메소드를 제공받음
+        1) 종류
+            Byte Short Integer Long Boolean Float Double
+
+        2) 주요 메소드
+            - .parse타입("문자열");
+                * 문자열 > 기본타입 변환
+                * 문자열을 parse뒤의 타입으로 변환
+            - String.valueOf( 자료값 )
+                * 자료의 타입을 문자열로 변환
+
+    4. LocalDate 클래스
+        - 시스템의 날짜/시간 정보 클래스
+        1) 주요 메소드
+
+            - LocalDateTime.now()
+                * yyyy-MM-ddThh:mm:ss.000000 (nano-sec) 형태로 출력
+                * 타입 LocalDateTime
+            - LocalDateTime.of(년,월,일,시,분,초)
+                * 지정한 날짜 형태로 반환
+                * 타입 LocalDateTime
+
+            - 날짜 형식 지정
+                - DateTimeFormatter 포멧변수명 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+                    * y 연 / M 월 / d 일 / h 시 / m 분 / s 초
+                - localDateTime.format(포멧변수명);
+                    * 지정한 포멧으로 날짜·시간을 String 타입으로 반환
+
+            - 날짜·시간 객체 내에서 원하는 부분만 int 타입으로 반환
+                - .getYear();
+                - .getMonthValue();
+                - .getDayOfMonth();
+                - .getHour();
+                - .getMinute();
+                - .getSecond();
+
+            - 날짜 계산 (반환 타입 LocalDateTime)
+                - .plusDays(x);
+                    * x일 이후 날짜
+                - .minusDays(x);
+                    * x일 이전 날짜
+
+[ 스레드 Thread ] day21
+1) 정의
+    - 하나의 프로세스 내에서 실행되는 작업의 단위 ≒ 실행 흐름의 단위
+2) 목적
+    - 스레드를 통해 코드(명령어)를 읽어 CPU가 명령어를 처리하도록 함
+3) 자바에서의 스레드
+    (1) main method
+        : public static void main( String[] args ){} >> main thread를 내장하고 있음
+4) 사용법
+    (1) main thread·method 선언
+        : 자바 프로그램은 항상 main thread·method로 부터 실행 흐름이이 시작됨
+
+[ 멀티스레드 Multi Thread ]
+1) 정의
+    main 스레드 외 새로운 작업 스레드를 생성하여 동시 작업
+2) 목적
+    - 병렬 처리 = 동시에 여러 작업을 수행하기 위해
+3) 사용처
+    - Wep / App, 채팅 / 첨부파일 / JDBC, 동기화/비동기화 처리
+4) 사용법
+    (1) 익명 구현체
+        ``` java
+        Thread thread = new Thread(
+            new Runnable(){
+                @Override
+                public void run(){}
+            };
+        );
+        thread.start();
+        ```
+    (2) 구현체
+        ``` java
+        Class 작업thread implements Runnable {
+                @Override
+                public void run(){}
+            };
+        );
+        // main===============================
+        public class{
+            public static void main(String[] args) {
+                Thread thread = new Thread( new 작업Thread );
+                thread.start();
+            }
+        }
+        ```
+
+    (3) 상속
+        ※ 상속은 클래스당 1번밖에 되지 않아서 사용성이 떨어짐
+        ``` java
+        class 작업thread extends Thread {
+                @Override
+                public void run(){}
+            };
+        // main===============================
+        public class{
+            public static void main(String[] args) {
+                작업thread thread = new 작업thread();
+                thread.start();
+            }
+        }
+        ```
+
+5) 주요 Class/Interface
+    (1) Thread Class
+        ① .start()
+        run 추상 메소드를 실행하는 메소드
+
+    (2) Runnable Interface
+        ① run(){} 추상 메소드
+            : 작업 스레드가 실행되는 최초 시작점
+
+[ String 클래스 ] day22
+    - 컴퓨터는 문자는 알지만 문자열은 알지 못함
+    - 문자 번역 : 바이트 <-- 번역 --> 문자
+        1. 아스키코드
+            : 7비트, 128문자 표현 규칙, 영문, 숫자, 특수문자
+        2. 유니코드
+            : 전 세계 공용어, Java에서 사용
+
+    1. 문자열 사용하는 방법
+        1) "문자열"                : 큰 따옴표("")안에 문자열 표현
+        2) new String("문자열")    : 생성자를 이용한 문자열 표현
+    2. 문자열 비교 방법
+        1) 문자열A == 문자열B       : 리터럴 문자만 비교 가능
+        2) 문자열A.equals(문자열B)  : 리터럴과 객체 문자열 비교 가능
+    3. 주요 메소드
+        1) 문자열A.concat(문자열B)                            : 연결 메소드
+        2) String.format("형식문자", 문자열)                  : 지정한 형식으로 문자열을 반환하는 메소드
+        3) StringBuilder builder = new StringBuilder();     : 문자열을 연결해주는 클래스
+            builder.append(문자열A);
+        4) 문자열.charAt( index );                 : 지정한 index의 문자 1개를 반환
+        5) 문자열.length();                        : 문자열의 길이(글자 수) 반환
+        6) 문자열.replace( Asis, Tobe)             : 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 1개
+           문자열.replaceAll( Asis, Tobe)          : 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 모든
+        7) 문자열.subString( StartIndex, EndIndex) : 문자열 내의 StartIndex부터 EndIndex 전까지 문자열을 반환
+        8) 문자열.split( 구분문자 )                 : 문자열을 구분문자로 나눈 후, String[] 타입으로 반환
+        9) 문자열.indexOf("찾을문자열")             : 문자열 내 "찾을 문자열"이 존재하면 index 번호 / 없으면 -1을 반환
+        10) 문자열.contains("찾을문자열")           : 문자열 내 "찾을 문자열"이 존재하면 ture / 없으면 false을 반환
+        11) 문자열.getBytes()                      : 문자열을 byte[] 타입으로 반환
+            new String( byte[] )                  : byte[] 타입을 String 타입으로 반환

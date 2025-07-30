@@ -1,0 +1,103 @@
+package daily.day23_250730;
+
+/*
+[ 컬렉션 프레임 워크 ]
+    : 자료 수집·구조화 방법
+    - 종류 : List · Set · Map 인터페이스
+    - 구현체와 주요 메소드
+        1) List     : ArrayList, LinkedList, Vector etc
+            (1) .add( element )         : element를 리스트 가장 뒤에 추가
+                .add( index, element )  : 지정 index에 element를 삽입
+            (2) .set( index, element )  : 지정 index에 element를 수정
+            (3) .get( index )           : 지정 index에 element를 호출
+            (4) .size()                 : 리스트 내 element의 개수 반환
+            (5) .contains( element )    : element가 존재하면 true, 없으면 false
+            (6) .indexOf( element )     : element가 존재하면 index 수를 반환, 없으면 -1을 반환
+            (7) .remove( index )        : index의 element를 삭제
+            (8) .isEmpty()              : element가 비어있으면 true, element가 존재하면 false
+            (9) .clear()                : list의 모든 element를 삭제
+            (10) .forEach( ( 반복변수 ) -> { 실행문 } );
+                -> : 화살표 연산자
+        2) Set      : HashSet, TreeSet etc
+        3) Map      : HashMap, TableMap etc
+
+*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Example1 {
+    public static void main(String[] args) {
+
+        // [1] 인터페이스타입 변수명 = new 클래스명();
+        List<String> list1 = new ArrayList<>();         // List 인터페이스에 ArrayList 클래스 객체를 생성 (다형성에 따라 가능)
+        ArrayList<String> list2 = new ArrayList<>();    // ArrayList 클래스 객체 생성
+
+        // [2] List 인터페이스 주요 메소드
+        // [2.1] .add( 자료 ) : 자료를 리스트에 마지막 요소로 추가
+        list2.add("유재석");
+        list2.add("강호동");
+        list2.add("신동엽");
+        list2.add("유재석");
+        System.out.println(list2);                  // [유재석, 강호동, 신동엽, 유재석]
+
+        list2.add(3, "박명수");        // 지정 index에 element를 삽입
+        System.out.println(list2);                  // [유재석, 강호동, 신동엽, 박명수, 유재석]
+
+        // [2.2] .set( element ) : 지정 index에 element를 수정
+        list2.set(4, "정준하");
+        System.out.println(list2);                  // [유재석, 강호동, 신동엽, 박명수, 정준하]
+
+        // [2.3] .get( index ) : 지정 index에 element를 호출
+        String result = list2.get(2);
+        System.out.println(result);                 // 신동엽
+
+        // [2.4] .size() : 리스트 내 element의 개수 반환
+        System.out.println(list2.size());           //5
+
+        // [2.5] .contains( element ) : element가 존재하면 true, 없으면 false
+        boolean bool = list2.contains("서장훈");
+        System.out.println(bool);                              // false
+
+        // [2.6] .indexOf( element ) : element가 존재하면 index 수를 반환, 없으면 -1을 반환
+        System.out.println(list2.indexOf("서장훈"));           // -1  >> 존재하지 않음
+        System.out.println(list2.indexOf("유재석"));           // 0
+
+        // [2.7] .remove( index ) : index의 element를 삭제
+        list2.remove(1);                              // index 1 : 강호동
+        System.out.println(list2);                          //[유재석, 신동엽, 박명수, 정준하]
+
+        // [2.8] .isEmpty() : element가 비어있으면 true, element가 존재하면 false
+        System.out.println(list1.isEmpty());                // true
+        System.out.println(list2.isEmpty());                // flase
+        // 유효성 검사를 통해 배열이 비어있는지 확인
+
+        // [2.9] .clear() : list의 모든 element를 삭제
+//        list2.clear();
+//        System.out.println(list2);                          // []
+
+        // [2.10] list와 반복문 활용
+        // [2.10.1] 일반 for 문
+        for(int i = 0 ; i < list2.size() ; i++){
+            System.out.println(list2.get(i));
+        }
+
+        // [2.10.2] 향상된 for 문
+        for(String str : list2){
+            System.out.println(str);
+        }
+
+        // [2.10.3] forEach 문 ☆★☆★☆★☆★☆★☆★☆★
+        // list2.forEach( ( 반복변수 ) -> { 실행문 } );
+        // list의 첫번째 요소부터 마지막 요소까지 순서대로 반복변수에 대입하여 실행한다.
+        System.out.println("[2.10.3]");
+        list2.forEach( str -> {System.out.println(str);} );
+
+        // 람다식 함수
+        //      복잡한 함수 선언 방식을 간소화
+        //      ( 매개변수 ) -> { 실행문 }
+
+
+
+    } // main end
+} // class end

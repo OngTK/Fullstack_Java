@@ -312,8 +312,8 @@ Connection name : 자유롭게
 
 hostname:
 port
-user name
-password : sotre in vault 클릭 freedb의 password 에서 확인 후 입력
+username
+password : store in vault 클릭 freedb의 password 에서 확인 후 입력
 
 >> Dao의 DB주소를 local에서 free db로 수정
 
@@ -339,4 +339,6 @@ password : sotre in vault 클릭 freedb의 password 에서 확인 후 입력
 8. [launch4j] 실행
 
 9. basic tab > jar : 위 3의 jar파일 선택 > out put : 출력 위치
+    [header tab] : console
+    [JRE tab] : min jre version : 1.8
     > setting 버튼 클릭 : 설정 파일 저장 : 아무대나
