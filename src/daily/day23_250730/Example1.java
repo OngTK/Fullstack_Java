@@ -18,13 +18,17 @@ package daily.day23_250730;
             (9) .clear()                : list의 모든 element를 삭제
             (10) .forEach( ( 반복변수 ) -> { 실행문 } );
                 -> : 화살표 연산자
+                list의 첫번째 요소부터 마지막 요소까지 순서대로 반복변수에 대입하여 실행
         2) Set      : HashSet, TreeSet etc
+             @@ Example2 확인
         3) Map      : HashMap, TableMap etc
 
 */
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class Example1 {
     public static void main(String[] args) {
@@ -93,10 +97,35 @@ public class Example1 {
         System.out.println("[2.10.3]");
         list2.forEach( str -> {System.out.println(str);} );
 
-        // 람다식 함수
+        // 람다식 함수 =======================================================================☆★☆★☆★☆★☆★☆★☆★
         //      복잡한 함수 선언 방식을 간소화
         //      ( 매개변수 ) -> { 실행문 }
 
+
+        // =======================================================================☆★☆★☆★☆★☆★☆★☆★
+        // [ ArrayList ]    : 배열 구조로 사용되는 List 구현체 + 메소드 비동기화 = 단일 스레드 플랫품
+        ArrayList< Integer > arrayList = new ArrayList<>();
+
+        // [ Vector ]       : 배열 구조로 사용되는 List 구현체 + 메소드 동기화처리 = 멀티 스레드 플랫폼
+        Vector<Integer> vector = new Vector<>();
+
+        // [ LinkedList ]   : 링크·체인·꼬리연결 구조로 사용되는 List 구현체 + 중간 삽입/삭제를 통한 효율성 극대화
+        // 링크구조
+        //                  [ 5 ] → [ 4 ] → [ 7 ] → [ 10 ]
+        // 연결 : 자신 + 뒤 값의 주소
+        //               5·4주소 → 4·7주소 → 7·10주소 → 10·뒤 주소X
+        // if) 중간 [ 4 ] 삭제 시, index를 전체 옮기는 것이 아니라,
+        //                      삭제된 element의 앞에 연결된 뒤의 주소만 수정함 >> 처리가 빠름!!!
+
+        //                  [ 5 ] → [ 7 ] → [ 10 ]
+        //               5·7주소 → 7·10주소 → 10·뒤 주소X
+
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        List< Integer > integerList;
+        integerList = arrayList;
+        integerList = vector;
+        integerList = linkedList;
 
 
     } // main end
