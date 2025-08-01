@@ -106,7 +106,7 @@ public class LibraryView {
             else if (num == 3) returnBook();
             else if (num == 4) logCheck();
             else if (num == 5) bookCheck();
-            else if (num == 6) signOut();
+            else if (num == 6) break;
             else System.out.println("[경고] 존재하지 않는 메뉴입니다.");
         }
     }
