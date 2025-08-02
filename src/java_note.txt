@@ -577,7 +577,7 @@
 
     9) 익명 구현체
 
-[ 예외 처리 ] @@@@@=======================================================
+[ 예외 처리 ]
 1) 예외
     - 개발자가 구현한 로직이나 사용자 영향으로 발생한 문제
 
@@ -630,6 +630,11 @@
         (2) .read( 바이트배열 )
             바이트 배열에서 읽어온 파일들을 저장하는 함수
 
+[ 문자열 관련 메소드 ]
+    1) 문자열.getBytes()
+        문자열을 Byte 배열로 반환하는 함수
+    2) new String( 바이트배열 )
+        바이트 배열을 문자열로 반환하는 함수
 
 [ OpenCSV ]
 자바에서 CSV 파일 읽기, 쓰기를 편하게 해주는 API들을 제공하는 라이브러리
@@ -682,78 +687,78 @@ DB연결 방법에 대한 예시☆★☆★☆★☆★☆★☆★☆★☆★
 ```
 
 [ 자바의 기본 클래스 ] day 20
-    1. Object 클래스
-        - 모든 클래스의 최상위 클래스 (모든 클래스와 상속)
-        - 다형성에 따라, 모든 자료를 Object 타입으로 분류 가능
+1. Object 클래스
+    - 모든 클래스의 최상위 클래스 (모든 클래스와 상속)
+    - 다형성에 따라, 모든 자료를 Object 타입으로 분류 가능
 
-        1) 주요 메소드
-        - .toString()
-            : 객체의 주소를 반환
-            : 주로 class에서 override 하여 값이 문자열로 출력하도록 함
-        - .equals()
-            : 두 객체 내의 값을 비교하여 그 결과를 반환하는 함수
-        - .hashCode()
-            : 객체를 정수로 반환
+    1) 주요 메소드
+    - .toString()
+        : 객체의 주소를 반환
+        : 주로 class에서 override 하여 값이 문자열로 출력하도록 함
+    - .equals()
+        : 두 객체 내의 값을 비교하여 그 결과를 반환하는 함수
+    - .hashCode()
+        : 객체를 정수로 반환
 
-    2. Class 클래스
-        - 클래스의 정보를 담는 Class
-        - 리플렉션 : 실행 중 객체할당(동적할당), 멤버 분석 시
+2. Class 클래스
+    - 클래스의 정보를 담는 Class
+    - 리플렉션 : 실행 중 객체할당(동적할당), 멤버 분석 시
 
-        1) 주요 메소드
-            - class.forname("Class경로")
-                * 지정한 경로에서 클래스를 로드하는 함수
-                * 주로 외부 라이브러리 사용 시 이용
-                * 예외처리 필수 : 클래스 로딩 성공 / 실패(예외 발생)
-            - .getField()
-                * 클래스의 모든 멤버변수명을 배열로 반환
-            - .getConstructors()
-                * 클래스의 모든 생성자를 배열로 반환
-            - .getMethods()
-                * 클래스의 모든 메소드를 배열로 반환
+    1) 주요 메소드
+        - class.forname("Class경로")
+            * 지정한 경로에서 클래스를 로드하는 함수
+            * 주로 외부 라이브러리 사용 시 이용
+            * 예외처리 필수 : 클래스 로딩 성공 / 실패(예외 발생)
+        - .getField()
+            * 클래스의 모든 멤버변수명을 배열로 반환
+        - .getConstructors()
+            * 클래스의 모든 생성자를 배열로 반환
+        - .getMethods()
+            * 클래스의 모든 메소드를 배열로 반환
 
-    3. Wrapper 클래스
-        - 기본타입 8개를 참조 타입으로 사용하기 위해 이용
-            * 기본타입은 메소드(기능)이 없으므로 Wrapper를 통해 메소드를 제공받음
-        1) 종류
-            Byte Short Integer Long Boolean Float Double
+3. Wrapper 클래스
+    - 기본타입 8개를 참조 타입으로 사용하기 위해 이용
+        * 기본타입은 메소드(기능)이 없으므로 Wrapper를 통해 메소드를 제공받음
+    1) 종류
+        Byte Short Integer Long Boolean Float Double
 
-        2) 주요 메소드
-            - .parse타입("문자열");
-                * 문자열 > 기본타입 변환
-                * 문자열을 parse뒤의 타입으로 변환
-            - String.valueOf( 자료값 )
-                * 자료의 타입을 문자열로 변환
+    2) 주요 메소드
+        - .parse타입("문자열");
+            * 문자열 > 기본타입 변환
+            * 문자열을 parse뒤의 타입으로 변환
+        - String.valueOf( 자료값 )
+            * 자료의 타입을 문자열로 변환
 
-    4. LocalDate 클래스
-        - 시스템의 날짜/시간 정보 클래스
-        1) 주요 메소드
+4. LocalDate 클래스
+    - 시스템의 날짜/시간 정보 클래스
+    1) 주요 메소드
 
-            - LocalDateTime.now()
-                * yyyy-MM-ddThh:mm:ss.000000 (nano-sec) 형태로 출력
-                * 타입 LocalDateTime
-            - LocalDateTime.of(년,월,일,시,분,초)
-                * 지정한 날짜 형태로 반환
-                * 타입 LocalDateTime
+        - LocalDateTime.now()
+            * yyyy-MM-ddThh:mm:ss.000000 (nano-sec) 형태로 출력
+            * 타입 LocalDateTime
+        - LocalDateTime.of(년,월,일,시,분,초)
+            * 지정한 날짜 형태로 반환
+            * 타입 LocalDateTime
 
-            - 날짜 형식 지정
-                - DateTimeFormatter 포멧변수명 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-                    * y 연 / M 월 / d 일 / h 시 / m 분 / s 초
-                - localDateTime.format(포멧변수명);
-                    * 지정한 포멧으로 날짜·시간을 String 타입으로 반환
+        - 날짜 형식 지정
+            - DateTimeFormatter 포멧변수명 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+                * y 연 / M 월 / d 일 / h 시 / m 분 / s 초
+            - localDateTime.format(포멧변수명);
+                * 지정한 포멧으로 날짜·시간을 String 타입으로 반환
 
-            - 날짜·시간 객체 내에서 원하는 부분만 int 타입으로 반환
-                - .getYear();
-                - .getMonthValue();
-                - .getDayOfMonth();
-                - .getHour();
-                - .getMinute();
-                - .getSecond();
+        - 날짜·시간 객체 내에서 원하는 부분만 int 타입으로 반환
+            - .getYear();
+            - .getMonthValue();
+            - .getDayOfMonth();
+            - .getHour();
+            - .getMinute();
+            - .getSecond();
 
-            - 날짜 계산 (반환 타입 LocalDateTime)
-                - .plusDays(x);
-                    * x일 이후 날짜
-                - .minusDays(x);
-                    * x일 이전 날짜
+        - 날짜 계산 (반환 타입 LocalDateTime)
+            - .plusDays(x);
+                * x일 이후 날짜
+            - .minusDays(x);
+                * x일 이전 날짜
 
 [ 스레드 Thread ] day21
 1) 정의
@@ -986,3 +991,30 @@ DB연결 방법에 대한 예시☆★☆★☆★☆★☆★☆★☆★☆★
 |forEach|O|O|O|
 
 ※ Set, Map 인터페이스는 index를 가지지 않으므로 일반 for문을 사용할 수 없음!!
+
+
+[ jar 생성 및 exe 파일로 변경 ]============================
+1. file > project structure (ctrl alt shift s) > artifacts > + > jar > from module with dependencies... >
+
+2. main class > jar로 변경할 클래스(appstart) 선택 > ok > apply
+
+3. build > build artifacts > out 폴더 > artifacts 폴더 > jar 파일 생성 확인
+
+4. https://sourceforge.net/projects/launch4j/files/launch4j-3/3.50/
+
+5. [launch4j] 최신버전 exe 파일 다운 및 설치
+
+6. Java 설치
+    https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+    Java SE Development Kit 17.0.12
+    Windows x64 Installer 설치
+
+7. 확인
+    cmd > java -version             >version의 17 확인
+
+8. [launch4j] 실행
+
+9. basic tab > jar : 위 3의 jar파일 선택 > out put : 출력 위치
+    [header tab] : console
+    [JRE tab] : min jre version : 1.8
+    > setting 버튼 클릭 : 설정 파일 저장 : 아무대나
