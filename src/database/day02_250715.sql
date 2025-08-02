@@ -4,11 +4,10 @@
 -- [1] 데이터베이스 생성
 create database mydb0715;
 
--- [2] DB 활서화
+-- [2] DB 활성화
 use mydb0715;
 
 -- [3] 현재 활성화된 DB 안에 table 생성
--- `create table test1( 필드명·속성명 속성타입 );`
 create table test1( 필드명 int );
 
 -- [4] DB 내에 table 목록 조회

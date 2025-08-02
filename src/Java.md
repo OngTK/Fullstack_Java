@@ -1817,18 +1817,21 @@ public class Practice {
 
 
 ```java
+// 인터페이스 선언
 interface Soundable {
-    void makeSound();
+    void makeSound();		//실행문이 없는 추상메소드 makeSound()선언
 }
 
+// Soundable 인터페이스 구현을 위한 Cat class
 class Cat implements Soundable {
-    public void makeSound() {
+    public void makeSound() {			//makeSound() 메소드 구현 
         System.out.println("야옹");
     }
 }
 
+// Soundable 인터페이스 구현을 위한 Dog class
 class Dog implements Soundable {
-    public void makeSound() {
+    public void makeSound() {			//makeSound() 메소드 overriding
         System.out.println("멍멍");
     }
 }
@@ -1838,21 +1841,19 @@ public class Practice {
 
         Cat cat = new Cat();
         Dog dog = new Dog();
-        cat.makeSound();
-        dog.makeSound();
+        cat.makeSound();			// 출력 : 야옹
+        dog.makeSound();			// 출력 : 멍멍
 
     }
 }
 ```
-
 #### [문제 2] 인터페이스 상수
 1) RemoteControl 인터페이스를 만드세요.
 2) 이 인터페이스 안에, public static final로 최대 볼륨 MAX_VOLUME = 10과 최소 볼륨 MIN_VOLUME = 0 상수를 정의하세요.
 3) main 함수에서 객체를 생성하지 않고, RemoteControl.MAX_VOLUME과 같이 인터페이스 이름으로 직접 접근하여 두 상수를 출력하세요.
 
-
-
 ```java
+// RemoteControl 인터페이스 선언
 interface RemoteControl {
     // 멤버변수
     // interface의 멤버변수는 `public static final`이 자동이므로 생략 가능
@@ -1862,8 +1863,12 @@ interface RemoteControl {
 
 public class Practice {
     public static void main(String[] args) {
-        System.out.println(RemoteControl.MAX_VOLUME);
-        System.out.println(RemoteControl.MIN_VOLUME);
+        System.out.println(RemoteControl.MAX_VOLUME);		// 출력 : 10 
+        System.out.println(RemoteControl.MIN_VOLUME);		// 출력 : 0
+
+        // RemotoeControl은 [인터페이스이]므로 
+        // `RemotoeControl 변수 = new RemotoeControl()`와 같이 인스턴스 불가!!
+        // `타입.메소드();`와 같이 바로 메소드 실행은 가능!!
     }
 }
 ```
@@ -1875,19 +1880,25 @@ public class Practice {
 4) main 함수에서 Duck 객체를 생성하고, fly()와 swimmable() 메소드를 모두 호출하여 결과를 확인하세요.
 
 ```java
+// Flyable 인터페이스 선언
 interface Flyable {
+    // fly() 추상 메소드 선언
     void fly();
 }
 
+// Swimmalbe 인터페이스 선언
 interface Swimmalbe {
     void swimmable();
 }
 
+// 상기의 두 인터페이스를 구현하는 Duck class
 class Duck implements Flyable, Swimmalbe {
+    // Flyable 인터페이스의 fly() 메소드를 overriding
     public void fly() {
         System.out.println("하늘을 납니다.");
     }
 
+    // Swimmalbe 인터페이스의 swimmable() 메소드를 overriding
     public void swimmable() {
         System.out.println("물에서 헤엄칩니다.");
     }
@@ -1934,6 +1945,9 @@ public class Practice {
 |상위|하나의 상위클래스||다수의 인터페이스|
 |메소드|**선택적 오버라이딩**  ||**필수적 오버라이딩**|
 |멤버|멤버변수, 생성자, 메소드 ||상수, 추상메소드|
+
+---
+
 
 # Java_16_다형성
 ## 1. 다형성
@@ -2022,39 +2036,1193 @@ public class Practice {
 
 ---
 
-# Java_17_
+# Java_17_예외·Exception
+
+## 1. 예외처리 
+---
+### 1) 예외
+   - 개발자가 구현한 로직이나 사용자 영향으로 발생한 문제
+※ 시스템 오류
+   - 시스템이 종료되는 심각한 수준의 문제
+
+### 2) 예외의 종류
+
+#### (1) 일반 예외
+- 컴파일(실행)될 때, 예외 처리 코드 여부 검사, 즉 인위적으로 발생시킨 예외
+- 입출력, 네트워크, 파일, JBDC, 등 외부와 연동 시, 주로 사용
+- ex)
+  - Class.forName( 클래스경로 );    : 해당 경로의 클래스 유무를 확인하는 함수
+  - Thread.sleep( 미리초 );        : 1000 미리초(1초)간 thread가 sleep(정지)
+
+#### (2) 실행 예외
+- 컴파일(실행)될 때, 예외 처리 코드 여부 검사를 하지 않고 발생하는 예외
+- 개발자의 경험 의존도가 높음
+### 3) 특징
+- 예외 발생 시, 예외 발생 멘트와 함께 시스템이 중지됨
+- 실행 예외처리를 통해, 예외 발생 시 예외를 고치는 것이 아닌 흐름을 제어
+- 프로그램의 24시간 중단 없이 실행하기 위한 안전한 로직 구현을 위해 사용
+### 4) 예외 클래스
+Exception : 모든 예외들의 상위 클래스(SuperClass)
+ClassNotFoundException : 클래스를 찾지 못하였을 때, 예외 발생 정보를 저장하는 클래스
+InterruptedException : 흐름이 중단되었을 때, 예외 발생 정보를 저장하는 클래스
+NullPointerException : 실제 값이 아닌 null을 가지고 있는 객체/변수를 호출할 때 발생
+NumberFormatException : 숫자가 아닌 리터럴을 숫자로 변환할 경우 발생
+ArrayIndexOutOfBoundsException : 정해진 배열의 크기보다 크거나 음수 index에 대한 요청
+InputMismatchException : input의 타입이 일치하지 않을 때
+
+### 5) 사용법
+```java
+   try { 
+        '예외가 발생할 것 같은 코드 or 일반예외'
+    } catch( 예외클래스명 매개변수명 ){ 
+        `예외발생시 실행문` 
+    } catch(){
+    } finally{'예외 유무와 상관없이 무조건 실행'}
+```
+```java
+public class Practice {
+    public static void main(String[] args) {
+        // [1] 일반 예외
+        // 예외 유무와 상관없이 무조건 예외처리를 하는 인위적으로 예외를 발생시킴
+        try {
+            Class.forName("java.lang.String");
+            //Class.forName( 클래스경로 );   : 해당 경로의 클래스를 읽어오는 함수
+            // String Class가 존재함 >> 밑의 catch 까지 실행하지 않음
+        } catch (ClassNotFoundException e) {
+            // catch( 예외클래스면 매개변수명 ) // 예외발생 시 처리를 위한 코드
+            System.out.println("[예외발생] String 클래스가 없습니다." + e);
+        }
+
+        // [2] 일반예외, 예외 발생
+        try {
+            Class.forName("java.lang.String2");
+            // String2 Class는 존재하지 않음
+        } catch (ClassNotFoundException e) {
+            System.out.println("[예외발생] String2 클래스가 없습니다." + e);
+            // String2 Class가 없으므로 >> catch 실행
+        }
+    }
+}
+```
+
+## 2. 예외 던지기
+---
+
+예외 발생 시, 메소드를 호출한 곳으로 예외를 전달(return)
+한 곳에서 예외처리를 하기 위해 메소드 내부에서 발생한 예외를 다른 곳으로 이동·전달·리턴할 수 있음
+```java
+
+public class Practice {
+    //(1) 예외가 발생하는 메소드 생성
+    // (3) 예외 발생시 예외 던지기(throws)
+    // 메소드명() throws 예외클래스명{}
+
+    // 일반예외 클래스는 주로 throws 예외 코드가 존재
+    // 실행예외 클래스들은 주로 throws 예외 코드가 없음
+    public static void method1() throws NullPointerException{
+        String str = null;
+        System.out.println(str.length());       // 예외 발생이 예측됨
+    }
+
+    public static void method2() throws ClassNotFoundException {
+        Class.forName("com.sql.jdbc"); //클래스가 있는지 없는지 모름, 일반예외
+    }
+
+    public static void main(String[] args) {
+        try {
+            //(2) 예외 메소드 실행
+            method1();
+        } catch ( NullPointerException e) {
+            System.out.println("[method1의 예외 발행]" + e );
+        }
+
+        try {
+            method2();
+        } catch (ClassNotFoundException e){
+            System.out.println("[method2의 예외발생]" + e);
+        }
+    }
+}
+```
 
 
 ---
 
-# Java_18_
+# Java_18_파일 입·출력, OpenCSV 라이브러리
 
-
+## 1. 파일 입·출력 클래스
 ---
+※ 파일 입출력 클래스 사용시 반드시 try-catch 예외처리 필요!
+- Java에서 작성한 String, int 등을 파일로 저장하기 위해서는, 해당 내용을 byte로 바꿔야함.
+- 또한 파일에 저장된 byte를 java로 불러일으킬 때, 또 다시 번역이 필요함
 
-# Java_19_
+### 1) FileOutputStream class
+- 쓰기·출력·내보내기(Java > web, local file)
+#### (1) .write( 바이트배열 )
+- 바이트 배열을 지정된 파일에 작성하는 함수
+#### (2) 문자열.getBytes()
+- 문자열을 바이트 배열로 반환하는 함수
 
+```java
+public class Practice {
+    public static void main(String[] args) {
+        // [1] 파일 쓰기
+        // [1.1] 파일 경로
+        String path = "./src/test1.txt"; //파일의 위치, 절대경로 or 상대경로
+        
+        // [1.3] 예외처리 (FileNotFoundException)
+        try {
+            // [1.2] 파일 출력 FileOutputStream 객체 생성
+            // - FileOutputStream >> 무조건 일반예외 경고 발생함
+            FileOutputStream fout = new FileOutputStream(path);
+            
+            //[1.4] 파일에 쓰기 .write(바이트 데이터)
+            //[1.5] 문자열의 바이트로 변환 : "문자열".getBytes() >> 무조건 일반예외 발생
+            fout.write("자바에서 작성한 텍스트입니다.".getBytes());
+        } catch (FileNotFoundException e) {
+            System.out.println("파일 또는 경로가 존재하지 않습니다." + e );
+        } catch (IOException e) {
+            System.out.println("입출력 도중에 오류가 발생합니다." + e );
+        }
+    }
+}
+
+// 결과 
+// 위치 : ./src
+// 파일명 : test1.txt
+// 내용 : 자바에서 작성한 텍스트입니다.
+```
+
+### 2) FileInputStream
+- 읽기·입력·가져오기(web, local file > Java)
+#### (1) .read( 바이트배열 )
+- 바이트 배열에서 읽어온 파일들을 저장하는 함수
+#### (2) new String(바이트 배열)
+- 바이트 배열을 문자열로 반환하는 함수
+
+```java
+public class Practice {
+    public static void main(String[] args) {
+        // [2] 파일 읽기
+        // [2.1] 경로 선언
+        String path = "./src/test1.txt";
+        
+        // [2.2] 파일 입력 FileInputStream 객체를 생성
+        // FileInputStream >> 무조건 예외 발생
+        try {
+            FileInputStream fin = new FileInputStream(path);
+
+            // [2.3] 읽어온 바이트를 저장할 배열 선언
+            byte[] bytes = new byte[42];
+
+            // [2.4] bytes에 읽어오기 : .read( 바이트배열 ); >> 무조건 예외 발생
+            fin.read(bytes);
+
+            // [2.5] new String( 바이트배열 ); 읽어온 바이트를 문자열로 변환
+            System.out.println(new String(bytes));
+            
+        } catch (FileNotFoundException e ){
+            System.out.println("파일 또는 경로가 존재하지 않습니다." + e );
+        } catch (IOException e){
+            System.out.println("파일을 읽는데 문제가 발생했습니다." + e);
+        }
+    }
+}
+
+// 결과 
+// console : 자바에서 작성한 텍스트입니다.
+```
+
+## 2.OpenCSV 라이브러리
 ---
+자바에서 CSV 파일 읽기·쓰기를 편하게 해주는 API들을 제공하는 라이브러리
 
-# Java_20_
+### 1) 라이브러리 등록 방법
+- jar 파일을 원하는 package로 이동 > 우클릭 > add as library
 
+### 2) OpenCSV· 관련 객체와 함수
+#### (1) new CSVReader( new FileReader( 경로 ) ) 
+CSV를 입력하는 클래스
+#### (2) new CSVWriter( new FileWriter( 경로 ) ) 
+CSV 출력하는 클래스
 
----
-
-# Java_21_
-
-
----
-
-# Java_22_
-
+### 3) 파일 In·Out 관련 객체와 함수
+#### (1) new FileReader( 경로, Charset.forName(인코딩))
+경로로부터 파일을 읽어오고, 언어에 따라서 인코딩 언어를 설정할 수 있음
+#### (2) .writeAll( List객체 )
+List 객체를 CSV로 내보내는 함수
+#### (3) .readAll()
+List<String[]> 타입으로 반환하는 함수
 ```java
 
 public class Practice {
     public static void main(String[] args) {
+        try {
+            // [1] OpenCSV 라이브러리 사용해보기
+            // [1.1] 파일 경로 지정
+            String path = "src/업소List.csv";
 
+            // [1.2] FileReader로 파일 읽기모드 객체 만들기 +try·catch 예외처리 + 한글 인코딩
+            // new FileReader( 경로, Charset.forName(인코딩))
+            FileReader fileReader = new FileReader(path, Charset.forName("EUC-KR"));
+
+            // [1.3] CSV Reader 클래스를 이용하여 읽기모드 객체 읽기
+            CSVReader csvReader = new CSVReader(fileReader);
+
+            // [1.4] .readAll() : List<String[]> 타입으로 반환하는 함수
+            List<String[]> inData = csvReader.readAll();
+            // ArrayList : 구현체 // List : 인터페이스
+
+            System.out.println(inData);
+
+            // [1.5] 반복문
+            for (int i = 0 ; i < inData.size() ; i++){
+                String[] row = inData.get(i);
+                System.out.printf("업소명 : %s, 지정메뉴 : %s \n",row[1],row[3]);
+            }
+
+        }catch (Exception e){
+            System.out.println("예외발생 " + e);
+        }
     }
 }
+```
+---
+
+# Java_19_JDBC(Java DataBase Connect)
+
+## 1. JDBC
+---
+자바와 DB를 연결해주는 라이브러리
+
+### 1) 라이브러리 준비
+- JDBC MySQL (https://dev.mysql.com/downloads/connector/j/)
+    → Platform Independent (Architecture Independent)
+    → ZIP Archive
+    → mysql-connector-j-9.3.0.jar
+    → 프로젝트 내 패키지로 이동 후 라이브러리 설치
+### 2) 연동코드
+MVC 패턴에서 DB와 연결을 담당하는 Dao 클래스에 DB 연동을 위한 코드를 작성
+
+```java
+public class Dao {
+    // [1] 싱글톤 선언 =====================================================
+    private Dao() {
+        // [] Dao 객체 생성과 동시에 DB 연동 시작을 위한 메소드 실행
+        connectDB(); 
+    }
+    private static final Dao instance = new Dao();
+    public static Dao getInstance() { return instance; }
+
+    // [2] DB 연동에 필요한 정보 작성 ========================================
+    // [2.1] DB연동 경로와 DB명을 선언
+    // 외부 DB 이용 시 [ 경로(localhost) : 포트(3306) / DB명칭 ] 작성
+    private String db_url = "jdbc:mysql://localhost:3306/DBName";
+    // [2.2] db user name 작성
+    private String db_user = "root";
+    // [2.3] db user password 작성
+    private String db_pw = "1234";
+
+    // DB연동 결과를 저장하기 위한 인터페이스
+    // 자세한 설명은 하단 참고
+    Connection conn;    
+
+    // [3] DB 연동 함수 ================================================
+    public void connectDB() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // [3.1] DB 연동 클래스(구현체) DriverManager
+            // [3.2] DB 연동 함수 : .getConnection( 주소 , 계정 , 비밀번호)
+            conn = DriverManager.getConnection(db_url, db_user, db_pw);
+        } catch (ClassNotFoundException e) {
+            System.out.println("[경고] MySQL 드라이버 로드 실패 "+e);
+        } catch (SQLException e) {
+            System.out.println("[경고] DB 연동 실패 " + e);
+        }
+    } // func end
+} // class end
+```
+
+### 3) 핵심 인터페이스
+#### (1) Connection, DB 연동
+① Connection  
+- DB 연동 후 연동 결과를 보관하는 인터페이스
+② DriverManager
+- DB 연동 클래스(구현체) DriverManager
+③ .getConnection(db_url, db_user, db_pw)
+- DB 연동 함수 : .getConnection( 주소 , 계정 , 비밀번호)
+④ PreparedStatement ps = conn.prepareStatement(sql);
+- 기재된 상태의 인터페이스 변수명 = DB연동.기재함수(SQL문법);
+- String sql = "insert into tb명( 속성1, 속성2 ) values( ? , ? )";
+
+#### (2) PreparedStatement, SQL 조작
+① .execute();
+- 실행 함수
+② .executeQuery();
+- Select 문법 실행 결과를 **ResultSet** 타입으로 반환
+③ .executeUpdate();
+- insert, update, delete 문법 실행 결과, sql 성공 레코드 수를 int 타입으로 변환
+④ .set타입(?번째, 변수);
+- ?번째에 변수 값을 대입하는 함수
+- executeUpdate 이전에 실행하여 sql 문을 작성하는 역할
+
+#### (3) ResultSet, SQL 실행 조작
+① rs.next();
+- 조회된 레코드 중에서 다음 레코드 이동 함수
+② rs.get타입("속성명" or colNo);
+- 현재 레코드에서 지정한 속성명의 값 반환 함수
+
+```java
+
+public class Dao {
+    // 1) User 테이블 insert : SQL 고정
+    public boolean userInsert() {
+        // SQL 작성
+        String sql = "insert into user( uname, uage ) values('유재석',40 )";
+        try {
+            // SQL 기재
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // SQL 실행
+            int count = ps.executeUpdate(); // SQL 실행 결과 insert 레코드 수를 int로 반환
+            // SQL 결과 확인
+            System.out.println(count);
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[경고] 예외발생 " + e);
+        }
+        return false;
+    } // func end
+
+    // 2) User 테이블 insert : 매개변수 활용
+    public boolean userInsert2(String uname, int uage) {
+        try {
+            // SQL 작성
+            String sql = "insert into user( uname, uage ) values( ? , ? )";
+            // SQL 기재
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // SQL에 매개변수 대입하기!! ☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+            // ps.set타입( ?순서, 변수)
+            ps.setString(1, uname);
+            ps.setInt(2, uage);
+            // SQL 실행
+            int count = ps.executeUpdate();
+            // SQL 결과 확인
+            if (count >= 1) return true;
+            return false;
+        } catch (SQLException e) {
+            System.out.println("[예외발생] " + e);
+        }
+        return false;
+    } // func end
+
+    // 3) Select
+    // User table 을 select
+    public void userSelect() {
+        try {
+            // SQL 작성
+            String sql = "select * from user;";
+            // SQL 기재
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // SQL 매개변수 대입 >> 없으므로 생략
+            // SQL 실행 ☆★☆★☆★☆★☆★☆★☆★
+            // select >> .executeQuery() >> ResultSet 타입
+            ResultSet rs = ps.executeQuery();       // 조회결과 조작 인터페이스, [import java.sql] 주의!!
+            // SQL 결과 확인
+//            int rowNo = 0;
+
+//            while (rs.next()){                      // rs.next() : 다음 레코드로 이동하는 함수
+//                System.out.println(rowNo++);
+//                System.out.print(rs.getInt("uno") + "\t");
+//                System.out.print(rs.getString("uname") + "\t");
+//                System.out.println(rs.getInt("uage"));
+//            }
+            while (rs.next()){
+                System.out.printf("번호 : %d \t 이름 : %s \t 나이 : %d \n",rs.getInt(1),rs.getString(2), rs.getInt(3));
+            }
+        } catch (Exception e) {
+            System.out.println("[예외발생] " + e);
+        }
+    } //func end
+} // class end
+```
+
+
+# Java_20_Java 기본 클래스
+
+## 1. Object 클래스
+---
+- 모든 클래스의 최상위 클래스 (모든 클래스와 상속)
+- 다형성에 따라, 모든 자료를 Object 타입으로 분류 가능
+
+### 1) 주요 메소드
+#### (1) .toString()
+- 객체의 주소를 반환
+- 주로 class에서 override 하여 값이 문자열로 출력하도록 함
+
+#### (2) .equals()
+- 두 객체 내의 값을 비교하여 그 결과를 반환하는 함수
+
+#### (3) .hashCode()
+- 객체를 정수로 반환
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+        // [1] Object
+        // [1.1] Object의 다향성·타입변환
+        Object o1 = 3;                  // 정수를 Object 타입으로 분류 가능
+        Object o2 = 3.14;               // 실수를 Object 타입으로 분류 가능
+        Object o3 = true;               // 논리를 Object 타입으로 분류 가능
+        Object o4 = "유재석";            // 문자열을 Object 타입으로 분류 가능
+        Object o5 = new Object();       // 객체를 Object 타입으로 분류 가능
+        Object o6 = new int[]{1, 2, 3};   // 배열을 Object 타입으로 분류 가능
+
+        // [1.2] Object의 주요 메소드
+        Object o7 = new BookDto();
+
+        // [1.2.1] toString() : 인스턴스·자료의 주소·메모리 위치를 반환
+        System.out.println(o7.toString()); // 생략 가능
+        System.out.println(o7);
+        // daily.day20_250725.BookDto@7cca494b
+
+        // BoardDto Class에서 override하여 문자열로 출력
+        Object o8 = new BoardDto();
+        System.out.println(o8.toString());  // BoardDto{}
+
+        // [1.2.2] == VS .equals()
+        // == : 인스턴스의 주소를 비교
+        // .equals() : 인스턴스의 값을 비교
+
+        Object o9 = new BookDto();
+        Object o10 = new BookDto();
+        System.out.println(o9 == o10); // false
+        // 이 경우 타입은 같지만, 객체가 같은지를 판단!
+        // o9와 o10는 서로 다른 메모리에 저장된 객체, 즉 서로 다른 주소를 갖음
+        System.out.println(o9.equals(o10)); // false
+
+        Object o11 = o9;
+        System.out.println(o11 == o9); // true
+        System.out.println(o11.equals(o9)); // true
+
+        String str1 = new String("유재석");
+        String str2 = new String("유재석");
+        System.out.println(str1 == str2);       // false
+        System.out.println(str1.equals(str2));  // true
+
+        // [1.2.3] .hashCode() : 객체를 정수값으로 반환
+        System.out.println(str1.hashCode());
+        System.out.println(str2.hashCode());
+        System.out.println(o9.hashCode());
+        System.out.println(o10.hashCode());
+        System.out.println(o11.hashCode());
+    }
+}
+```
+## 2. Class 클래스
+---
+- 클래스의 정보를 담는 Class
+- 리플렉션 : 실행 중 객체할당(동적할당), 멤버 분석 시
+
+### 1) 주요 메소드
+#### (1) class.forname("Class경로")
+* 지정한 경로에서 클래스를 로드하는 함수
+* 주로 외부 라이브러리 사용 시 이용
+* 예외처리 필수 : 클래스 로딩 성공 / 실패(예외 발생)
+#### (2) .getField()
+* 클래스의 모든 멤버변수명을 배열로 반환
+#### (3) .getConstructors()
+* 클래스의 모든 생성자를 배열로 반환
+#### (4) .getMethods()
+* 클래스의 모든 메소드를 배열로 반환
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+        // [2] Class
+        String str = new String();
+        Class c = str.getClass();
+        System.out.println(c); // class java.lang.String  Class의 타입 정보를 반환
+
+        Integer value = 3;
+        System.out.println(value.getClass()); // class java.lang.Integer
+
+        // [2.1] 주요 메소드
+
+        // [2.1.1] class.forname("Class경로")
+        // 지정한 경로에서 클래스를 로드하는 함수 
+        // 주로 외부 라이브러리 사용 시 이용
+        // 예외처리 필수 : 클래스 로딩 성공 / 실패(예외 발생)
+        try {
+            Class.forName(" class java.lang.String");
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        }
+
+        // [2.2.2] .getField()
+        // 클래스의 모든 멤버변수명을 배열로 반환
+        Field[] fields = c.getFields();
+        for(int i = 0 ; i < fields.length ; i ++ ){
+            System.out.println(fields[i]);
+        }
+
+        // [2.2.3] .getConstructors()
+        // 클래스의 모든 생성자를 배열로 반환
+        Constructor[] constructors = c.getConstructors();
+        for(int i = 0 ; i < constructors.length ; i ++){
+            System.out.println(constructors[i]);
+        }
+
+        // [2.2.4] .getMethods()
+        Method[] methods = c.getMethods();
+        for(int i = 0 ; i < methods.length ; i++) {
+            System.out.println(methods[i]);
+        }
+    }
+}
+```
+## 3. Wrapper 클래스
+---
+- 기본타입 8개를 참조 타입으로 사용하기 위해 이용
+- 기본타입은 메소드(기능)이 없으므로 Wrapper를 통해 메소드를 제공받음
+
+### 1) 종류
+Byte Short Integer Long Boolean Float Double
+
+### 2) 주요 메소드
+#### (1) .parse타입("문자열");
+* 문자열 > 기본타입 변환
+* 문자열을 parse뒤의 타입으로 변환
+#### (2) String.valueOf( 자료값 )
+* 자료의 타입을 문자열로 변환
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+        // [3] Wrapper
+        int value1 = 100;       // 타입 : int
+        Integer value2 = 100;   // 타입 : Integer
+
+        // [3.1] autoboxing VS unboxing
+
+        Integer value3 = value1;
+        // autoboxing : int(기본) > Integer(클래스) : 자동 타입 변환
+        int value4 = value2;
+        // unboxing : Integer(클래스) > int(기본) :
+        // 클래스에서 기본타입으로 내려가는 것임에도 자동 타입 변환을 지원
+
+        // [3.2] 문자열 > 기본타입 변환
+        int val1 = Integer.parseInt("100");    // 문자 "100" > 숫자 100
+        double val2 = Double.parseDouble("3.14"); // 문자 "3.14" > 실수 3.14
+        float val3 = Float.parseFloat("3.14");   // 문자 "3.14" > 실수 3.14
+        byte val4 = Byte.parseByte("100");
+        short val5 = Short.parseShort("100");
+        long val6 = Long.parseLong("100");
+        boolean val7 = Boolean.parseBoolean("false");
+
+        // [3.3] 기본타입 > 문자열 변환
+
+        String s1 = 100 +"";
+        // 100 + "" = 자료 + 문자열 = 문자열
+
+        String s2 = String.valueOf(100);
+    }
+}
+```
+## 4. LocalDate 클래스
+---
+- 시스템의 날짜/시간 정보 클래스
+### 1) 주요 메소드
+
+#### (1) LocalDateTime.now()
+* yyyy-MM-ddThh:mm:ss.000000 (nano-sec) 형태로 출력
+* 타입 LocalDateTime
+#### (2) LocalDateTime.of(년,월,일,시,분,초)
+* 지정한 날짜 형태로 반환
+* 타입 LocalDateTime
+
+#### (3) 날짜 형식 지정
+- DateTimeFormatter 포멧변수명 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+  * y 연 / M 월 / d 일 / h 시 / m 분 / s 초
+- localDateTime.format(포멧변수명);
+  * 지정한 포멧으로 날짜·시간을 String 타입으로 반환
+
+- 날짜·시간 객체 내에서 원하는 부분만 int 타입으로 반환
+    - .getYear();
+    - .getMonthValue();
+    - .getDayOfMonth();
+    - .getHour();
+    - .getMinute();
+    - .getSecond();
+
+- 날짜 계산 (반환 타입 LocalDateTime)
+    - .plusDays(x);
+        * x일 이후 날짜
+    - .minusDays(x);
+        * x일 이전 날짜
+```java
+
+public class Practice {
+    public static void main(String[] args) {
+// [4] LocalDate 클래스
+
+        // [4.1] 현재 날짜·시간
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);  //2025-07-25
+
+        LocalTime localTime = LocalTime.now();
+        System.out.println(localTime);  // 11:36:23.209480800 (nano-sec)
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime); // 2025-07-25T11:37:19.188031
+
+
+        // [4.2] 지정한 날짜/시간
+
+        // [4.2.1] 날짜 시간 (연,월,일,시,분.초)
+        LocalDateTime.of(2025,07,25,11,33,15);
+
+        // [4.3] 날짜·시간 형식 변경
+        //  y 연 / M 월 / d 일 / h 시 / m 분 / s 초
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 hh:mm:ss");
+        String today = localDateTime.format(formatter);
+        System.out.println(today); // 2025년 07월 25일 11:43:08
+
+        // [4.4] 날짜 세부 정보
+        int year = localDateTime.getYear();
+        int month = localDateTime.getMonthValue();
+        int day = localDateTime.getDayOfMonth();
+        int hour = localDateTime.getHour();
+        int min = localDateTime.getMinute();
+        int sec = localDateTime.getSecond();
+
+        // [4.5] 날짜 계산
+
+        // 10일 이후의 날짜
+        LocalDateTime plusDays = localDateTime.plusDays(10);
+        System.out.println(plusDays); // 2025-08-04T11:48:16.075785900
+
+        // -5일 이전의 날짜
+        LocalDateTime preDays = localDateTime.minusDays(5);
+        System.out.println(preDays); //2025-07-20T11:49:34.710516600
+    }
+}
+```
+---
+
+# Java_21_스레드(Thread)
+## 1. 스레드 Thread
+---
+### 1) 정의
+- 하나의 프로세스 내에서 실행되는 작업의 단위 ≒ 실행 흐름의 단위
+
+### 2) 목적
+- 스레드를 통해 코드(명령어)를 읽어 CPU가 명령어를 처리하도록 함
+
+### 3) 자바에서의 스레드
+#### (1) main method
+- public static void main( String[] args ){} >> main thread를 내장하고 있음
+
+### 4) 사용법
+#### (1) main thread·method 선언
+- 자바 프로그램은 항상 main thread·method로부터 실행 흐름이 시작됨
+
+```java
+public class Practice {
+    public static void main(String[] args) {
+        Toolkit toolkit = Toolkit.getDefaultToolkit(); // Java UI
+
+        // [1] 싱글·단일 스레드
+        System.out.println("[1] main thread가 읽어내는 코드");
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("[1] main thread가 읽어내는 코드" + i);
+        }
+
+        for (int i = 1; i <= 5; i++) {
+//            System.out.println("[1] Beep sound");
+            toolkit.beep(); // beep sound 출력 함수
+            try {
+                Thread.sleep(1000);             // Thread.sleep = milli sec 만큰 처리·Thread를 지연시킴
+            } catch (InterruptedException e) {
+                System.out.println("[예외발생] [1] " + e);
+            }
+        }
+    } // main end
+} // class end
+```
+
+## 2. 멀티스레드 Multi Thread
+---
+### 1) 정의
+main 스레드 외 새로운 작업 스레드를 생성하여 동시 작업
+### 2) 목적
+- 병렬 처리 = 동시에 여러 작업을 수행하기 위해
+### 3) 사용처
+- Wep / App, 채팅 / 첨부파일 / JDBC, 동기화/비동기화 처리
+### 4) 사용법
+(1) 익명 구현체
+(2) 구현체
+(3) 상속
+※ 상속은 클래스당 1번밖에 되지 않아서 사용성이 떨어짐
+
+### 5) 주요 Class/Interface
+#### (1) Thread Class
+① .start()
+- run 추상 메소드를 실행하는 메소드
+
+#### (2) Runnable Interface
+① run(){} 추상 메소드
+- 작업 스레드가 실행되는 최초 시작점
+
+```java
+// [2.2] 구현체 =====================================================
+class 작업스레드1 implements Runnable {
+    @Override
+    public void run() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        for (int i = 1; i <= 5; i++) {
+            toolkit.beep();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("[예외발생] [2.1.2] " + e);
+            }
+        }
+    } // run end
+} // class end
+
+// [2.3] 상속 =====================================================
+class 작업스레드2 extends Thread {
+    Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            toolkit.beep();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("[예외발생] [2.1.2] " + e);
+            }
+        }
+    } // func end
+    // Runnable 없이 run()에 바로 override 함
+} // class end
+
+public class Practice {
+    public static void main(String[] args) {
+        // [2] 멀티 스레드
+        // [2.1] 익명 구현체 : 인터페이스 타입을 Class 없이 main Thread 안에서 직접 구현하는 것
+
+        // [2.1.2] 소리 5번 코드
+        // new 인터페이스Type(){ 구현 }
+        Runnable runnable1 = new Runnable() {
+            // Run 추상 매소드 구현
+            public void run() {
+                for (int i = 1; i <= 5; i++) {
+                    toolkit.beep();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.out.println("[예외발생] [2.1.2] " + e);
+                    }
+                }
+            }
+        }; // new Runnable() end
+
+        // run 메소드를 구현한 > Runnable 인테페이스 > Thread 생성자에 대입
+        Thread thread1 = new Thread(runnable1);
+        thread1.start();
+
+        // [2.1.1] 출력 5번 코드
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("[1] main thread가 읽어내는 코드" + i);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                System.out.println("[예외발생] [2.1.1] " + e);
+            }
+        }
+
+        // [2.2] 구현체
+        // [2.2.1] 구현체 스레드 (작업스레드1 구현체 class 참고하기!)
+        작업스레드1 작업스레드1 = new 작업스레드1(); // 구현체
+        Thread thread2 = new Thread(작업스레드1); // 구현체 '작업스레드1'을 Thread 타입의 thread2 변수에 대입
+        thread2.start();                        // Thread 실행 함수 .start()
+
+        // [2.2.2] 출력 5번
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("[1] main thread가 읽어내는 코드" + i);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                System.out.println("[예외발생] [2.1.1] " + e);
+            }
+        }
+
+        // [2.3] 상속
+        // [2.3.1] 상속class
+        작업스레드2 thread3 = new 작업스레드2();
+        thread3.start();
+
+
+        // [2.3.2] 출력 5번
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("[1] main thread가 읽어내는 코드" + i);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                System.out.println("[예외발생] [2.1.1] " + e);
+            }
+        }
+    }
+}
+```
+
+## 3. 스레드풀
+---
+### 1) 정의
+- 미리 일정 개수의 스레드를 생성하고 필요에 따라 재사용하는 방법
+
+### 2) 목적
+- 스레드의 재사용
+
+### 3) 효과
+- 자원 효율성, 과부하 방지 etc
+
+### 4) 구조
+- 작업 요청 [ 큐 ] 자료구조를 배치하여 순서대로 스레드풀에서 대기중인 스레드에게 작업 배정
+> ※ 큐
+> : 자료의 데이터들을 요청 순서대로 처리하는 방법
+
+#### 5) 사용처
+(1) 톰켓 (자바웹클래스)
+(2) JDBC
+(3) 업로드/다운로드
+(4) 채팅
+
+#### 6) 사용법
+(1) 작업 스레드 배정
+
+```java
+public class Practice {
+    public static void main(String[] args) {
+        // (1) 작업 스레드 배정
+        // Executor.newFixedThreadPool( 스레드풀에 저장할 스레드 수 );
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+
+        // (2) 반복문을 이용하여 각 스레드를 생성
+        for(int i = 0 ; i < 3 ; i++){
+            String name = "Thread" + i ;
+
+            // (3) 스레드 생성 - 익명 구현체
+            Runnable runnable = new Runnable(){
+                @Override
+                public void run() {
+                    try{
+                        Thread.sleep(2000);
+                    } catch (Exception e ) {System.out.println("[예외발생] + e ");}
+                    System.out.println("Task Thread ? ; "+ name);
+                } //func end
+
+            }; // 익명구현체 end
+
+            // (4) 생성된 스레드를 스레드풀에 삽입
+            executorService.submit( runnable );
+        } // for end
+
+        // (5) 스레드풀 종료
+        executorService.shutdown();
+    } //main end
+} // class end
+```
+
+
+---
+
+# Java_22_동기화·비동기화
+## 1. 동기화
+---
+
+### 1) 정의
+메소드를 lock 하여, 메소드를 점령함
+
+### 2) 목적
+여러 스레드가 동시에 하나의 스레드를 사용할 경우,
+시간차에 의하여 멤버변수 충돌이 발생할 수 있음
+이를 방지하기 위하여 동기화를 통해 메소드 lock이 필요
+
+### 3) 비교
+동기화 VS 비동기화
+
+#### (1) 동기화
+
+- 한 번에 하나의 스레드가 처리
+- 처리 순서가 보장됨
+
+#### (2) 비동기화
+
+- 한 번에 여러 개의 스레드가 처리될 수 있음
+- 처리 순서가 보장되지 않음
+
+### 4) 사용법
+##### (1) 메소드 선언부에 키워드 삽입 : synchronized
+##### (2) synchronized(this){ } 블럭을 이용
+
+※ 참고
+두 개 이상의 스레드가 하나의 메소드를 호출할 때 비동기 처리 필요.
+
+두 개 이상의 스래드가 하나의 메소드를 사용할 때,
+순서대로 호출 > 처리가 필요 >>>> 동기화
+
+```java
+// (1) 유저 1 class ( 1작업 thread )
+class User1 extends Thread {
+    public Calculator calculator;
+
+    @Override
+    public void run() {
+        calculator.setMemory(100);
+    }
+} // class end
+
+// (2) 유저 2 class ( 2작업 thread )
+class User2 extends Thread {
+    public Calculator calculator;
+
+    @Override
+    public void run() {
+        calculator.setMemory(200);
+    }
+} // class end
+
+// (3) 계산기 클래스 / Object
+class Calculator {
+    // 멤버변수
+    public int memory;
+
+    // 메소드
+
+    // synchronized ☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+    public synchronized void setMemory(int memory) {
+        this.memory = memory;
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            System.out.println("[예외발생] + 3" + e);
+        }
+        System.out.println(this.memory);
+    } // func end
+} //class end
+
+public class Practice {
+    public static void main(String[] args) {
+        // 1. 1개의 계산기 객체 만들기
+        Calculator calculator = new Calculator();
+
+        // 2. 1개의 계산기를 2개의 스레드에 대입
+        User1 user1 = new User1();
+        user1.calculator = calculator;
+
+        User2 user2 = new User2();
+        user2.calculator = calculator;
+
+        // 두 개의 스레드는 동일한 계산기 객체를 가지고 있음
+
+        // 3. 두 개의 스레드를 실행
+        user1.start(); // 200 > synchronized > 100
+        user2.start(); // 200 > synchronized > 200
+    } //main end
+} // class end
+```
+
+
+---
+
+# Java_23_String 클래스
+## 1. String 클래스
+---
+- 컴퓨터는 문자 1글자에 대한 정의는 있지만, 문자열에 대해서는 정의되지 않음
+- 문자 번역 : 바이트 <-- 번역 --> 문자
+
+> 1. 아스키코드
+> : 7비트, 128문자 표현 규칙, 영문, 숫자, 특수문자
+> 2. 유니코드
+> : 전 세계 공용어, Java에서 사용
+
+### 1) 문자열 사용하는 방법
+(1) "문자열"                : 큰 따옴표("")안에 문자열 표현
+(2) new String("문자열")    : 생성자를 이용한 문자열 표현
+### 2) 문자열 비교 방법
+(1) 문자열A == 문자열B       : 리터럴 문자만 비교 가능
+(2) 문자열A.equals(문자열B)  : 리터럴과 객체 문자열 비교 가능
+### 3) 주요 메소드
+
+| 메소드                                                                  | 설명                                                  |
+|----------------------------------------------------------------------|-----------------------------------------------------|
+| 문자열A.concat(문자열B)                                                    | 연결 메소드                                              |
+| String.format("형식문자", 문자열)                                           | 지정한 형식으로 문자열을 반환하는 메소드                              |
+| StringBuilder builder = new StringBuilder(); </br> builder.append(문자열A); | 문자열을 연결해주는 클래스                                      |
+| 문자열.charAt( index )                                                  | 지정한 index의 문자 1개를 반환                                |
+| 문자열.length()                                                         | 문자열의 길이(글자 수) 반환                                    |
+| 문자열.replace( Asis, Tobe)                                             | 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 1개     |
+| 문자열.replaceAll( Asis, Tobe)                                          | 문자열 내의 Asis문자를 tobe문자를 바꾼후 새로운 문자열로 저장하는 함수, 모든     |
+| 문자열.subString( StartIndex, EndIndex)                                 | : 문자열 내의 StartIndex부터 EndIndex 전까지 문자열을 반환          |
+| 문자열.split( 구분문자 )                                                 | 문자열을 구분문자로 나눈 후, String[] 타입으로 반환                   |
+| 문자열.indexOf("찾을문자열")                                              | 문자열 내 "찾을 문자열"이 존재하면 index 번호 / 없으면 -1을 반환          |
+| 문자열.contains("찾을문자열")                                             |  문자열 내 "찾을 문자열"이 존재하면 ture / 없으면 false을 반환                                                   |
+| 문자열.getBytes() </br> new String( byte[] )                            | 문자열을 byte[] 타입으로 반환 </br> byte[] 타입을 String 타입으로 반환 |
+
+```java
+public class Practice {
+    public static void main(String[] args) {
+// 1. 배열을 이용한 문자열 표현
+        char str1 = '유';                 // 작은 따옴표('')로  감싼 문자 1개 : char 타입
+        char[] str2 = {'유','재','석'};    // 작은 따옴표 3개를 char 배열 타입으로 묶음
+
+        // 2.char 타입의 아스키코드 10진수
+        char str3 = 65;
+        System.out.println(str3);       //  A : char는 정수를 넣었을 때, 영문(or 아스키코드에 따른 문자)을 반환
+        char[] str4 = {74,65,86,65};
+        System.out.println(Arrays.toString(str4));  // [J, A, V, A] >> 아스키코드를 이용, char배열을 통한 글자 표현
+
+        char str5 = '김';
+        System.out.println( (int) str5 );   // 44608 >> 유니코드에 따른 값
+
+        // 3. 문자열 리터럴 : 큰 따옴표("")
+        String str6 = "유재석";                        // 리터럴 대입 : 문자열이 동일할 경우, 동일한 객체 취급
+        String str7 = "유재석";
+        String str8 = new String("유재석");    // 생성자 : 문자열이 동일하더라도 서로 다른 객체로 취급
+
+        // 4. == VS .equals()
+        // == : 주소값 비교
+        // .equals() : 문자열(객체) 비교
+        // Object class에서 .equals()는 객체 비교 함수, 
+        // String class에서 override 되어 문자열 비교 함수로 재정의됨
+        // ※ 문자는 불변
+
+        System.out.println( str6 == str7 );     // true 
+        // str6, str7는 리터럴 대입을 통해 동일한 문자열을 대입하였으므로 동일한 주소값을 가짐
+        System.out.println( str6 == str8 );     // false  
+        // str6은 리터럴 대입 · str8은 생성자 사용으로 객체를 생상하였으므로 서로 다른 주소값을 가짐
+        System.out.println( str6.equals(str7)); // true
+        System.out.println( str6.equals(str8)); // true
+
+        // 5. 주요 메소드
+        // 1) "A".concat("B") : 문자열 연결 메소드 ≒ + 연결 연산자
+        String str9 = "자바".concat("프로그래밍");
+        System.out.println(str9);
+
+        // 2) StringBuilder class : 문자열을 단계적으로 연결하는 메소드를 제공하는 클래스
+        StringBuilder builder = new StringBuilder();
+        builder.append("자바");
+        builder.append("프로그래밍");
+        System.out.println(builder); // 메모리 효율 Good!
+
+        // 3) String.format("형식문자", "A", "B")
+        String str10 = String.format("%s %s", "자바", "프로그래밍");
+        System.out.println(str10);
+
+        // 4) + 연결 연산자
+        String str11 = "";
+        str11 += "자바";
+        str11 += "프로그래밍";
+        System.out.println(str11);
+
+        // [활용] JDBC SQL의 매개변수 연결
+        String name = "유재석";
+        String sql1 = "insert into tb(name) values ( "+name+")";                    // 비추천
+        String sql2 = String.format("insert into tb(name) values ( %s )", name);
+        String sql3 = "";
+        sql3 += "insert into tb(name) values (";                                    //... 비추천 + 띄어쓰기 주의
+
+        StringBuilder builder2 = new StringBuilder();
+        builder2.append("insert into tb(name) values (");                           // 그닥.....
+
+
+        // 5) .charAt( 인덱스 ) : 지정한 인덱스 번호의 문자 1개 반환 메소드
+        char gender = "012345-1234567".charAt(7);
+        System.out.println(gender);                         // 1
+        // [활용] scan.next().charAt(x) : console에서 받은 값의 index x 번째 1개를 추출
+
+        // 6) . length() : 문자 수 반환 메소드
+        System.out.println("012345-1234567".length());      // 14
+        // [활용] 반복문
+
+        // 7) .replace( As-is문자열, To-be문자열 )
+        //      : 문자열 추출 > As-is문자열 삭제, To-be문자열 삽입 > 새로운 문자열 생성 메소드
+        //      : 새로 생성하는 메소드이므로 주소값이 바뀜
+        String str12 = "자바프로그래밍".replace("자바","Java");
+        System.out.println(str12);
+        // [활용] HTML 줄바꿈 <br> >> Java '\n'
+        String htmlData = "유재석<br>안녕하세요.";
+        htmlData.replaceAll("<br>","\n");
+
+        // 8) .subString( 시작인덱스, (끝인덱스) ); : 시작 인덱스부터 마지막 인덱스 전까지 추출
+        String str13 = "012345-1234567".substring(0,6);
+        System.out.println(str13);      // 012345
+
+        String str14 = "012345-1234567".substring(7);  // 7번 index부터 마지막 까지 출력
+        System.out.println(str14);      // 1234567
+        // [활용] 차량번호 조회 : 214가7531 / 차량번호 뒷차리 = 차량번호.subString( 차량번호.length()-4 )
+
+        // 9) .split("구분문자") : 문자열 내 구분문자를 기준으로 문자열을 자른 후 배열로 반환
+        String[] str15 = "012345-1234567".split("-");
+        System.out.println(str15[0]);           // 012345
+        System.out.println(str15[1]);           // 1234567
+        // [활용] CSV 형식 다루기
+        //      쉼표(,)로 속성을 구분하고 \n으로 줄구분을 함
+        //      날짜(y-m-d) / 주소 (시, 군, 구, 동)
+
+        // 10) .indexOf("찾을 문자열") : 문자열 내 "찾을 문자열"이 존재하면 찾은 인덱스를 반환, 없으면 -1을 반환
+        int findIndex = "자바 프로그래밍 언어".indexOf("프로");
+        System.out.println(findIndex);      // 3
+        // [활용] 검색
+
+        // 11) .contains("찾을 문자열") : 문자열 내 "찾을 문자열"이 존재하면 true, 없으면 false
+        boolean findBool = "자바 프로그래밍 언어".contains("프로");
+        System.out.println(findBool);       //true
+        // [활용] 검색
+
+        // 12) .getBytes() : 지정 문자열을 byte[] 타입으로 반환하는 메소드
+        byte[] str16 = "JAva program".getBytes();
+        System.out.println(Arrays.toString(str16));     // 아스키 코드 [74, 65, 118, 97, 32, 112, 114, 111, 103, 114, 97, 109]
+        // [활용] 파일처리, 네트워크 통신 etc
+    } //main end
+} // class end
+```
+---
+
+# Java_24_
+
+
+---
+
+# Java_25_
+
+
+---
+
+# Java_26_
+
+
+---
+
+# Java_27_
+
+
+---
+
+# Java_28_
+
+
+---
+
+```java
+public class Practice {
+    public static void main(String[] args) {
+
+    } //main end
+} // class end
 ```
 
 

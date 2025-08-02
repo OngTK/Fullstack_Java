@@ -29,7 +29,6 @@ public class Example3 {
     */
     public static void main(String[] args) {
 
-
         // [1] 파일 쓰기
         // [1.1] 파일 경로
         String path = "./src/daily/day16_250721/test1.txt"; //파일의 위치, 절대경로 or 상대경로
