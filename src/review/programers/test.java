@@ -4,15 +4,16 @@ import java.util.Scanner;
 
 public class test {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int number = sc.nextInt();
-        int answer = 0;
 
-        for(int i=0; i< number ; i++){
-            answer += number % 100;
-            number /= 100;
+    }
+}
+
+class Solution {
+    public String solution(String my_string, int k) {
+        String answer = "";
+        for(int i = 0 ; i < k ; i++){
+            answer += my_string;
         }
-
-        System.out.println(answer);
+        return answer;
     }
 }
