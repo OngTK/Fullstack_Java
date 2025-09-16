@@ -87,11 +87,12 @@ public class Basic {
 //        System.out.println(answer);
 
         // [ 글자 이어 붙여 문자열 만들기 ]
-        String my_string = "cvsgiorszzzmrpaqpe";
-        int[] index_list = new int[11];
+//        String my_string = "cvsgiorszzzmrpaqpe";
+//        int[] index_list = new int[11];
+//
+//        String answer = "";
+//        for(int i = 0 ; i < index_list.length ; i++){
+//            int index = index_list[i];}
 
-        String answer = "";
-        for(int i = 0 ; i < index_list.length ; i++){
-            int index = index_list[i];}
     } // main end
 } // class end
