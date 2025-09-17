@@ -4,28 +4,17 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        int n = scanner.nextInt();
-        int m = scanner.nextInt();
-
-        int[] list = new int[n];
-        for(int z = 0 ; z < m ; z++ ){
-            int i = scanner.nextInt();
-            int j = scanner.nextInt();
-            int k = scanner.nextInt();
-
-            list[z] = 0;
-
-            for( int y = i-1 ; y < j ; y++){
-                list[y] = k;
-            }
+        int[] list = new int[10];
+        for(int i = 0 ; i < 10 ; i ++ ){
+            list[i] = scan.nextInt() % 42 ;
         }
 
-        for(int i = 0 ; i < list.length ; i++ ){
-            System.out.print(list[i] + " ");
+        for(int i = 0 ; i < list.length ; i++){
+
         }
     }
 }
