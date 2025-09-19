@@ -45,4 +45,27 @@ public class Main {
 
 ---
 
-#
+# 1152 단어의 개수
+
+## StringTokenizer
+문자열을 지정한 구분자로 쪼개주는 클래스
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        // 공백을 포함한 문자열을 받음
+        String s = scan.nextLine();
+        scan.close();
+                
+        // StringTokenizer 객체 선언
+        // 문자열을 " "로 나눔
+        StringTokenizer st = new StringTokenizer(s, " ");
+        
+        // st 내에 Token의 갯수를 반환
+        System.out.println(st.countTokens());
+    }
+}
+
+```
